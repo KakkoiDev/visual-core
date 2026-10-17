@@ -64,6 +64,7 @@ or automatic accessibility certification. See [scope and limits](docs/scope.md).
 
 ## For agents and core maintainers
 
+- [Roadmap](TODO.md), including the bundled-tool direction and future coding-core.
 - [Recipe router](RECIPES.md) and [machine-readable capabilities](CAPABILITIES.json).
 - [Design defaults](docs/design-system.md), [composition patterns](docs/composition-patterns.md), [visual verification](recipes/verify.md).
 - [Consumer/example registry](IMPLEMENTATIONS.toml): no app is claimed as a consumer yet.
