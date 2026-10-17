@@ -19,6 +19,16 @@ These are planned tasks, not implemented capabilities.
   and failures before claiming that the workflow is reliable for that model.
 - [ ] Add further generators only for concrete unsupported tasks, with the same
   license/pin/offline/example/verification requirements.
+- [x] Implement the first Blob 47 phase of the [terrain generator specification](docs/terrain-generator-spec.md):
+  first prove a pinned headless Tesserae extraction, then ship curated material
+  presets, Blob 47 atlases, seam checks, previews and preserved revisions.
+  Use JavaScript/Node rendering and the existing Python packaging CLI for Pi;
+  no required native renderer or image addon.
+  Shipped presets, final-pixel checks, revisions and browser consumer. Broader
+  design milestones (Dual Grid, engine exports, weak-model eval) remain planned.
+- [x] Gather the [terrain dependency kit](docs/terrain-dependencies.md): six pinned
+  upstream sources/licenses, prebuilt Tesserae JavaScript and offline headless
+  render/noise/PNG/patch probes. Full production extraction acceptance is pending.
 
 ## Future repository: coding-core
 
@@ -46,3 +56,9 @@ These are planned tasks, not implemented capabilities.
 
 Choose concrete tools and versions during implementation. This roadmap does not
 create coding-core or add a runtime dependency from visual-core to it.
+
+## Related core libraries
+
+- coding-core now has its own repository; further recipe work belongs there.
+- gaming-core now owns pinned LittleJS recipes/examples and starter tooling.
+- Pi adoption is documented in its handoff; no live consumer is claimed yet.

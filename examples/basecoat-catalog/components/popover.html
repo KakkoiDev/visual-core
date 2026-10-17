@@ -1,0 +1,53 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>popover</title><link rel="stylesheet" href="../../../vendor/basecoat/dist/basecoat.cdn.min.css"><script src="../../../vendor/basecoat/dist/js/all.min.js" defer></script><style>body{padding:28px;min-height:100vh}body>main{max-width:700px;margin:auto}h1{font-size:1.4rem;margin-bottom:20px}#demo{padding:24px;border:1px solid #bbb;border-radius:8px}footer{margin-top:24px}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:12px monospace}</style><main><h1>popover</h1><section id="demo"><div id="demo-popover" class="popover">
+  <button id="demo-popover-trigger" type="button" aria-expanded="false" aria-controls="demo-popover-popover" class="btn" data-variant="outline">Open popover</button>
+  <div id="demo-popover-popover" data-popover aria-hidden="true" class="w-72">
+    <header>
+      <h4>Dimensions</h4>
+      <p>Set the dimensions for the layer.</p>
+    </header>
+    <form class="grid gap-2" onsubmit="event.preventDefault()">
+      <div class="grid grid-cols-3 items-center gap-4">
+        <label for="demo-popover-width">Width</label>
+        <input type="text" id="demo-popover-width" value="100%" class="input col-span-2 h-8" autofocus />
+      </div>
+      <div class="grid grid-cols-3 items-center gap-4">
+        <label for="demo-popover-max-width">Max. width</label>
+        <input type="text" id="demo-popover-max-width" value="300px" class="input col-span-2 h-8" />
+      </div>
+      <div class="grid grid-cols-3 items-center gap-4">
+        <label for="demo-popover-height">Height</label>
+        <input type="text" id="demo-popover-height" value="25px" class="input col-span-2 h-8" />
+      </div>
+      <div class="grid grid-cols-3 items-center gap-4">
+        <label for="demo-popover-max-height">Max. height</label>
+        <input type="text" id="demo-popover-max-height" value="none" class="input col-span-2 h-8" />
+      </div>
+    </form>
+  </div>
+</div></section><footer><p>Upstream default preview; app actions remain host responsibilities.</p><a href="../../../vendor/basecoat/docs/components/popover.mdx">Local upstream documentation</a><h2>Copyable HTML</h2><pre>&lt;div id=&quot;demo-popover&quot; class=&quot;popover&quot;&gt;
+  &lt;button id=&quot;demo-popover-trigger&quot; type=&quot;button&quot; aria-expanded=&quot;false&quot; aria-controls=&quot;demo-popover-popover&quot; class=&quot;btn&quot; data-variant=&quot;outline&quot;&gt;Open popover&lt;/button&gt;
+  &lt;div id=&quot;demo-popover-popover&quot; data-popover aria-hidden=&quot;true&quot; class=&quot;w-72&quot;&gt;
+    &lt;header&gt;
+      &lt;h4&gt;Dimensions&lt;/h4&gt;
+      &lt;p&gt;Set the dimensions for the layer.&lt;/p&gt;
+    &lt;/header&gt;
+    &lt;form class=&quot;grid gap-2&quot; onsubmit=&quot;event.preventDefault()&quot;&gt;
+      &lt;div class=&quot;grid grid-cols-3 items-center gap-4&quot;&gt;
+        &lt;label for=&quot;demo-popover-width&quot;&gt;Width&lt;/label&gt;
+        &lt;input type=&quot;text&quot; id=&quot;demo-popover-width&quot; value=&quot;100%&quot; class=&quot;input col-span-2 h-8&quot; autofocus /&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;grid grid-cols-3 items-center gap-4&quot;&gt;
+        &lt;label for=&quot;demo-popover-max-width&quot;&gt;Max. width&lt;/label&gt;
+        &lt;input type=&quot;text&quot; id=&quot;demo-popover-max-width&quot; value=&quot;300px&quot; class=&quot;input col-span-2 h-8&quot; /&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;grid grid-cols-3 items-center gap-4&quot;&gt;
+        &lt;label for=&quot;demo-popover-height&quot;&gt;Height&lt;/label&gt;
+        &lt;input type=&quot;text&quot; id=&quot;demo-popover-height&quot; value=&quot;25px&quot; class=&quot;input col-span-2 h-8&quot; /&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;grid grid-cols-3 items-center gap-4&quot;&gt;
+        &lt;label for=&quot;demo-popover-max-height&quot;&gt;Max. height&lt;/label&gt;
+        &lt;input type=&quot;text&quot; id=&quot;demo-popover-max-height&quot; value=&quot;none&quot; class=&quot;input col-span-2 h-8&quot; /&gt;
+      &lt;/div&gt;
+    &lt;/form&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></footer></main><script>document.addEventListener("submit",event=>event.preventDefault());</script></html>

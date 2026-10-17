@@ -34,8 +34,8 @@ implemented commands and recipe-only capabilities. Do not invent commands.
    mood, required states, target sizes, asset scale. Infer sensible defaults; ask
    only for choices that would materially change the result. Use the user's language.
 2. Choose one existing recipe and preset. For a new no-framework UI use web-app;
-   for procedural sprites use generate ship/robot/creature; use editable robot or
-   terrain templates for exact pixels/tiles. Copy Basecoat markup from the component kit. Preserve existing systems.
+   for procedural sprites use generate ship/robot/creature; use terrain template/create for procedural terrain and editable robot/manual
+   terrain templates for exact pixels. Copy Basecoat markup from the component kit. Preserve existing systems.
 3. Produce a small coherent result promptly. Keep theme, palette, grid and stroke
    width consistent. One primary action per view; text and spacing before ornament.
 4. Render and inspect the actual result. Test UI interactions and inspect pixel

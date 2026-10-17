@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Generate seamless 2D textures by sampling 4D noise on a flat Clifford torus.">
+  <title>Tileable Noise — 4D Texture Lab</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="wordmark" href="#" aria-label="Tileable Noise home">
+      <span class="mark" aria-hidden="true"></span>
+      <span>Tileable Noise</span>
+    </a>
+  </header>
+
+  <main>
+    <section class="workspace" aria-label="Noise generator">
+      <div class="preview-column">
+        <div class="canvas-card">
+          <div class="canvas-toolbar">
+            <div>
+              <span class="toolbar-label">Live texture</span>
+              <span class="render-status" id="renderStatus" role="status">Ready</span>
+            </div>
+            <div class="segmented" aria-label="Preview mode">
+              <button class="segment active" type="button" data-preview="single">Single</button>
+              <button class="segment" type="button" data-preview="tiled">3 × 3</button>
+              <button class="segment grid-toggle" id="gridButton" type="button" aria-pressed="false" disabled>Grid off</button>
+            </div>
+          </div>
+          <div class="canvas-stage" id="canvasStage">
+            <canvas id="noiseCanvas" width="512" height="512" aria-label="Generated tileable noise texture"></canvas>
+            <div class="tile-grid" id="tileGrid" aria-hidden="true"></div>
+          </div>
+          <div class="canvas-footer">
+            <span><i class="status-dot"></i> Seamless X + Y</span>
+            <span id="textureStats">512 × 512 · Seed 4821</span>
+          </div>
+        </div>
+
+        <div class="math-card">
+          <div class="math-heading">
+            <span class="math-index">01</span>
+            <div>
+              <h2>The flat-torus trick</h2>
+              <p>A square becomes periodic without bending or pinching.</p>
+            </div>
+          </div>
+          <div class="formula">
+            <span>Φ(u, v) =</span>
+            <strong>(rₓ cos 2πu, rₓ sin 2πu, rᵧ cos 2πv, rᵧ sin 2πv)</strong>
+          </div>
+          <p class="math-copy">Opposite edges share the same 4D coordinates. The radii rₓ:rᵧ match the output width:height, keeping features equally sized in horizontal and vertical pixels instead of stretching non-square tiles. Unlike a doughnut embedded in 3D, this <strong>flat torus</strong> has no intrinsic distortion.</p>
+        </div>
+
+        <div class="math-card">
+          <div class="math-heading">
+            <span class="math-index">02</span>
+            <div>
+              <h2>Activator–inhibitor chemistry</h2>
+              <p>Gray–Scott reaction–diffusion evolving on the flat torus.</p>
+            </div>
+          </div>
+          <div class="formula reaction-equations">
+            <strong>∂A/∂t = Dₐ∇²A − AB² + f(1 − A)</strong>
+            <strong>∂B/∂t = Dᵦ∇²B + AB² − (k + f)B</strong>
+          </div>
+          <p class="math-copy">A feeds the system while B consumes A and inhibits nearby growth. Their different diffusion rates destabilize a uniform mixture into spots, stripes, and coral-like forms. The simulation wraps every neighbor lookup across opposite edges, so the chemistry evolves directly on a periodic 2D flat torus and remains seamless.</p>
+        </div>
+      </div>
+
+      <aside class="controls-card">
+        <div class="controls-header">
+          <div>
+            <span class="toolbar-label">Parameters</span>
+            <h2>Shape the field</h2>
+          </div>
+          <div class="parameter-actions">
+            <button class="small-button" id="randomizeButton" type="button">New seed</button>
+            <button class="icon-button" id="resetButton" type="button" title="Reset parameters" aria-label="Reset parameters">↺</button>
+          </div>
+        </div>
+
+        <form id="controls">
+          <fieldset>
+            <legend>Noise</legend>
+            <label class="control">
+              <span>Algorithm</span>
+              <select id="noiseType">
+                <option value="perlin">Gradient Perlin</option>
+                <option value="value">Value noise</option>
+                <option value="worley">Worley cells</option>
+                <option value="contours" selected>Contour bands — coral / brain</option>
+                <option value="reaction">Gray–Scott reaction–diffusion</option>
+              </select>
+            </label>
+            <label class="control" data-algorithms="perlin,value,worley,contours">
+              <span>Fractal style</span>
+              <select id="fractalType">
+                <option value="fbm">fBm — soft</option>
+                <option value="ridged">Ridged</option>
+                <option value="turbulence">Turbulence</option>
+              </select>
+            </label>
+            <label class="control">
+              <span>Seed <output id="seedOutput">4821</output></span>
+              <input id="seed" type="number" min="0" max="999999" value="4821">
+            </label>
+            <label class="control" data-algorithms="perlin,value,worley,contours">
+              <span>Scale <output id="scaleOutput">1.80</output></span>
+              <input id="scale" type="range" min="0.05" max="6" step="0.05" value="1.8">
+            </label>
+            <label class="control" data-algorithms="perlin,value,worley,contours">
+              <span>Octaves <output id="octavesOutput">5</output></span>
+              <input id="octaves" type="range" min="1" max="7" step="1" value="5">
+            </label>
+            <label class="control" data-algorithms="perlin,value,worley,contours">
+              <span>Persistence <output id="persistenceOutput">0.52</output></span>
+              <input id="persistence" type="range" min="0.1" max="0.9" step="0.01" value="0.52">
+              <small class="control-note">Strength retained by each finer octave.</small>
+            </label>
+            <label class="control" data-algorithms="perlin,value,worley,contours">
+              <span>Lacunarity <output id="lacunarityOutput">2.00</output></span>
+              <input id="lacunarity" type="range" min="1.2" max="3.5" step="0.05" value="2">
+              <small class="control-note">Scale multiplier between successive octaves.</small>
+            </label>
+            <label class="control" data-algorithms="contours" hidden>
+              <span>Band density <output id="bandDensityOutput">8.00</output></span>
+              <input id="bandDensity" type="range" min="1" max="24" step="0.25" value="8">
+            </label>
+            <label class="control" data-algorithms="contours" hidden>
+              <span>Band width <output id="bandWidthOutput">0.32</output></span>
+              <input id="bandWidth" type="range" min="0.04" max="0.9" step="0.01" value="0.32">
+            </label>
+            <div data-algorithms="reaction" hidden>
+              <p class="simulation-note">A genuine activator–inhibitor simulation evolving on a periodic 2D flat torus.</p>
+              <label class="control">
+                <span>Feed rate <output id="feedRateOutput">0.0550</output></span>
+                <input id="feedRate" type="range" min="0.01" max="0.08" step="0.0001" value="0.055">
+              </label>
+              <label class="control">
+                <span>Kill rate <output id="killRateOutput">0.0620</output></span>
+                <input id="killRate" type="range" min="0.035" max="0.075" step="0.0001" value="0.062">
+              </label>
+              <label class="control">
+                <span>Simulation speed <output id="simulationSpeedOutput">8</output></span>
+                <input id="simulationSpeed" type="range" min="1" max="20" step="1" value="8">
+              </label>
+              <button class="small-button simulation-reset" id="restartSimulationButton" type="button">Restart chemistry</button>
+            </div>
+          </fieldset>
+
+          <fieldset id="warpFieldset">
+            <legend>Domain warp</legend>
+            <label class="switch-row">
+              <span>
+                <strong>Warp coordinates</strong>
+                <small>Marble and flowing structures</small>
+              </span>
+              <input id="warpEnabled" type="checkbox" checked>
+              <i aria-hidden="true"></i>
+            </label>
+            <div id="warpControls">
+              <label class="control">
+                <span>Strength <output id="warpStrengthOutput">0.38</output></span>
+                <input id="warpStrength" type="range" min="0" max="1.5" step="0.01" value="0.38">
+              </label>
+              <label class="control">
+                <span>Warp scale <output id="warpScaleOutput">0.85</output></span>
+                <input id="warpScale" type="range" min="0.2" max="3" step="0.05" value="0.85">
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Finish</legend>
+            <label class="control">
+              <span>Palette</span>
+              <select id="palette">
+                <option value="ink">Bone &amp; ink</option>
+                <option value="lichen">Lichen</option>
+                <option value="ember">Ember</option>
+                <option value="ocean">Deep ocean</option>
+                <option value="mono">Monochrome</option>
+              </select>
+            </label>
+            <label class="control">
+              <span>Contrast <output id="contrastOutput">1.15</output></span>
+              <input id="contrast" type="range" min="0.4" max="2.5" step="0.05" value="1.15">
+            </label>
+            <label class="switch-row">
+              <span>
+                <strong>Threshold mask</strong>
+                <small>For stamps, cutters, and rollers</small>
+              </span>
+              <input id="maskEnabled" type="checkbox">
+              <i aria-hidden="true"></i>
+            </label>
+            <div id="maskControls" hidden>
+              <label class="control">
+                <span>Threshold <output id="thresholdOutput">0.52</output></span>
+                <input id="threshold" type="range" min="0.05" max="0.95" step="0.01" value="0.52">
+              </label>
+              <label class="switch-row compact">
+                <span><strong>Invert mask</strong></span>
+                <input id="invertMask" type="checkbox">
+                <i aria-hidden="true"></i>
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Output</legend>
+            <label class="control">
+              <span>Preset</span>
+              <select id="resolutionPreset">
+                <option value="256x256">256 × 256</option>
+                <option value="512x512" selected>512 × 512</option>
+                <option value="1024x1024">1024 × 1024</option>
+                <option value="2048x2048">2048 × 2048</option>
+                <option value="1024x512">1024 × 512 — landscape</option>
+                <option value="512x1024">512 × 1024 — portrait</option>
+                <option value="custom">Custom</option>
+              </select>
+            </label>
+            <div class="resolution-grid">
+              <label class="control">
+                <span>Width</span>
+                <input id="outputWidth" type="number" min="64" max="4000" step="1" value="512">
+              </label>
+              <span aria-hidden="true">×</span>
+              <label class="control">
+                <span>Height</span>
+                <input id="outputHeight" type="number" min="64" max="4000" step="1" value="512">
+              </label>
+            </div>
+            <p class="output-note">64–4000 pixels per axis. Rectangular tiles remain seamless.</p>
+            <div class="export-grid">
+              <button class="button button-dark" id="exportPngButton" type="button">PNG <span>↗</span></button>
+              <button class="button button-outline" id="exportSvgButton" type="button">Mask SVG <span>↗</span></button>
+            </div>
+          </fieldset>
+        </form>
+      </aside>
+    </section>
+
+  </main>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

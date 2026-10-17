@@ -18,6 +18,12 @@ async function main(){
   run('init','component-kit','--out',path.join(temporary,'app/kit'));
   run('create',path.join(root,'presets/robot.json'),'--out',path.join(temporary,'app/assets/robot'));
   run('generate','ship','--seed','42','--out',path.join(temporary,'app/assets/ship'));
+  const terrainRecipe=path.join(temporary,'terrain.json');
+  fs.writeFileSync(terrainRecipe,run('terrain','template','meadow'));
+  run('terrain','create',terrainRecipe,'--out',path.join(temporary,'app/meadow'));
+  fs.cpSync(path.join(root,'examples/terrain-viewer'),path.join(temporary,'app/terrain-viewer'),{recursive:true});
+  fs.cpSync(path.join(root,'examples/basecoat-catalog'),path.join(temporary,'app/examples/basecoat-catalog'),{recursive:true});
+  fs.cpSync(path.join(root,'vendor/basecoat/dist'),path.join(temporary,'app/vendor/basecoat/dist'),{recursive:true});
   const code='import http.server, functools\ns=http.server.ThreadingHTTPServer(("127.0.0.1",0), functools.partial(http.server.SimpleHTTPRequestHandler,directory='+JSON.stringify(path.join(temporary,'app'))+'))\nprint(s.server_port,flush=True)\ns.serve_forever()';
   server=spawn(python,['-u','-c',code],{stdio:['ignore','pipe','pipe']});
   let stderr='';server.stderr.on('data',d=>stderr+=d);
@@ -86,6 +92,33 @@ async function main(){
   await page.setViewportSize({width:360,height:800});
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
   await page.screenshot({path:path.join(output,'components-mobile.png'),fullPage:true});
+  await page.goto(`${base}/terrain-viewer/`);
+  await page.waitForFunction(()=>document.body.dataset.ready==='true');
+  assert.equal(await page.evaluate(async()=>{
+    const actual=document.querySelector('canvas'),context=actual.getContext('2d');
+    const expected=new Image();expected.src='../meadow/0001/preview-native.png';await expected.decode();
+    const scratch=document.createElement('canvas');scratch.width=expected.width;scratch.height=expected.height;
+    scratch.getContext('2d').drawImage(expected,0,0);
+    const a=context.getImageData(0,0,actual.width,actual.height).data;
+    const b=scratch.getContext('2d').getImageData(0,0,scratch.width,scratch.height).data;
+    return a.length===b.length&&a.every((value,index)=>value===b[index]);
+  }),true,'Manifest consumer must reproduce exported specimen pixels');
+  await page.screenshot({path:path.join(output,'terrain.png'),fullPage:true});
+  const componentCatalog=JSON.parse(fs.readFileSync(path.join(root,'examples/basecoat-catalog/catalog.json')));
+  assert.equal(componentCatalog.components.length,41);
+  for(const component of componentCatalog.components){
+    await page.goto(`${base}/examples/basecoat-catalog/${component.demo}`);
+    await page.waitForLoadState('networkidle');
+    assert.equal(await page.locator('#demo').count(),1);
+    assert.ok((await page.locator('pre').textContent()).length>0);
+    const images=await page.locator('img').evaluateAll(images=>images.every(img=>img.complete&&img.naturalWidth>0));
+    assert.equal(images,true,component.id+' images must load locally');
+  }
+  await page.goto(`${base}/examples/basecoat-catalog/components/toast.html`);
+  await page.getByRole('button',{name:'Toast from front-end'}).click();
+  await page.waitForSelector('#toaster .toast');
+  await page.goto(`${base}/examples/basecoat-catalog/`);
+  await page.screenshot({path:path.join(output,'basecoat-catalog.png'),fullPage:true});
   assert.deepEqual(externalRequests,[],'Starters must not request CDNs, remote fonts or services');
   assert.deepEqual(errors,[]);
   console.log('Offline Basecoat/starter/asset behavior passed. Review screenshots separately for appearance.');

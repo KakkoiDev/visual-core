@@ -1,0 +1,23 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>progress</title><link rel="stylesheet" href="../../../vendor/basecoat/dist/basecoat.cdn.min.css"><script src="../../../vendor/basecoat/dist/js/all.min.js" defer></script><style>body{padding:28px;min-height:100vh}body>main{max-width:700px;margin:auto}h1{font-size:1.4rem;margin-bottom:20px}#demo{padding:24px;border:1px solid #bbb;border-radius:8px}footer{margin-top:24px}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:12px monospace}</style><main><h1>progress</h1><section id="demo"><div id="progress-demo" class="progress" role="progressbar" aria-label="Loading" aria-valuenow="13" aria-valuemin="0" aria-valuemax="100">
+  <span style="width: 13%"></span>
+</div>
+<script>{`
+setTimeout(() => {
+  const progress = document.getElementById("progress-demo");
+  const indicator = progress?.querySelector("span");
+  if (!progress || !indicator) return;
+  progress.setAttribute("aria-valuenow", "66");
+  indicator.style.width = "66%";
+}, 500);
+`}</script></section><footer><p>Upstream default preview; app actions remain host responsibilities.</p><a href="../../../vendor/basecoat/docs/components/progress.mdx">Local upstream documentation</a><h2>Copyable HTML</h2><pre>&lt;div id=&quot;progress-demo&quot; class=&quot;progress&quot; role=&quot;progressbar&quot; aria-label=&quot;Loading&quot; aria-valuenow=&quot;13&quot; aria-valuemin=&quot;0&quot; aria-valuemax=&quot;100&quot;&gt;
+  &lt;span style=&quot;width: 13%&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;
+&lt;script&gt;{`
+setTimeout(() =&gt; {
+  const progress = document.getElementById(&quot;progress-demo&quot;);
+  const indicator = progress?.querySelector(&quot;span&quot;);
+  if (!progress || !indicator) return;
+  progress.setAttribute(&quot;aria-valuenow&quot;, &quot;66&quot;);
+  indicator.style.width = &quot;66%&quot;;
+}, 500);
+`}&lt;/script&gt;</pre></footer></main><script>document.addEventListener("submit",event=>event.preventDefault());</script></html>

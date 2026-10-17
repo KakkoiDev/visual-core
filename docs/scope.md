@@ -32,3 +32,8 @@ Structural validation is not aesthetic review. Contrast ratios cover supplied
 color pairs, not gradients, all rendered states, icons on images or entire pages.
 Keyboard, content, zoom, assistive technology and user testing remain separate.
 The browser smoke suite is optional dev tooling, never a hidden production service.
+
+Procedural terrain uses the pinned Tesserae shape renderer plus seeded material
+adapter, supporting Blob 47 at 16/32/64 px with 1..4 variants and six-color binary
+alpha output. It does not provide native engine export, cliffs or world generation.
+Basecoat has 41 organized component references; Chart.js is not bundled.

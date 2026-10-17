@@ -1,0 +1,51 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>dialog</title><link rel="stylesheet" href="../../../vendor/basecoat/dist/basecoat.cdn.min.css"><script src="../../../vendor/basecoat/dist/js/all.min.js" defer></script><style>body{padding:28px;min-height:100vh}body>main{max-width:700px;margin:auto}h1{font-size:1.4rem;margin-bottom:20px}#demo{padding:24px;border:1px solid #bbb;border-radius:8px}footer{margin-top:24px}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:12px monospace}</style><main><h1>dialog</h1><section id="demo"><button type="button" onclick="document.getElementById('demo-dialog-edit-profile').showModal()" class="btn" data-variant="outline">Open Dialog</button>
+<dialog id="demo-dialog-edit-profile" class="dialog" aria-labelledby="demo-dialog-edit-profile-title" aria-describedby="demo-dialog-edit-profile-description" onclick="if (event.target === this) this.close()">
+  <div class="sm:max-w-sm">
+    <header>
+      <h2 id="demo-dialog-edit-profile-title">Edit profile</h2>
+      <p id="demo-dialog-edit-profile-description">Make changes to your profile here. Click save when you're done.</p>
+    </header>
+    <section>
+      <form class="grid gap-4">
+        <div class="grid gap-3">
+          <label class="label" for="demo-dialog-edit-profile-name">Name</label>
+          <input class="input" type="text" value="Pedro Duarte" id="demo-dialog-edit-profile-name" autofocus />
+        </div>
+        <div class="grid gap-3">
+          <label class="label" for="demo-dialog-edit-profile-username">Username</label>
+          <input class="input" type="text" value="@peduarte" id="demo-dialog-edit-profile-username" />
+        </div>
+      </form>
+    </section>
+    <footer>
+      <button class="btn" data-variant="outline" onclick="this.closest('dialog').close()">Cancel</button>
+      <button class="btn" onclick="this.closest('dialog').close()">Save changes</button>
+    </footer>
+    <button type="button" class="btn" data-variant="ghost" data-size="icon-sm" aria-label="Close dialog" onclick="this.closest('dialog').close()"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x-icon lucide-x"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg></button>
+  </div>
+</dialog></section><footer><p>Upstream default preview; app actions remain host responsibilities.</p><a href="../../../vendor/basecoat/docs/components/dialog.mdx">Local upstream documentation</a><h2>Copyable HTML</h2><pre>&lt;button type=&quot;button&quot; onclick=&quot;document.getElementById(&#x27;demo-dialog-edit-profile&#x27;).showModal()&quot; class=&quot;btn&quot; data-variant=&quot;outline&quot;&gt;Open Dialog&lt;/button&gt;
+&lt;dialog id=&quot;demo-dialog-edit-profile&quot; class=&quot;dialog&quot; aria-labelledby=&quot;demo-dialog-edit-profile-title&quot; aria-describedby=&quot;demo-dialog-edit-profile-description&quot; onclick=&quot;if (event.target === this) this.close()&quot;&gt;
+  &lt;div class=&quot;sm:max-w-sm&quot;&gt;
+    &lt;header&gt;
+      &lt;h2 id=&quot;demo-dialog-edit-profile-title&quot;&gt;Edit profile&lt;/h2&gt;
+      &lt;p id=&quot;demo-dialog-edit-profile-description&quot;&gt;Make changes to your profile here. Click save when you&#x27;re done.&lt;/p&gt;
+    &lt;/header&gt;
+    &lt;section&gt;
+      &lt;form class=&quot;grid gap-4&quot;&gt;
+        &lt;div class=&quot;grid gap-3&quot;&gt;
+          &lt;label class=&quot;label&quot; for=&quot;demo-dialog-edit-profile-name&quot;&gt;Name&lt;/label&gt;
+          &lt;input class=&quot;input&quot; type=&quot;text&quot; value=&quot;Pedro Duarte&quot; id=&quot;demo-dialog-edit-profile-name&quot; autofocus /&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;grid gap-3&quot;&gt;
+          &lt;label class=&quot;label&quot; for=&quot;demo-dialog-edit-profile-username&quot;&gt;Username&lt;/label&gt;
+          &lt;input class=&quot;input&quot; type=&quot;text&quot; value=&quot;@peduarte&quot; id=&quot;demo-dialog-edit-profile-username&quot; /&gt;
+        &lt;/div&gt;
+      &lt;/form&gt;
+    &lt;/section&gt;
+    &lt;footer&gt;
+      &lt;button class=&quot;btn&quot; data-variant=&quot;outline&quot; onclick=&quot;this.closest(&#x27;dialog&#x27;).close()&quot;&gt;Cancel&lt;/button&gt;
+      &lt;button class=&quot;btn&quot; onclick=&quot;this.closest(&#x27;dialog&#x27;).close()&quot;&gt;Save changes&lt;/button&gt;
+    &lt;/footer&gt;
+    &lt;button type=&quot;button&quot; class=&quot;btn&quot; data-variant=&quot;ghost&quot; data-size=&quot;icon-sm&quot; aria-label=&quot;Close dialog&quot; onclick=&quot;this.closest(&#x27;dialog&#x27;).close()&quot;&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;24&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; class=&quot;lucide lucide-x-icon lucide-x&quot;&gt;&lt;path d=&quot;M18 6 6 18&quot; /&gt;&lt;path d=&quot;m6 6 12 12&quot; /&gt;&lt;/svg&gt;&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/dialog&gt;</pre></footer></main><script>document.addEventListener("submit",event=>event.preventDefault());</script></html>

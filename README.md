@@ -34,7 +34,7 @@ Original adapters are small; the upstream tools do the component/generation work
 
 ## Run locally
 
-Prerequisites: Python 3.11+, Node.js 18+ for procedural sprites, and a modern browser
+Prerequisites: Python 3.11+, Node.js 18+ for procedural sprites and terrain, and a modern browser
 for previews. The coding agent/model and these system runtimes are not bundled.
 No pip/npm install or frontend build is required for the commands below.
 
@@ -93,4 +93,11 @@ file is not an aesthetic review; manifests say `visual_review: not-performed`.
 - [Recipe router](RECIPES.md), [capability catalog](CAPABILITIES.json), [composition patterns](docs/composition-patterns.md).
 - [Common core-repository standard](docs/core-repo-standard.md) and [reusable scaffold](templates/core/README.md).
 - [Research](docs/research.md): jp-core, jpanki, p2p-core, pi-local-harness and ai-handbook.
+- [Terrain recipes](recipes/tiles.md): local meadow/coast/dungeon Blob 47 generation,
+  previews, exact seam checks and preserved revisions; [design](docs/terrain-generator-spec.md).
+- [Terrain dependency kit](docs/terrain-dependencies.md): six pinned local sources,
+  prebuilt JavaScript and headless extraction probes for future implementation.
 - [Consumer/example registry](IMPLEMENTATIONS.toml), [changelog](CHANGELOG.md), [upgrade process](docs/toolbox.md).
+
+- [All 41 Basecoat component references](docs/basecoat-components.md), organized
+  offline demos and copyable markup. Chart is reference-only pending Chart.js.

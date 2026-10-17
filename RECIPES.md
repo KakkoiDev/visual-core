@@ -7,7 +7,7 @@ Choose by the user's outcome. The agent chooses the recipe, not the user.
 | Responsive app interface | [Web UI](recipes/web-ui.md) | `init web-app` |
 | Consistent SVG icon | [Icons](recipes/icons.md) | `template icon`, `create` |
 | Pixel sprite or prop | [Pixel art](recipes/pixel-art.md) | `template robot`, `create` |
-| Tile kit | [Tiles](recipes/tiles.md) | `template terrain`, `create` |
+| Tile kit | [Tiles](recipes/tiles.md) | `terrain template meadow`, `terrain create` |
 | Animation preview | [Animation](recipes/animation.md) | atlas + host browser/engine; recipe only |
 | HUD and game menus | [Game UI](recipes/game-ui.md) | existing engine/DOM; recipe only |
 | SVG illustration | [Illustration](recipes/illustration.md) | direct SVG editing; recipe only |

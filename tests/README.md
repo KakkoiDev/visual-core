@@ -1,5 +1,10 @@
 # Verification
 
+Terrain dependency probes also run in unittest. They exercise pinned headless
+Tesserae, seeded noise, PNG round-trips and patches with network access blocked.
+See the [dependency kit](../docs/terrain-dependencies.md) for scope and optional
+generated previews; these are not tests of a finished terrain command.
+
 Standard-library checks, Python 3.11+:
 
 ```sh
@@ -37,3 +42,9 @@ model session and its evidence are recorded.
 GitHub runs contracts and the same browser suite, retaining screenshots as build
 artifacts. Dependency/browser installation needs network only for development/CI,
 not for the bundled tools or generated projects.
+
+Production terrain tests cover all three presets, all sizes, binary alpha, palette
+limits, final seams, meaningful interior variants, unused cells, preserved history,
+no-ops, stale bases, locks and failure recovery. Browser tests reconstruct the
+terrain specimen from atlas/manifest and compare exact pixels; open all 41 catalog
+pages with no external requests and exercise front-end Toast creation.

@@ -1,10 +1,15 @@
 # The local, locked visual toolbox
 
+Terrain development also has a [gathered dependency kit](terrain-dependencies.md):
+six pinned upstream sources, prebuilt headless JavaScript and executable probes.
+The terrain adapter now implements Blob 47 creation/revision; see recipes/tiles.md.
+The broader candidate kit remains development/reference material.
+
 After cloning visual-core, the working tools, prebuilt assets, licenses and selected
 upstream documentation are already present. Routine generation and preview require
 no network, package install, build tool, art application or MCP server.
 
-Prerequisites: Python 3.11+; Node.js 18+ for procedural sprites; a modern browser for
+Prerequisites: Python 3.11+; Node.js 18+ for procedural sprites and terrain; a modern browser for
 UI and visual review. Those system runtimes and a coding model are not bundled.
 Optional browser test tooling is documented separately in [tests](../tests/README.md).
 
@@ -74,3 +79,7 @@ positional generate(name,res,palette,params) API, and a generator uses Math.rand
 Do not route a weak agent through unverified examples just because a feature list
 looks broad. Add another tool when a concrete task needs it and it passes the same
 locality, licensing, versioning and behavior checks.
+
+See [all Basecoat components](basecoat-components.md) for 41 organized local guides,
+copyable snippets, runtime requirements and offline previews. Chart requires an
+optional Chart.js dependency and is explicitly reference-only.

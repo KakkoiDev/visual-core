@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.0
+
+Add pinned headless terrain dependencies, meadow/coast/dungeon Blob 47 generation,
+final RGBA seam checks, six-color palettes, map specimens, editable recipes and
+numbered revisions. Include a manifest-based browser consumer. Organize all 41
+Basecoat component guides into a local catalog with copyable snippets; Chart is
+reference-only. Add production terrain tests and offline catalog browser checks.
+
 ## 0.2.0
 
 Bundle and lock Basecoat UI 1.0.2, Pixel Sprite Generator 0.0.2 and 50 Lucide

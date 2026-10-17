@@ -1,0 +1,886 @@
+{
+  "schema": "visual-core.terrain-manifest/1",
+  "version": "0.3.0",
+  "source": "recipe.json",
+  "topology": "blob47",
+  "tile_size": 16,
+  "atlas": "atlas.png",
+  "base": "base.png",
+  "atlas_width": 192,
+  "atlas_height": 128,
+  "bit_order": {
+    "N": 1,
+    "NE": 2,
+    "E": 4,
+    "SE": 8,
+    "S": 16,
+    "SW": 32,
+    "W": 64,
+    "NW": 128
+  },
+  "tiles": [
+    {
+      "id": "meadow/blob47/16/v0",
+      "mask": 16,
+      "variant": 0,
+      "x": 0,
+      "y": 0,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/16/v1",
+      "mask": 16,
+      "variant": 1,
+      "x": 0,
+      "y": 64,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/20/v0",
+      "mask": 20,
+      "variant": 0,
+      "x": 16,
+      "y": 0,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/20/v1",
+      "mask": 20,
+      "variant": 1,
+      "x": 16,
+      "y": 64,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/84/v0",
+      "mask": 84,
+      "variant": 0,
+      "x": 32,
+      "y": 0,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/84/v1",
+      "mask": 84,
+      "variant": 1,
+      "x": 32,
+      "y": 64,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/80/v0",
+      "mask": 80,
+      "variant": 0,
+      "x": 48,
+      "y": 0,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/80/v1",
+      "mask": 80,
+      "variant": 1,
+      "x": 48,
+      "y": 64,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/213/v0",
+      "mask": 213,
+      "variant": 0,
+      "x": 64,
+      "y": 0,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/213/v1",
+      "mask": 213,
+      "variant": 1,
+      "x": 64,
+      "y": 64,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/92/v0",
+      "mask": 92,
+      "variant": 0,
+      "x": 80,
+      "y": 0,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/92/v1",
+      "mask": 92,
+      "variant": 1,
+      "x": 80,
+      "y": 64,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/116/v0",
+      "mask": 116,
+      "variant": 0,
+      "x": 96,
+      "y": 0,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/116/v1",
+      "mask": 116,
+      "variant": 1,
+      "x": 96,
+      "y": 64,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/87/v0",
+      "mask": 87,
+      "variant": 0,
+      "x": 112,
+      "y": 0,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/87/v1",
+      "mask": 87,
+      "variant": 1,
+      "x": 112,
+      "y": 64,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/28/v0",
+      "mask": 28,
+      "variant": 0,
+      "x": 128,
+      "y": 0,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/28/v1",
+      "mask": 28,
+      "variant": 1,
+      "x": 128,
+      "y": 64,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/125/v0",
+      "mask": 125,
+      "variant": 0,
+      "x": 144,
+      "y": 0,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/125/v1",
+      "mask": 125,
+      "variant": 1,
+      "x": 144,
+      "y": 64,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/124/v0",
+      "mask": 124,
+      "variant": 0,
+      "x": 160,
+      "y": 0,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/124/v1",
+      "mask": 124,
+      "variant": 1,
+      "x": 160,
+      "y": 64,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/112/v0",
+      "mask": 112,
+      "variant": 0,
+      "x": 176,
+      "y": 0,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/112/v1",
+      "mask": 112,
+      "variant": 1,
+      "x": 176,
+      "y": 64,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/17/v0",
+      "mask": 17,
+      "variant": 0,
+      "x": 0,
+      "y": 16,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/17/v1",
+      "mask": 17,
+      "variant": 1,
+      "x": 0,
+      "y": 80,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/21/v0",
+      "mask": 21,
+      "variant": 0,
+      "x": 16,
+      "y": 16,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/21/v1",
+      "mask": 21,
+      "variant": 1,
+      "x": 16,
+      "y": 80,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/85/v0",
+      "mask": 85,
+      "variant": 0,
+      "x": 32,
+      "y": 16,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/85/v1",
+      "mask": 85,
+      "variant": 1,
+      "x": 32,
+      "y": 80,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/81/v0",
+      "mask": 81,
+      "variant": 0,
+      "x": 48,
+      "y": 16,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/81/v1",
+      "mask": 81,
+      "variant": 1,
+      "x": 48,
+      "y": 80,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/29/v0",
+      "mask": 29,
+      "variant": 0,
+      "x": 64,
+      "y": 16,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/29/v1",
+      "mask": 29,
+      "variant": 1,
+      "x": 64,
+      "y": 80,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/127/v0",
+      "mask": 127,
+      "variant": 0,
+      "x": 80,
+      "y": 16,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/127/v1",
+      "mask": 127,
+      "variant": 1,
+      "x": 80,
+      "y": 80,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/253/v0",
+      "mask": 253,
+      "variant": 0,
+      "x": 96,
+      "y": 16,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/253/v1",
+      "mask": 253,
+      "variant": 1,
+      "x": 96,
+      "y": 80,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/113/v0",
+      "mask": 113,
+      "variant": 0,
+      "x": 112,
+      "y": 16,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/113/v1",
+      "mask": 113,
+      "variant": 1,
+      "x": 112,
+      "y": 80,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/31/v0",
+      "mask": 31,
+      "variant": 0,
+      "x": 128,
+      "y": 16,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/31/v1",
+      "mask": 31,
+      "variant": 1,
+      "x": 128,
+      "y": 80,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/119/v0",
+      "mask": 119,
+      "variant": 0,
+      "x": 144,
+      "y": 16,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/119/v1",
+      "mask": 119,
+      "variant": 1,
+      "x": 144,
+      "y": 80,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/245/v0",
+      "mask": 245,
+      "variant": 0,
+      "x": 176,
+      "y": 16,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/245/v1",
+      "mask": 245,
+      "variant": 1,
+      "x": 176,
+      "y": 80,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/1/v0",
+      "mask": 1,
+      "variant": 0,
+      "x": 0,
+      "y": 32,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/1/v1",
+      "mask": 1,
+      "variant": 1,
+      "x": 0,
+      "y": 96,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/5/v0",
+      "mask": 5,
+      "variant": 0,
+      "x": 16,
+      "y": 32,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/5/v1",
+      "mask": 5,
+      "variant": 1,
+      "x": 16,
+      "y": 96,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/69/v0",
+      "mask": 69,
+      "variant": 0,
+      "x": 32,
+      "y": 32,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/69/v1",
+      "mask": 69,
+      "variant": 1,
+      "x": 32,
+      "y": 96,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/65/v0",
+      "mask": 65,
+      "variant": 0,
+      "x": 48,
+      "y": 32,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/65/v1",
+      "mask": 65,
+      "variant": 1,
+      "x": 48,
+      "y": 96,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/23/v0",
+      "mask": 23,
+      "variant": 0,
+      "x": 64,
+      "y": 32,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/23/v1",
+      "mask": 23,
+      "variant": 1,
+      "x": 64,
+      "y": 96,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/223/v0",
+      "mask": 223,
+      "variant": 0,
+      "x": 80,
+      "y": 32,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/223/v1",
+      "mask": 223,
+      "variant": 1,
+      "x": 80,
+      "y": 96,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/247/v0",
+      "mask": 247,
+      "variant": 0,
+      "x": 96,
+      "y": 32,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/247/v1",
+      "mask": 247,
+      "variant": 1,
+      "x": 96,
+      "y": 96,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/209/v0",
+      "mask": 209,
+      "variant": 0,
+      "x": 112,
+      "y": 32,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/209/v1",
+      "mask": 209,
+      "variant": 1,
+      "x": 112,
+      "y": 96,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/95/v0",
+      "mask": 95,
+      "variant": 0,
+      "x": 128,
+      "y": 32,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/95/v1",
+      "mask": 95,
+      "variant": 1,
+      "x": 128,
+      "y": 96,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/255/v0",
+      "mask": 255,
+      "variant": 0,
+      "x": 144,
+      "y": 32,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/255/v1",
+      "mask": 255,
+      "variant": 1,
+      "x": 144,
+      "y": 96,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/221/v0",
+      "mask": 221,
+      "variant": 0,
+      "x": 160,
+      "y": 32,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/221/v1",
+      "mask": 221,
+      "variant": 1,
+      "x": 160,
+      "y": 96,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/241/v0",
+      "mask": 241,
+      "variant": 0,
+      "x": 176,
+      "y": 32,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/241/v1",
+      "mask": 241,
+      "variant": 1,
+      "x": 176,
+      "y": 96,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/0/v0",
+      "mask": 0,
+      "variant": 0,
+      "x": 0,
+      "y": 48,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/0/v1",
+      "mask": 0,
+      "variant": 1,
+      "x": 0,
+      "y": 112,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/4/v0",
+      "mask": 4,
+      "variant": 0,
+      "x": 16,
+      "y": 48,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/4/v1",
+      "mask": 4,
+      "variant": 1,
+      "x": 16,
+      "y": 112,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/68/v0",
+      "mask": 68,
+      "variant": 0,
+      "x": 32,
+      "y": 48,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/68/v1",
+      "mask": 68,
+      "variant": 1,
+      "x": 32,
+      "y": 112,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/64/v0",
+      "mask": 64,
+      "variant": 0,
+      "x": 48,
+      "y": 48,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/64/v1",
+      "mask": 64,
+      "variant": 1,
+      "x": 48,
+      "y": 112,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/117/v0",
+      "mask": 117,
+      "variant": 0,
+      "x": 64,
+      "y": 48,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/117/v1",
+      "mask": 117,
+      "variant": 1,
+      "x": 64,
+      "y": 112,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/71/v0",
+      "mask": 71,
+      "variant": 0,
+      "x": 80,
+      "y": 48,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/71/v1",
+      "mask": 71,
+      "variant": 1,
+      "x": 80,
+      "y": 112,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/197/v0",
+      "mask": 197,
+      "variant": 0,
+      "x": 96,
+      "y": 48,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/197/v1",
+      "mask": 197,
+      "variant": 1,
+      "x": 96,
+      "y": 112,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/93/v0",
+      "mask": 93,
+      "variant": 0,
+      "x": 112,
+      "y": 48,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/93/v1",
+      "mask": 93,
+      "variant": 1,
+      "x": 112,
+      "y": 112,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/7/v0",
+      "mask": 7,
+      "variant": 0,
+      "x": 128,
+      "y": 48,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/7/v1",
+      "mask": 7,
+      "variant": 1,
+      "x": 128,
+      "y": 112,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/199/v0",
+      "mask": 199,
+      "variant": 0,
+      "x": 144,
+      "y": 48,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/199/v1",
+      "mask": 199,
+      "variant": 1,
+      "x": 144,
+      "y": 112,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/215/v0",
+      "mask": 215,
+      "variant": 0,
+      "x": 160,
+      "y": 48,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/215/v1",
+      "mask": 215,
+      "variant": 1,
+      "x": 160,
+      "y": 112,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/193/v0",
+      "mask": 193,
+      "variant": 0,
+      "x": 176,
+      "y": 48,
+      "width": 16,
+      "height": 16
+    },
+    {
+      "id": "meadow/blob47/193/v1",
+      "mask": 193,
+      "variant": 1,
+      "x": 176,
+      "y": 112,
+      "width": 16,
+      "height": 16
+    }
+  ],
+  "variant_weights": [
+    1,
+    1
+  ],
+  "pixel_sha256": {
+    "atlas": "5d9736d93030fcf124063748a6ddebc07eb13cc0c821c5dd0bd2dbc083872e91",
+    "base": "c63be445918fe3f3426df013cd658ec6617ad57825730415b8cdc002400f2f23",
+    "preview-native": "799729c9cca4432e4236aea244f1d4ed4767df898ca8cc15c42010a59fe92d08"
+  },
+  "padding": 0,
+  "filter": "nearest",
+  "mipmaps": false,
+  "unused_cell": {
+    "column": 10,
+    "row_in_each_variant": 1
+  },
+  "visual_review": "not-performed"
+}

@@ -1,0 +1,13 @@
+<button type="button" onclick="document.getElementById('demo-alert-dialog').showModal()" class="btn" data-variant="outline">Show Dialog</button>
+<dialog id="demo-alert-dialog" class="alert-dialog" aria-labelledby="demo-alert-dialog-title" aria-describedby="demo-alert-dialog-description">
+  <div>
+    <header>
+      <h2 id="demo-alert-dialog-title">Are you absolutely sure?</h2>
+      <p id="demo-alert-dialog-description">This action cannot be undone. This will permanently delete your account and remove your data from our servers.</p>
+    </header>
+    <footer>
+      <button class="btn" data-variant="outline" onclick="this.closest('dialog').close()">Cancel</button>
+      <button class="btn" onclick="this.closest('dialog').close()">Continue</button>
+    </footer>
+  </div>
+</dialog>

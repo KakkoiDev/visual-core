@@ -1,0 +1,27 @@
+<div id="demo-popover" class="popover">
+  <button id="demo-popover-trigger" type="button" aria-expanded="false" aria-controls="demo-popover-popover" class="btn" data-variant="outline">Open popover</button>
+  <div id="demo-popover-popover" data-popover aria-hidden="true" class="w-72">
+    <header>
+      <h4>Dimensions</h4>
+      <p>Set the dimensions for the layer.</p>
+    </header>
+    <form class="grid gap-2" onsubmit="event.preventDefault()">
+      <div class="grid grid-cols-3 items-center gap-4">
+        <label for="demo-popover-width">Width</label>
+        <input type="text" id="demo-popover-width" value="100%" class="input col-span-2 h-8" autofocus />
+      </div>
+      <div class="grid grid-cols-3 items-center gap-4">
+        <label for="demo-popover-max-width">Max. width</label>
+        <input type="text" id="demo-popover-max-width" value="300px" class="input col-span-2 h-8" />
+      </div>
+      <div class="grid grid-cols-3 items-center gap-4">
+        <label for="demo-popover-height">Height</label>
+        <input type="text" id="demo-popover-height" value="25px" class="input col-span-2 h-8" />
+      </div>
+      <div class="grid grid-cols-3 items-center gap-4">
+        <label for="demo-popover-max-height">Max. height</label>
+        <input type="text" id="demo-popover-max-height" value="none" class="input col-span-2 h-8" />
+      </div>
+    </form>
+  </div>
+</div>

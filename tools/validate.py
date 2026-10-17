@@ -15,7 +15,8 @@ def check():
     errors = []
     check_vendor()
     for path in ROOT.rglob('*.md'):
-        if any(part.startswith('.') for part in path.relative_to(ROOT).parts) or 'vendor' in path.relative_to(ROOT).parts:
+        parts = path.relative_to(ROOT).parts
+        if any(part.startswith('.') for part in parts) or {'vendor', 'node_modules'}.intersection(parts):
             continue
         for target in re.findall(r'\[[^\]]+\]\(([^)]+)\)', path.read_text()):
             if '://' not in target and not target.startswith('#'):

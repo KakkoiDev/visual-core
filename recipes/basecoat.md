@@ -63,3 +63,7 @@ IDs/roles in this release's local example. After two failed fixes, show the conc
 error and preserve the working parts; do not install a replacement UI framework.
 
 License/provenance and upgrades: [local toolbox](../docs/toolbox.md).
+
+For the complete local component set, use [the 41-component catalog](../docs/basecoat-components.md).
+Load one guide/snippet at a time. Preserve labels/IDs/roles and test actual host
+behavior. Chart is reference-only; Toast previews use the front-end API.

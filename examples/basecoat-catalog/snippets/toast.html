@@ -1,0 +1,12 @@
+<div id="toaster" class="toaster"></div>
+<button
+  class="btn" data-variant="outline"
+  onclick="document.getElementById('toaster').toast({
+    category: 'success',
+    title: 'Success',
+    description: 'A success toast called from the front-end.',
+    cancel: {
+      label: 'Dismiss'
+    }
+  })"
+>Toast from front-end</button>

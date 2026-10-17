@@ -1,0 +1,76 @@
+<form>
+  <div role="group" aria-label="Checkout fields" class="fieldset">
+    <fieldset class="fieldset">
+      <legend>Payment Method</legend>
+      <p>All transactions are secure and encrypted</p>
+      <div role="group" aria-label="Payment method fields">
+        <div role="group" class="field">
+          <label for="checkout-card-name">Name on Card</label>
+          <input id="checkout-card-name" type="text" placeholder="Evil Rabbit" required />
+        </div>
+        <div role="group" class="field">
+          <label for="checkout-card-number">Card Number</label>
+          <input id="checkout-card-number" type="text" placeholder="1234 5678 9012 3456" aria-describedby="checkout-card-number-description" required />
+          <p id="checkout-card-number-description">Enter your 16-digit card number</p>
+        </div>
+        <div class="grid grid-cols-3 gap-4">
+          <div role="group" class="field">
+            <label for="checkout-exp-month">Month</label>
+            <select id="checkout-exp-month" class="select w-full">
+              <option value="">MM</option>
+              <option value="01">01</option>
+              <option value="02">02</option>
+              <option value="03">03</option>
+              <option value="04">04</option>
+              <option value="05">05</option>
+              <option value="06">06</option>
+              <option value="07">07</option>
+              <option value="08">08</option>
+              <option value="09">09</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+            </select>
+          </div>
+          <div role="group" class="field">
+            <label for="checkout-exp-year">Year</label>
+            <select id="checkout-exp-year" class="select w-full">
+              <option value="">YYYY</option>
+              <option value="2024">2024</option>
+              <option value="2025">2025</option>
+              <option value="2026">2026</option>
+              <option value="2027">2027</option>
+              <option value="2028">2028</option>
+              <option value="2029">2029</option>
+            </select>
+          </div>
+          <div role="group" class="field">
+            <label for="checkout-cvv">CVV</label>
+            <input id="checkout-cvv" type="text" placeholder="123" required />
+          </div>
+        </div>
+      </div>
+    </fieldset>
+    <div class="field-separator">
+      <hr role="separator" />
+    </div>
+    <fieldset class="fieldset">
+      <legend>Billing Address</legend>
+      <p>The billing address associated with your payment method</p>
+      <div role="group" class="field" data-orientation="horizontal">
+        <input id="checkout-same-as-shipping" type="checkbox" checked />
+        <label for="checkout-same-as-shipping" class="font-normal">Same as shipping address</label>
+      </div>
+    </fieldset>
+    <fieldset class="fieldset">
+      <div role="group" class="field">
+        <label for="checkout-comments">Comments</label>
+        <textarea id="checkout-comments" placeholder="Add any additional comments" rows="3"></textarea>
+      </div>
+    </fieldset>
+    <div role="group" class="field" data-orientation="horizontal">
+      <button type="submit" class="btn">Submit</button>
+      <button type="button" class="btn" data-variant="outline">Cancel</button>
+    </div>
+  </div>
+</form>

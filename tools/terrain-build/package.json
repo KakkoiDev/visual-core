@@ -1,0 +1,9 @@
+{
+  "name": "visual-core-terrain-build",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Contributor-only transpiler; not a runtime dependency",
+  "devDependencies": {
+    "typescript": "5.8.3"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "adapter_version": 1,
+  "adapter_sha256": "33ad7246f734163cead803b4f0cf54a4cdfc00f20a656e8520976ae0777f1ac9",
+  "palette_name": "meadow-warm",
+  "palette": [
+    "#3b6638",
+    "#659547",
+    "#a1bd60",
+    "#624332",
+    "#926746",
+    "#be955f"
+  ],
+  "upstreams": {
+    "simplex-noise": {
+      "version": "4.0.3",
+      "revision": "6bfff874f5f0efed6375a9bf27fbd39b3cec6b4e"
+    },
+    "alea": {
+      "version": "1.0.1",
+      "revision": "4107f9c589f5dbee7f2e9d425c6e3bbee70e6cb9"
+    },
+    "tesserae": {
+      "version": "0.3.1",
+      "revision": "3f918019101bd8400d2deecf01222a0b5eb42da6"
+    }
+  }
+}

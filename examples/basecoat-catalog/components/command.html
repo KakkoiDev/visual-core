@@ -1,0 +1,69 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>command</title><link rel="stylesheet" href="../../../vendor/basecoat/dist/basecoat.cdn.min.css"><script src="../../../vendor/basecoat/dist/js/all.min.js" defer></script><style>body{padding:28px;min-height:100vh}body>main{max-width:700px;margin:auto}h1{font-size:1.4rem;margin-bottom:20px}#demo{padding:24px;border:1px solid #bbb;border-radius:8px}footer{margin-top:24px}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:12px monospace}</style><main><h1>command</h1><section id="demo"><div id="demo-command-standalone" class="command border" aria-label="Command menu">
+  <header><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search-icon lucide-search"><circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" /></svg>
+    <input type="text" id="demo-command-standalone-input" placeholder="Type a command or search..." autocomplete="off" autocorrect="off" spellcheck="false" aria-autocomplete="list" role="combobox" aria-expanded="true" aria-controls="demo-command-standalone-menu" />
+  </header>
+  <div role="menu" id="demo-command-standalone-menu" aria-orientation="vertical" data-empty="No results found.">
+    <div role="group" aria-labelledby="suggestions">
+      <span role="heading" id="suggestions">Suggestions</span>
+      <div role="menuitem" data-filter="Calendar" data-keywords="date event schedule"><svg class="lucide lucide-calendar" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4" /><path d="M16 2v4" /><rect width="18" height="18" x="3" y="4" rx="2" /><path d="M3 10h18" /></svg>
+        <span>Calendar</span>
+      </div>
+      <div role="menuitem" data-filter="Search Emoji" data-keywords="emoji smile reaction"><svg class="lucide lucide-smile" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" /><path d="M8 14s1.5 2 4 2 4-2 4-2" /><line x1="9" x2="9.01" y1="9" y2="9" /><line x1="15" x2="15.01" y1="9" y2="9" /></svg>
+        <span>Search Emoji</span>
+      </div>
+      <div role="menuitem" aria-disabled="true"><svg class="lucide lucide-calculator" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="20" x="4" y="2" rx="2" /><line x1="8" x2="16" y1="6" y2="6" /><line x1="16" x2="16" y1="14" y2="18" /><path d="M16 10h.01" /><path d="M12 10h.01" /><path d="M8 10h.01" /><path d="M12 14h.01" /><path d="M8 14h.01" /><path d="M12 18h.01" /><path d="M8 18h.01" /></svg>
+        <span>Calculator</span>
+      </div>
+    </div>
+    <hr role="separator" />
+    <div role="group" aria-labelledby="settings">
+      <span role="heading" id="settings">Settings</span>
+      <div role="menuitem" data-filter="Profile" data-keywords="user account"><svg class="lucide lucide-user" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /></svg>
+        <span>Profile</span>
+        <span data-shortcut>⌘P</span>
+      </div>
+      <div role="menuitem" data-filter="Billing" data-keywords="invoice payment"><svg class="lucide lucide-credit-card" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2" /><line x1="2" x2="22" y1="10" y2="10" /></svg>
+        <span>Billing</span>
+        <span data-shortcut>⌘B</span>
+      </div>
+      <div role="menuitem" data-filter="Settings" data-keywords="config preferences"><svg class="lucide lucide-settings" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915" /><circle cx="12" cy="12" r="3" /></svg>
+        <span>Settings</span>
+        <span data-shortcut>⌘S</span>
+      </div>
+    </div>
+  </div>
+</div></section><footer><p>Upstream default preview; app actions remain host responsibilities.</p><a href="../../../vendor/basecoat/docs/components/command.mdx">Local upstream documentation</a><h2>Copyable HTML</h2><pre>&lt;div id=&quot;demo-command-standalone&quot; class=&quot;command border&quot; aria-label=&quot;Command menu&quot;&gt;
+  &lt;header&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;24&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; class=&quot;lucide lucide-search-icon lucide-search&quot;&gt;&lt;circle cx=&quot;11&quot; cy=&quot;11&quot; r=&quot;8&quot; /&gt;&lt;path d=&quot;m21 21-4.3-4.3&quot; /&gt;&lt;/svg&gt;
+    &lt;input type=&quot;text&quot; id=&quot;demo-command-standalone-input&quot; placeholder=&quot;Type a command or search...&quot; autocomplete=&quot;off&quot; autocorrect=&quot;off&quot; spellcheck=&quot;false&quot; aria-autocomplete=&quot;list&quot; role=&quot;combobox&quot; aria-expanded=&quot;true&quot; aria-controls=&quot;demo-command-standalone-menu&quot; /&gt;
+  &lt;/header&gt;
+  &lt;div role=&quot;menu&quot; id=&quot;demo-command-standalone-menu&quot; aria-orientation=&quot;vertical&quot; data-empty=&quot;No results found.&quot;&gt;
+    &lt;div role=&quot;group&quot; aria-labelledby=&quot;suggestions&quot;&gt;
+      &lt;span role=&quot;heading&quot; id=&quot;suggestions&quot;&gt;Suggestions&lt;/span&gt;
+      &lt;div role=&quot;menuitem&quot; data-filter=&quot;Calendar&quot; data-keywords=&quot;date event schedule&quot;&gt;&lt;svg class=&quot;lucide lucide-calendar&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;24&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;&gt;&lt;path d=&quot;M8 2v4&quot; /&gt;&lt;path d=&quot;M16 2v4&quot; /&gt;&lt;rect width=&quot;18&quot; height=&quot;18&quot; x=&quot;3&quot; y=&quot;4&quot; rx=&quot;2&quot; /&gt;&lt;path d=&quot;M3 10h18&quot; /&gt;&lt;/svg&gt;
+        &lt;span&gt;Calendar&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div role=&quot;menuitem&quot; data-filter=&quot;Search Emoji&quot; data-keywords=&quot;emoji smile reaction&quot;&gt;&lt;svg class=&quot;lucide lucide-smile&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;24&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;&gt;&lt;circle cx=&quot;12&quot; cy=&quot;12&quot; r=&quot;10&quot; /&gt;&lt;path d=&quot;M8 14s1.5 2 4 2 4-2 4-2&quot; /&gt;&lt;line x1=&quot;9&quot; x2=&quot;9.01&quot; y1=&quot;9&quot; y2=&quot;9&quot; /&gt;&lt;line x1=&quot;15&quot; x2=&quot;15.01&quot; y1=&quot;9&quot; y2=&quot;9&quot; /&gt;&lt;/svg&gt;
+        &lt;span&gt;Search Emoji&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div role=&quot;menuitem&quot; aria-disabled=&quot;true&quot;&gt;&lt;svg class=&quot;lucide lucide-calculator&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;24&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;&gt;&lt;rect width=&quot;16&quot; height=&quot;20&quot; x=&quot;4&quot; y=&quot;2&quot; rx=&quot;2&quot; /&gt;&lt;line x1=&quot;8&quot; x2=&quot;16&quot; y1=&quot;6&quot; y2=&quot;6&quot; /&gt;&lt;line x1=&quot;16&quot; x2=&quot;16&quot; y1=&quot;14&quot; y2=&quot;18&quot; /&gt;&lt;path d=&quot;M16 10h.01&quot; /&gt;&lt;path d=&quot;M12 10h.01&quot; /&gt;&lt;path d=&quot;M8 10h.01&quot; /&gt;&lt;path d=&quot;M12 14h.01&quot; /&gt;&lt;path d=&quot;M8 14h.01&quot; /&gt;&lt;path d=&quot;M12 18h.01&quot; /&gt;&lt;path d=&quot;M8 18h.01&quot; /&gt;&lt;/svg&gt;
+        &lt;span&gt;Calculator&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;hr role=&quot;separator&quot; /&gt;
+    &lt;div role=&quot;group&quot; aria-labelledby=&quot;settings&quot;&gt;
+      &lt;span role=&quot;heading&quot; id=&quot;settings&quot;&gt;Settings&lt;/span&gt;
+      &lt;div role=&quot;menuitem&quot; data-filter=&quot;Profile&quot; data-keywords=&quot;user account&quot;&gt;&lt;svg class=&quot;lucide lucide-user&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;24&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;&gt;&lt;path d=&quot;M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2&quot; /&gt;&lt;circle cx=&quot;12&quot; cy=&quot;7&quot; r=&quot;4&quot; /&gt;&lt;/svg&gt;
+        &lt;span&gt;Profile&lt;/span&gt;
+        &lt;span data-shortcut&gt;⌘P&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div role=&quot;menuitem&quot; data-filter=&quot;Billing&quot; data-keywords=&quot;invoice payment&quot;&gt;&lt;svg class=&quot;lucide lucide-credit-card&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;24&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;&gt;&lt;rect width=&quot;20&quot; height=&quot;14&quot; x=&quot;2&quot; y=&quot;5&quot; rx=&quot;2&quot; /&gt;&lt;line x1=&quot;2&quot; x2=&quot;22&quot; y1=&quot;10&quot; y2=&quot;10&quot; /&gt;&lt;/svg&gt;
+        &lt;span&gt;Billing&lt;/span&gt;
+        &lt;span data-shortcut&gt;⌘B&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div role=&quot;menuitem&quot; data-filter=&quot;Settings&quot; data-keywords=&quot;config preferences&quot;&gt;&lt;svg class=&quot;lucide lucide-settings&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;24&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;&gt;&lt;path d=&quot;M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915&quot; /&gt;&lt;circle cx=&quot;12&quot; cy=&quot;12&quot; r=&quot;3&quot; /&gt;&lt;/svg&gt;
+        &lt;span&gt;Settings&lt;/span&gt;
+        &lt;span data-shortcut&gt;⌘S&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre></footer></main><script>document.addEventListener("submit",event=>event.preventDefault());</script></html>

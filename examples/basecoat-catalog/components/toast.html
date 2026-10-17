@@ -1,0 +1,23 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>toast</title><link rel="stylesheet" href="../../../vendor/basecoat/dist/basecoat.cdn.min.css"><script src="../../../vendor/basecoat/dist/js/all.min.js" defer></script><style>body{padding:28px;min-height:100vh}body>main{max-width:700px;margin:auto}h1{font-size:1.4rem;margin-bottom:20px}#demo{padding:24px;border:1px solid #bbb;border-radius:8px}footer{margin-top:24px}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:12px monospace}</style><main><h1>toast</h1><section id="demo"><div id="toaster" class="toaster"></div>
+<button
+  class="btn" data-variant="outline"
+  onclick="document.getElementById('toaster').toast({
+    category: 'success',
+    title: 'Success',
+    description: 'A success toast called from the front-end.',
+    cancel: {
+      label: 'Dismiss'
+    }
+  })"
+>Toast from front-end</button></section><footer><p>Upstream default preview; app actions remain host responsibilities.</p><a href="../../../vendor/basecoat/docs/components/toast.mdx">Local upstream documentation</a><h2>Copyable HTML</h2><pre>&lt;div id=&quot;toaster&quot; class=&quot;toaster&quot;&gt;&lt;/div&gt;
+&lt;button
+  class=&quot;btn&quot; data-variant=&quot;outline&quot;
+  onclick=&quot;document.getElementById(&#x27;toaster&#x27;).toast({
+    category: &#x27;success&#x27;,
+    title: &#x27;Success&#x27;,
+    description: &#x27;A success toast called from the front-end.&#x27;,
+    cancel: {
+      label: &#x27;Dismiss&#x27;
+    }
+  })&quot;
+&gt;Toast from front-end&lt;/button&gt;</pre></footer></main><script>document.addEventListener("submit",event=>event.preventDefault());</script></html>

@@ -108,6 +108,22 @@
       "outputs": [
         "hand-edited SVG"
       ]
+    },
+    {
+      "id": "procedural-terrain",
+      "recipe": "recipes/tiles.md",
+      "status": "implemented",
+      "command": "terrain template meadow; terrain create RECIPE --out PATH; terrain read PATH; terrain revise PATH --base N --patch PATCH",
+      "outputs": [
+        "atlas.png",
+        "base.png",
+        "manifest.json",
+        "preview-native.png",
+        "recipe.json",
+        "resolved.json",
+        "quality.json",
+        "numbered revisions"
+      ]
     }
   ]
 }

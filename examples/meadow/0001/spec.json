@@ -1,0 +1,16 @@
+{
+  "schema": "visual-core.terrain/1",
+  "kind": "terrain",
+  "seed": 42,
+  "tile_size": 16,
+  "topology": "blob47",
+  "palette": "meadow-warm",
+  "detail": "medium",
+  "contour": {
+    "profile": "soft",
+    "border_px": 1
+  },
+  "variants": 2,
+  "id": "meadow",
+  "preset": "meadow"
+}
