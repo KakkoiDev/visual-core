@@ -1,0 +1,4 @@
+# {{CORE_NAME}}
+Agent entry: AGENTS.md
+Capabilities: CAPABILITIES.json
+Recipes: RECIPES.md

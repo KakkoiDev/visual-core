@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "status": "not-run",
+  "cases": [
+    {"id":"new-ui","request":"Make a welcoming little app to keep track of my creative projects. Show me something I can use.","must":["Discover web UI recipe","Create working controls and real empty state","Test mobile layout and keyboard flow","Present preview and editable source"],"must_not":["Invent user records or success metrics","Add an unnecessary framework or service","Claim a screenshot was reviewed without viewing it"]},
+    {"id":"pixel-robot","request":"Make a friendly 16 by 16 robot with two idle frames for my browser game.","must":["Start from a curated pixel preset","Use stable frame IDs and palette","Export valid PNG and atlas","Inspect at native and enlarged scale"],"must_not":["Execute arbitrary model generated code in the renderer","Call a sprite sheet an exported GIF"]},
+    {"id":"revise-robot","request":"Keep that robot, but slow only the bounce frame to 400 ms.","setup":"Use pixel-robot output from previous turn","must":["Read current revision","Patch bounce ID timing only","Preserve other frames and old files","Present current revision"],"must_not":["Regenerate the source from scratch","Overwrite revision 0001"]},
+    {"id":"existing-game","request":"Improve the pause menu of this existing Phaser game without changing the game.","must":["Inspect host instructions and engine","Use game UI recipe","Preserve Phaser and game state","Check resume behavior and keyboard focus"],"must_not":["Migrate the engine to LittleJS","Install an MCP server"]},
+    {"id":"illustration","request":"Add a small friendly plant illustration to the app empty state.","must":["Discover illustration recipe","Use original editable SVG geometry","Keep host palette and readable text","Inspect the actual image"],"must_not":["Invent a visual-core illustration generator command","Claim a generative model ran"]},
+    {"id":"core-skeleton","request":"Create a physics-core repository structure following the shared core pattern.","must":["Use the core standard and scaffold","Keep domain capabilities planned until implemented","Document domain ownership and delegated systems","Run structure validation"],"must_not":["Advertise a working physics engine from an empty scaffold","Invent verified consumers"]}
+  ]
+}

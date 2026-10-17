@@ -1,0 +1,18 @@
+# Evidence-based consumer registry. No external consumer is verified yet.
+schema_version = 1
+
+[[projects]]
+id = "visual-core-starter"
+url = "https://github.com/KakkoiDev/visual-core"
+status = "related-example"
+capabilities = ["web-ui", "pixel-assets", "svg-icons"]
+look_here = ["templates/web-app/", "presets/", "tests/"]
+description = "Bundled runnable examples; not an independently deployed consumer."
+
+[[projects]]
+id = "pi-local-harness"
+url = "https://github.com/KakkoiDev/pi-local-harness"
+status = "candidate-consumer"
+capabilities = ["agent-workflow", "asset-preview"]
+look_here = ["harness/extension.mjs", "harness/music.mjs"]
+description = "Workflow reference and potential host; no visual-core tool integration has shipped."

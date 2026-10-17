@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "capabilities": [
+    {
+      "id": "web-ui",
+      "recipe": "recipes/web-ui.md",
+      "status": "implemented",
+      "command": "init web-app --out PATH",
+      "outputs": [
+        "index.html",
+        "app.js",
+        "vendor/visual-core/visual-core.css"
+      ]
+    },
+    {
+      "id": "svg-icons",
+      "recipe": "recipes/icons.md",
+      "status": "implemented",
+      "command": "template icon; create SPEC --out PATH",
+      "outputs": [
+        "asset.svg",
+        "spec.json",
+        "manifest.json"
+      ]
+    },
+    {
+      "id": "pixel-assets",
+      "recipe": "recipes/pixel-art.md",
+      "status": "implemented",
+      "command": "template robot; create SPEC --out PATH",
+      "outputs": [
+        "sheet.png",
+        "sheet.svg",
+        "atlas.json",
+        "spec.json",
+        "manifest.json"
+      ]
+    },
+    {
+      "id": "terrain",
+      "recipe": "recipes/tiles.md",
+      "status": "implemented",
+      "command": "template terrain; create SPEC --out PATH",
+      "outputs": [
+        "sheet.png",
+        "atlas.json"
+      ]
+    },
+    {
+      "id": "revisions",
+      "recipe": "recipes/revise.md",
+      "status": "implemented",
+      "command": "read PATH; revise PATH --base N --patch PATCH",
+      "outputs": [
+        "current.json",
+        "numbered revisions"
+      ]
+    },
+    {
+      "id": "animation",
+      "recipe": "recipes/animation.md",
+      "status": "recipe",
+      "command": null,
+      "outputs": [
+        "engine/browser animation from atlas"
+      ]
+    },
+    {
+      "id": "game-ui",
+      "recipe": "recipes/game-ui.md",
+      "status": "recipe",
+      "command": null,
+      "outputs": [
+        "host UI changes"
+      ]
+    },
+    {
+      "id": "illustration",
+      "recipe": "recipes/illustration.md",
+      "status": "recipe",
+      "command": null,
+      "outputs": [
+        "hand-edited SVG"
+      ]
+    }
+  ]
+}

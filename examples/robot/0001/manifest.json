@@ -1,0 +1,22 @@
+{
+  "engine": "visual-core",
+  "version": "0.1.0",
+  "metrics": {
+    "width": 32,
+    "height": 16,
+    "frames": 2,
+    "occupied": [
+      126,
+      126
+    ]
+  },
+  "sha256": {
+    "atlas.json": "d1d3726b72e1c517c95e09828965eeb4501b15648d90bd63e6b27787633cc883",
+    "preview.html": "cdc6169f9ea6a46e298a63a54dc08c13f901053d2c7e90a025f963e51db51a56",
+    "sheet.png": "f9eac3e14af677810e69e9cc796ca1fe287205239b67d2c44defc6c03073d612",
+    "sheet.svg": "91b603e9ae06dc1f49ae15a542f368d29784f7cd3e25b20410055784b468f3e9",
+    "spec.json": "83c81d41c3ccc625aad8fd24f543512196f523ea955dc981de59687515e60c37"
+  },
+  "visual_review": "not-performed",
+  "source": "spec.json"
+}

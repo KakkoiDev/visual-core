@@ -1,0 +1,30 @@
+{
+  "image": "sheet.png",
+  "layout": "horizontal",
+  "frames": [
+    {
+      "id": "idle",
+      "x": 0,
+      "y": 0,
+      "width": 16,
+      "height": 16,
+      "ms": 240,
+      "pivot": {
+        "x": 8.0,
+        "y": 16
+      }
+    },
+    {
+      "id": "bounce",
+      "x": 16,
+      "y": 0,
+      "width": 16,
+      "height": 16,
+      "ms": 160,
+      "pivot": {
+        "x": 8.0,
+        "y": 16
+      }
+    }
+  ]
+}

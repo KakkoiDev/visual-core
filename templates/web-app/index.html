@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Fieldnotes — Project board</title><link rel="stylesheet" href="vendor/visual-core/visual-core.css"></head>
+<body class="vc-app"><a class="vc-skip" href="#main">Skip to projects</a><div class="vc-shell">
+<header class="vc-header"><span class="vc-brand">Fieldnotes<span aria-hidden="true">.</span></span><span class="vc-pill">Your ideas, in motion</span></header>
+<main id="main"><section class="vc-hero"><span class="vc-eyebrow">A little progress, every day</span><h1>Make room for<br>your next idea.</h1><p class="vc-muted">A quiet place to collect what you’re making. Choose one thing, take a small step, and keep going.</p></section>
+<div class="vc-toolbar"><label class="vc-field" for="search">Find a project<input class="vc-input" id="search" type="search" placeholder="Search by name"></label><label class="vc-field" for="filter">Show<select class="vc-select" id="filter"><option value="all">All projects</option><option value="active">In progress</option><option value="done">Completed</option></select></label><button class="vc-button" id="new">New project</button></div>
+<p id="status" class="vc-status" role="status" aria-live="polite"></p><section id="projects" class="vc-grid" aria-label="Projects"></section><div id="empty" class="vc-empty" hidden><h2>No projects here yet</h2><p class="vc-muted">Add your first idea, or try a different search.</p><button class="vc-button vc-button--quiet" id="empty-new">Create a project</button></div></main>
+<footer class="vc-foot">Saved in this browser. This starter has no account, server or synchronization.</footer>
+</div><dialog class="vc-dialog" id="dialog" aria-labelledby="dialog-title"><form id="form"><h2 id="dialog-title">Start something small</h2><label class="vc-field" for="title">Project name<input class="vc-input" id="title" required maxlength="80" autocomplete="off"></label><label class="vc-field" for="description">Next step<textarea class="vc-input" id="description" rows="3" maxlength="240"></textarea></label><div class="vc-actions"><button class="vc-button vc-button--quiet" id="cancel" type="button">Cancel</button><button class="vc-button" type="submit">Create project</button></div></form></dialog>
+<script type="module" src="app.js"></script></body></html>

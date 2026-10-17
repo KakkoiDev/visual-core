@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "capabilities": [
+    {
+      "id": "first-capability",
+      "status": "planned",
+      "recipe": "recipes/first-capability.md",
+      "command": null,
+      "outputs": []
+    }
+  ]
+}
