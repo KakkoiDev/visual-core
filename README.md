@@ -34,6 +34,16 @@ Open `http://localhost:8080` for the working project board and
 Change real content and actions to fit the app; this is a starter, not a finished
 product. After evaluating a revision, pin that Git commit before reusing it.
 
+## Preview
+
+The starter after creating two demonstration projects through its real controls:
+
+![Working web app starter](docs/images/web-app.png)
+
+Original robot frames, shown at native and 8× scale:
+
+![Pixel asset preview](docs/images/robot-preview.png)
+
 ## What works today
 
 | Need | Default | Start here |
