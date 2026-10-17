@@ -9,15 +9,20 @@ recipes, design tokens and asset mechanics; the app owns content, state and UX.
 
 | Request | Read next |
 |---|---|
-| New app UI or improve an existing page | [Web UI](recipes/web-ui.md), [design defaults](docs/design-system.md) |
+| New app UI or improve an existing page | [Basecoat](recipes/basecoat.md), then [Web UI](recipes/web-ui.md) |
 | Icon, small interface symbol | [Icons](recipes/icons.md) |
-| Pixel character, prop, frame animation | [Pixel art](recipes/pixel-art.md), [animation](recipes/animation.md) |
+| Procedural sprite, robot, ship, creature | [Procedural pixels](recipes/procedural-pixels.md) |
+| Exact pixel character, prop, frame animation | [Pixel art](recipes/pixel-art.md), [animation](recipes/animation.md) |
 | Terrain, tiles, environment kit | [Tiles](recipes/tiles.md) |
 | Game HUD or menu | [Game UI](recipes/game-ui.md) |
 | Illustration, background, empty-state artwork | [Illustration](recipes/illustration.md) |
 | Change a prior asset | [Revise](recipes/revise.md) |
 | Add assets to a real project | [Integration](docs/project-integration.md) |
 | Design another core repository | [Core standard](docs/core-repo-standard.md), [scaffold](templates/core/README.md) |
+
+Start with the bundled tools, not invented component CSS or pixel rows. Versions,
+local reference files and prerequisites are in [the toolbox](docs/toolbox.md).
+Do not install a replacement library or browse for a guessed API.
 
 For every visual task, finish with [verification](recipes/verify.md). Load only the
 relevant recipe, not the entire repository. `python3 tools/visual.py catalog` lists
@@ -29,7 +34,8 @@ implemented commands and recipe-only capabilities. Do not invent commands.
    mood, required states, target sizes, asset scale. Infer sensible defaults; ask
    only for choices that would materially change the result. Use the user's language.
 2. Choose one existing recipe and preset. For a new no-framework UI use web-app;
-   for a new pixel asset start with robot or terrain. Preserve existing systems.
+   for procedural sprites use generate ship/robot/creature; use editable robot or
+   terrain templates for exact pixels/tiles. Copy Basecoat markup from the component kit. Preserve existing systems.
 3. Produce a small coherent result promptly. Keep theme, palette, grid and stroke
    width consistent. One primary action per view; text and spacing before ornament.
 4. Render and inspect the actual result. Test UI interactions and inspect pixel

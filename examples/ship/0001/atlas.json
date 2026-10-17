@@ -1,0 +1,18 @@
+{
+  "image": "sheet.png",
+  "layout": "horizontal",
+  "frames": [
+    {
+      "id": "idle",
+      "x": 0,
+      "y": 0,
+      "width": 12,
+      "height": 12,
+      "ms": 240,
+      "pivot": {
+        "x": 6.0,
+        "y": 12
+      }
+    }
+  ]
+}

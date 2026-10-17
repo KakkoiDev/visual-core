@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.2.0
+
+Bundle and lock Basecoat UI 1.0.2, Pixel Sprite Generator 0.0.2 and 50 Lucide
+1.59.0 icons, with original documentation/licenses and per-file hash checks.
+Replace the starter component foundation with Basecoat, add a working component
+kit, seeded sprite commands/provenance and local-first recipes. Preserve earlier
+asset revisions and legacy icon IDs. Node.js 18+ is required only for procedural
+generation. Add offline browser checks and upstream contract tests.
+
 ## 0.1.0
 
 Initial agent router and opinionated recipes; native web UI starter and scoped CSS;

@@ -1,0 +1,10 @@
+{
+  "name": "ship",
+  "mask": "spaceship",
+  "seed": 42,
+  "palette": {
+    "0": "#172F36",
+    "1": "#60B6A1",
+    "2": "#D9F0D2"
+  }
+}

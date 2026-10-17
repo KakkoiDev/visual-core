@@ -1,0 +1,23 @@
+{
+  "engine": "visual-core",
+  "version": "0.2.0",
+  "metrics": {
+    "width": 12,
+    "height": 12,
+    "frames": 1,
+    "occupied": [
+      92
+    ]
+  },
+  "sha256": {
+    "LICENSE-pixel-sprite-generator.txt": "d091eefddb72f90b1574031d0c66a2f3828b10fab193694994774b8f3938fed7",
+    "atlas.json": "758c36ed9a790a8e03e8364476d150606524654bbbff4eabd3aace76eadcfa8d",
+    "generator.json": "a411fcb1a498bd07fafcb5d219856fb982b4fd4abf8e1d57961aac35bfceaf46",
+    "preview.html": "a9e2fc1088558e3c630fa695fe64fb62060b2dca6fb793e6f095fbaba46072b2",
+    "sheet.png": "ef81df53aab1dea796d4606ceacc23de4e75fa01e067c9d8eac46bd2fe4ba70c",
+    "sheet.svg": "accb64cfc0b5ef63bdb835069b7c7a7a4bbe8b385f22b286e6e47fb43f592f56",
+    "spec.json": "c720cca322c27b9a6e31aa012d50a4b95ee929ad7d28b7d25b0323c78e97f1a9"
+  },
+  "visual_review": "not-performed",
+  "source": "spec.json"
+}

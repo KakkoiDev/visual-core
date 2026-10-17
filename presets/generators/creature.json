@@ -1,0 +1,10 @@
+{
+  "name": "creature",
+  "mask": "dragon",
+  "seed": 12,
+  "palette": {
+    "0": "#172F36",
+    "1": "#60B6A1",
+    "2": "#D9F0D2"
+  }
+}

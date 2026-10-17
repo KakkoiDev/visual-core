@@ -4,16 +4,21 @@ These are planned tasks, not implemented capabilities.
 
 ## visual-core: a locally available, version-locked toolbox
 
-- [ ] Replace agent-invented UI foundations with bundled Basecoat UI components,
-  styles and working examples.
-- [ ] Evaluate and bundle established deterministic pixel-art generation tools,
-  curated presets and tested recipes.
-- [ ] Lock upstream releases/commits, retain licenses and provenance, and document
-  an explicit upgrade process.
-- [ ] Make tools, reference documentation and recipes available locally after
-  setup, with exact commands and known-good complete examples.
+- [x] Bundle Basecoat UI 1.0.2 with prebuilt styles/runtime, upstream docs and working
+  app/component examples; use it as the new UI foundation.
+- [x] Bundle Pixel Sprite Generator 0.0.2 at an exact commit with a small seeded
+  adapter, original masks, curated configs and editable PNG/SVG exports.
+- [x] Bundle 50 Lucide 1.59.0 icons and retain the legacy icon names/old revisions.
+- [x] Lock every vendored file, retain upstream licenses and archive/commit
+  provenance, and document an explicit upgrade process.
+- [x] Make normal commands, tools, examples and reference docs available locally
+  with no runtime package download, CDN or frontend build.
+- [x] Test repeatable upstream output, failure cases, preserved revisions and real
+  Basecoat behavior with external browser requests blocked.
 - [ ] Test representative tasks with a weaker/local model; record actual outputs
   and failures before claiming that the workflow is reliable for that model.
+- [ ] Add further generators only for concrete unsupported tasks, with the same
+  license/pin/offline/example/verification requirements.
 
 ## Future repository: coding-core
 

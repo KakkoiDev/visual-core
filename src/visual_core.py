@@ -1,4 +1,4 @@
-"""Constrained, deterministic visual assets; Python standard library only."""
+"""Local visual assets from constrained sources and pinned upstream tools."""
 import argparse
 import copy
 import hashlib
@@ -10,14 +10,15 @@ from pathlib import Path
 import re
 import shutil
 import struct
+import subprocess
 import tempfile
 import zlib
 
-VERSION = '0.1.0'
+VERSION = '0.2.0'
 ROOT = Path(__file__).resolve().parents[1]
 IDENT = re.compile(r'^[a-z][a-z0-9_-]{0,39}$')
 COLOR = re.compile(r'^#[0-9a-fA-F]{6}$')
-ICON_PATHS = {
+LEGACY_ICON_PATHS = {
     'check': '<path d="m5 12 4 4L19 6"/>',
     'close': '<path d="m6 6 12 12M6 18 18 6"/>',
     'arrow': '<path d="M4 12h16m-7-7 7 7-7 7"/>',
@@ -26,6 +27,11 @@ ICON_PATHS = {
     'coin': '<circle cx="12" cy="12" r="9"/><path d="M12 7v10m-3-8h6m-6 6h6"/>',
     'robot': '<rect x="4" y="6" width="16" height="14" rx="3"/><path d="M12 6V3M8 16h8M1 10v6m22-6v6"/><circle cx="8" cy="11" r="1"/><circle cx="16" cy="11" r="1"/>',
 }
+# Prefer the pinned upstream icon library; retain old shape IDs as aliases.
+ICON_PATHS = {path.stem: re.search(r'<svg\b[^>]*>([\s\S]*?)</svg>', path.read_text())[1]
+              for path in sorted((ROOT/'vendor/lucide/icons').glob('*.svg'))}
+for alias, target in {'close': 'x', 'arrow': 'arrow-right', 'robot': 'bot', 'coin': 'coins'}.items():
+    ICON_PATHS[alias] = ICON_PATHS[target]
 
 
 def load(path):
@@ -118,14 +124,20 @@ def png(width, height, rgba):
     return b'\x89PNG\r\n\x1a\n' + chunk(b'IHDR', struct.pack('!2I5B', width, height, 8, 6, 0, 0, 0)) + chunk(b'IDAT', zlib.compress(scan, 9)) + chunk(b'IEND', b'')
 
 
-def render(spec, folder):
+def render(spec, folder, generator=None, legacy_icon=False):
     validate(spec)
     folder = Path(folder)
     write_json(folder / 'spec.json', spec)
+    if generator is not None:
+        write_json(folder / 'generator.json', generator)
+        shutil.copyfile(ROOT/'vendor/pixel-sprite-generator/LICENSE', folder/'LICENSE-pixel-sprite-generator.txt')
     if spec['kind'] == 'icon':
         size, name = spec['size'], html.escape(spec['name'])
-        svg = f'<svg xmlns="http://www.w3.org/2000/svg" width="{size}" height="{size}" viewBox="0 0 24 24" role="img" aria-labelledby="title"><title id="title">{name}</title><g fill="none" stroke="{spec["color"]}" stroke-width="{spec["stroke"]}" stroke-linecap="round" stroke-linejoin="round">{ICON_PATHS[spec["shape"]]}</g></svg>\n'
+        geometry = (LEGACY_ICON_PATHS if legacy_icon else ICON_PATHS)[spec['shape']]
+        svg = f'<svg xmlns="http://www.w3.org/2000/svg" width="{size}" height="{size}" viewBox="0 0 24 24" role="img" aria-labelledby="title"><title id="title">{name}</title><g fill="none" stroke="{spec["color"]}" stroke-width="{spec["stroke"]}" stroke-linecap="round" stroke-linejoin="round">{geometry}</g></svg>\n'
         (folder / 'asset.svg').write_text(svg)
+        if not legacy_icon:
+            shutil.copyfile(ROOT/'vendor/lucide/LICENSE', folder/'LICENSE-lucide.txt')
         metrics = {'width': size, 'height': size, 'frames': 1}
         body = '<img src="asset.svg" alt="Icon preview" width="192" height="192">'
     else:
@@ -154,7 +166,10 @@ def render(spec, folder):
         body = f'<h2>Native scale</h2><img src="sheet.png" alt="All sprite frames at native scale" width="{width}" height="{h}"><h2>8× scale</h2><div style="overflow:auto"><img src="sheet.png" alt="All sprite frames enlarged eight times" width="{width*8}" height="{h*8}" style="image-rendering:pixelated;max-width:none"></div><p>Atlas coordinates and frame durations: <a href="atlas.json">atlas.json</a>. This is a static sheet, not an animation player.</p>'
     (folder / 'preview.html').write_text('<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Asset preview</title><style>body{font:16px system-ui;background:#f6f3eb;color:#172f36;max-width:960px;margin:40px auto;padding:16px}img{background:repeating-conic-gradient(#d9dedb 0 25%,#fff 0 50%) 0/16px 16px}</style><h1>' + html.escape(spec['name']) + '</h1>' + body + '</html>')
     hashes = {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(folder.iterdir()) if p.is_file()}
-    write_json(folder / 'manifest.json', {'engine': 'visual-core', 'version': VERSION, 'metrics': metrics, 'sha256': hashes, 'visual_review': 'not-performed', 'source': 'spec.json'})
+    manifest = {'engine': 'visual-core', 'version': VERSION, 'metrics': metrics, 'sha256': hashes, 'visual_review': 'not-performed', 'source': 'spec.json'}
+    if spec['kind'] == 'icon':
+        manifest['icon_library'] = 'visual-core-legacy' if legacy_icon else 'lucide-1.59.0'
+    write_json(folder / 'manifest.json', manifest)
     return metrics
 
 
@@ -178,7 +193,10 @@ def read_asset(folder):
         raise ValueError('Revision must not be a symlink')
     if any((directory / name).is_symlink() for name in ('spec.json', 'manifest.json')):
         raise ValueError('Revision metadata must not be a symlink')
-    return {'revision': rev, 'spec': validate(load(directory / 'spec.json')), 'manifest': load(directory / 'manifest.json'), 'directory': str(directory)}
+    generator = directory / 'generator.json'
+    if generator.is_symlink():
+        raise ValueError('Generator provenance must not be a symlink')
+    return {'revision': rev, 'spec': validate(load(directory / 'spec.json')), 'manifest': load(directory / 'manifest.json'), 'directory': str(directory), 'generator': load(generator) if generator.exists() else None}
 
 
 def patch_spec(spec, patch):
@@ -199,9 +217,10 @@ def patch_spec(spec, patch):
     return validate(result)
 
 
-def publish(folder, spec=None, base=None, patch=None):
+def publish(folder, spec=None, base=None, patch=None, generator=None):
     folder = safe_asset(folder)
     creating = base is None
+    legacy_icon = False
     if creating:
         if folder.exists():
             raise ValueError('Asset exists; read then revise instead')
@@ -213,6 +232,10 @@ def publish(folder, spec=None, base=None, patch=None):
         if base != previous['revision']:
             raise ValueError(f'Stale base; read revision {previous["revision"]} first')
         spec, rev, parent = patch_spec(previous['spec'], patch), base + 1, folder
+        generator = previous['generator']
+        if spec['kind'] == 'icon' and 'shape' not in patch.get('set', {}):
+            manifest = previous['manifest']
+            legacy_icon = manifest.get('icon_library') == 'visual-core-legacy' or manifest.get('version') == '0.1.0'
         integer(rev, 1, 9999, 'revision')
     parent.mkdir(parents=True, exist_ok=True)
     stage = Path(tempfile.mkdtemp(prefix='.visual-', dir=parent))
@@ -230,7 +253,7 @@ def publish(folder, spec=None, base=None, patch=None):
                 raise ValueError('Revision changed; read before retrying')
         destination = stage / f'{rev:04d}' if creating else stage
         destination.mkdir(exist_ok=True)
-        metrics = render(spec, destination)
+        metrics = render(spec, destination, generator, legacy_icon)
         if creating:
             write_json(stage / 'current.json', {'revision': rev})
             if folder.exists():
@@ -258,25 +281,79 @@ def contrast(a, b):
     return (y+0.05)/(x+0.05)
 
 
+def generate_spec(config):
+    """Use only the local pinned engine; JSON is data, never executable source."""
+    if not shutil.which('node'):
+        raise ValueError('Procedural generation needs Node.js 18+; no npm install is needed')
+    try:
+        result = subprocess.run(['node', str(ROOT/'tools/pixel_generator.cjs')],
+                                input=json.dumps(config), capture_output=True, text=True, timeout=5)
+    except subprocess.TimeoutExpired as error:
+        raise ValueError('Pixel generator timed out') from error
+    if result.returncode:
+        raise ValueError(result.stderr.strip() or 'Pixel generator failed')
+    return validate(json.loads(result.stdout))
+
+
+def init_project(recipe, target):
+    target = Path(target)
+    if target.exists():
+        raise ValueError('Output exists; adapt its current UI instead of overwriting it')
+    # Build in a staging folder so a failed copy cannot leave a partial project.
+    target.parent.mkdir(parents=True, exist_ok=True)
+    stage = Path(tempfile.mkdtemp(prefix='.visual-ui-', dir=target.parent))
+    try:
+        shutil.copytree(ROOT/'templates'/recipe, stage, dirs_exist_ok=True)
+        styles = stage/'vendor/visual-core'
+        styles.mkdir(parents=True)
+        shutil.copyfile(ROOT/'ui/visual-core.css', styles/'visual-core.css')
+        basecoat = stage/'vendor/basecoat'
+        basecoat.mkdir(parents=True)
+        for source, destination in [('dist/basecoat.cdn.min.css','basecoat.min.css'),('dist/js/all.min.js','all.min.js'),('LICENSE.md','LICENSE.md')]:
+            shutil.copyfile(ROOT/'vendor/basecoat'/source, basecoat/destination)
+        shutil.copyfile(ROOT/'vendor/tailwindcss/LICENSE', basecoat/'LICENSE-tailwindcss.txt')
+        lock = load(ROOT/'vendor/LOCK.json')
+        write_json(styles/'provenance.json', {'version': VERSION,
+                   'css_sha256': hashlib.sha256((ROOT/'ui/visual-core.css').read_bytes()).hexdigest(),
+                   'upstreams': {s['id']:s['version'] for s in lock['sources'] if s['id'] in ('basecoat','tailwindcss')},
+                   'files': {str(p.relative_to(stage)):hashlib.sha256(p.read_bytes()).hexdigest() for p in basecoat.iterdir()}})
+        stage.rename(target)
+    finally:
+        if stage.exists():
+            shutil.rmtree(stage)
+    return {'directory': str(target.absolute()), 'entry': 'index.html', 'next': 'Serve locally, inspect desktop and mobile, test controls. No network or build step required.'}
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     commands = parser.add_subparsers(dest='command', required=True)
     commands.add_parser('catalog')
     template = commands.add_parser('template'); template.add_argument('name', choices=['robot', 'terrain', 'icon'])
     create = commands.add_parser('create'); create.add_argument('spec'); create.add_argument('--out', required=True)
+    generate = commands.add_parser('generate'); generate.add_argument('preset', choices=['ship', 'robot', 'creature']); generate.add_argument('--seed', type=int); generate.add_argument('--config', help='Optional complete generator JSON instead of preset defaults'); generate.add_argument('--out', required=True)
     read = commands.add_parser('read'); read.add_argument('asset')
     revise = commands.add_parser('revise'); revise.add_argument('asset'); revise.add_argument('--base', required=True, type=int); revise.add_argument('--patch', required=True)
     check = commands.add_parser('check'); check.add_argument('spec')
-    init = commands.add_parser('init'); init.add_argument('recipe', choices=['web-app']); init.add_argument('--out', required=True)
+    init = commands.add_parser('init'); init.add_argument('recipe', choices=['web-app', 'component-kit']); init.add_argument('--out', required=True)
     colors = commands.add_parser('contrast'); colors.add_argument('foreground'); colors.add_argument('background')
     args = parser.parse_args(argv)
     try:
         if args.command == 'catalog':
-            result = {'version': VERSION, 'capabilities': load(ROOT/'CAPABILITIES.json'), 'icons': list(ICON_PATHS), 'templates': ['robot', 'terrain', 'icon'], 'ui': ['web-app']}
+            result = {'version': VERSION, 'capabilities': load(ROOT/'CAPABILITIES.json'), 'icons': list(ICON_PATHS), 'templates': ['robot', 'terrain', 'icon'], 'generators': ['ship', 'robot', 'creature'], 'ui': ['web-app', 'component-kit'], 'vendor_lock': 'vendor/LOCK.json'}
         elif args.command == 'template':
             result = load(ROOT/'presets'/f'{args.name}.json')
         elif args.command == 'create':
             result = publish(args.out, load(args.spec))
+        elif args.command == 'generate':
+            config = load(args.config) if args.config else load(ROOT/'presets/generators'/f'{args.preset}.json')
+            if args.seed is not None:
+                if not isinstance(config, dict):
+                    raise ValueError('Generator config must be an object')
+                config['seed'] = args.seed
+            spec = generate_spec(config)
+            source = next(s for s in load(ROOT/'vendor/LOCK.json')['sources'] if s['id'] == 'pixel-sprite-generator')
+            origin = {'id':source['id'], 'version':source['version'], 'revision':source['revision'], 'adapter_version':1, 'config':config, 'note':'Initial generation provenance. Later frame/palette patches may differ; revise instead of regenerating.'}
+            result = publish(args.out, spec, generator=origin)
         elif args.command == 'read':
             result = read_asset(args.asset)
         elif args.command == 'revise':
@@ -287,14 +364,7 @@ def main(argv=None):
             ratio = contrast(args.foreground, args.background)
             result = {'ratio': round(ratio, 3), 'normal_text_4_5': ratio >= 4.5, 'large_text_or_ui_3': ratio >= 3}
         else:
-            target = Path(args.out)
-            if target.exists():
-                raise ValueError('Output exists; adapt its current UI instead of overwriting it')
-            shutil.copytree(ROOT/'templates/web-app', target)
-            (target/'vendor/visual-core').mkdir(parents=True)
-            shutil.copyfile(ROOT/'ui/visual-core.css', target/'vendor/visual-core/visual-core.css')
-            write_json(target/'vendor/visual-core/provenance.json', {'version': VERSION, 'css_sha256': hashlib.sha256((ROOT/'ui/visual-core.css').read_bytes()).hexdigest()})
-            result = {'directory': str(target.absolute()), 'entry': 'index.html', 'next': 'Serve the folder, inspect desktop and mobile, test controls. See recipes/verify.md.'}
+            result = init_project(args.recipe, args.out)
         print(json.dumps(result, ensure_ascii=False, indent=2))
         return 0
     except (ValueError, OSError, KeyError, TypeError, OverflowError) as error:

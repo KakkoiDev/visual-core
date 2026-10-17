@@ -1,5 +1,7 @@
 # Pixel sprite or prop
 
+For a new procedural ship, robot or creature, use [the upstream generator](procedural-pixels.md) first. This recipe is for exact pixel edits and hand-authored animation.
+
 **Outcome:** a readable small sprite with matching palette and editable frames.
 **Defaults:** 16×16, transparent `.`, up to five colors, bottom-center pivot.
 

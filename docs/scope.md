@@ -5,7 +5,9 @@ and icon sources, validation, revision mechanics and a portable UI starter.
 Consumers own user journeys, application behavior, storage, authentication,
 frameworks, engines, deployment and the decision to accept an aesthetic result.
 
-Runtime dependencies: zero. Python 3.11+ generates files; browsers consume them.
+Third-party code is bundled and locked, with no runtime package download. Python
+3.11+ runs the CLI; Node.js 18+ runs the upstream procedural sprite adapter;
+browsers consume prebuilt Basecoat CSS/JS. See docs/toolbox.md for exact pins.
 The web starter is native HTML/CSS/JavaScript with local browser storage only.
 It is not a production account system, sync layer or complete application.
 
@@ -14,7 +16,9 @@ RGB colors, transparency through `.`, and frame timing 40–2000 ms. Frame IDs a
 stable. The horizontal sheet is PNG RGBA8 and SVG; atlas coordinates use pixels.
 There are no arbitrary vector paths, image imports, AI image generation, PNG
 conversion for icons, animated image export, tweening, arbitrary layers, Aseprite
-scripts or image-understanding models. Icons use seven original curated shapes.
+scripts or image-understanding models. Icons use 50 pinned Lucide shapes and four legacy aliases; no arbitrary model
+SVG is accepted by the icon command. Procedural generation uses three bounded
+upstream masks (ship/robot/creature), not a universal pixel-art generator.
 The illustration, game UI and animation recipes use the host's normal tools.
 
 Assets keep immutable numbered revisions. Revisions can patch existing pixel

@@ -24,6 +24,11 @@ Python package onto a browser library or a chat harness onto a content library.
 | IMPLEMENTATIONS.toml | Verified consumers and useful examples | Exact URLs, capabilities, paths and revisions |
 | CHANGELOG.md + license | Compatibility and reuse terms | Dependency/version choices can be reviewed |
 
+When a core wraps existing tools, add vendor/LOCK.json, original licenses, local
+reference docs and working examples. Pin releases/commits and every bundled file;
+normal agent use must not fetch latest. Keep adapters thin and verify the real
+upstream APIs. Distinguish system prerequisites from locally bundled dependencies.
+
 Optional: browser assets, bootstrap instructions, benchmarks, upstream adapters,
 migration notes and provenance manifests. Add these only when the domain needs them.
 A core does not need a service, UI, agent loop, MCP server or model to be agent-first.

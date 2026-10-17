@@ -45,16 +45,19 @@ function render() {
   byId('empty').hidden = visible.length > 0;
 
   for (const project of visible) {
-    const card = element('article', '', 'vc-card');
+    const card = element('article', '', 'card vc-card');
     card.dataset.id = project.id;
     card.dataset.done = project.done;
-    card.append(
+    const header = document.createElement('header');
+    header.append(
       element('span', project.done ? 'Completed' : 'In progress', 'vc-eyebrow'),
       element('h2', project.title),
       element('p', project.description || 'Choose a next step when you’re ready.', 'vc-muted')
     );
+    card.append(header);
     const footer = document.createElement('footer');
-    const toggle = element('button', project.done ? 'Reopen' : 'Mark complete', 'vc-button vc-button--quiet');
+    const toggle = element('button', project.done ? 'Reopen' : 'Mark complete', 'btn vc-quiet');
+    toggle.dataset.variant = 'outline';
     toggle.setAttribute('aria-label', `${project.done ? 'Reopen' : 'Complete'} ${project.title}`);
     toggle.onclick = () => {
       project.done = !project.done;

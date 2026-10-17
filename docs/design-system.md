@@ -29,9 +29,10 @@ not a claim of full accessibility conformance. The helper accepts hex colors:
 python3 tools/visual.py contrast '#50626a' '#f6f3eb'
 ```
 
-The CSS has scoped vc- classes and a small token layer. In an existing framework,
+Basecoat owns components. The core CSS has scoped vc- layout classes and semantic
+Basecoat theme tokens; copy tested component markup instead of inventing widgets. In an existing framework,
 adapt the recipe and tokens to its components rather than importing global resets
-or replacing its component library. The :root tokens use a vc- prefix.
+or replacing its component library. Theme tokens use Basecoat semantics (--background, --primary, --foreground, etc.).
 
 ## Asset composition
 

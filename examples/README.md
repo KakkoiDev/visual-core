@@ -14,3 +14,9 @@ exists, reuse it or choose another fresh folder; init never overwrites a project
 For a UI review, create representative example projects through the app's form;
 these are local demonstration data, not real users or a claimed external consumer.
 The checked-in robot output is a small reference export, not an external integration.
+
+For the default upstream generator, run `python3 tools/visual.py generate ship
+--seed 42 --out .test-output/my-ship` on one line. The checked-in examples/ship/
+output includes source, initial generator provenance, PNG/SVG and the upstream
+license. The examples/robot/ export is the older hand-authored reference, retained
+for exact-frame editing and compatibility.

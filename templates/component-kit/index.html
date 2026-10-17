@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Basecoat component kit</title>
+  <link rel="stylesheet" href="vendor/basecoat/basecoat.min.css">
+  <link rel="stylesheet" href="vendor/visual-core/visual-core.css">
+  <script src="vendor/basecoat/all.min.js" defer></script>
+  <script src="kit.js" defer></script>
+</head>
+<body class="vc-app">
+<a class="vc-skip" href="#main">Skip to components</a>
+<div class="vc-shell">
+  <header class="vc-header"><span class="vc-brand">Component kit.</span><span class="badge" data-variant="outline">Basecoat 1.0.2 · local files</span></header>
+  <main id="main">
+    <section class="vc-hero"><span class="vc-eyebrow">Copy a working pattern</span><h1>Build from components<br>that already work.</h1><p class="vc-muted">Forms, tabs, dialogs and feedback. This is a local demonstration; it does not connect to an account or server.</p></section>
+    <div class="vc-kit">
+      <article class="card">
+        <header><h2>A small form</h2><p>Native validation, a visible label, and honest feedback.</p></header>
+        <section><form id="note-form" class="vc-field"><label for="note">Next step</label><input class="input" id="note" required maxlength="100" placeholder="Describe one useful task"><button class="btn" type="submit">Keep this note</button><p id="note-status" role="status">This example keeps the note only while the page is open.</p></form></section>
+      </article>
+      <article class="card">
+        <header><h2>Keyboard-ready tabs</h2><p>Basecoat handles selection and arrow keys. Keep unique IDs when copying.</p></header>
+        <section>
+          <div class="tabs" id="kit-tabs">
+            <nav role="tablist" aria-orientation="horizontal" aria-label="Example views">
+              <button type="button" role="tab" id="overview-tab" aria-controls="overview-panel" aria-selected="true" tabindex="0">Overview</button>
+              <button type="button" role="tab" id="details-tab" aria-controls="details-panel" aria-selected="false" tabindex="-1">Details</button>
+            </nav>
+            <div role="tabpanel" id="overview-panel" aria-labelledby="overview-tab" tabindex="-1">Start with the primary action and the content it supports.</div>
+            <div role="tabpanel" id="details-panel" aria-labelledby="details-tab" tabindex="-1" hidden>Copy the complete tabs markup and the local Basecoat script. Do not recreate its behavior.</div>
+          </div>
+        </section>
+      </article>
+      <article class="card">
+        <header><h2>A native dialog</h2><p>Escape closes it and focus returns to the trigger.</p></header>
+        <section><div class="vc-row"><button class="btn" id="open-dialog" type="button">Open example</button><span class="badge" data-variant="secondary">No extra dialog library</span></div></section>
+      </article>
+      <article class="card">
+        <header><h2>Feedback and disclosure</h2><p>Use text as well as color.</p></header>
+        <section>
+          <div class="alert" role="status"><h3>Ready to adapt</h3><p>The components are served from this folder. No CDN requests are needed.</p></div>
+          <div class="accordion"><details><summary>Where are the component docs?</summary><p>In the visual-core checkout, read vendor/basecoat/docs/components/ and recipes/basecoat.md. Those are the docs for this pinned version.</p></details></div>
+        </section>
+      </article>
+    </div>
+  </main>
+</div>
+<dialog id="example-dialog" class="dialog" aria-labelledby="example-title"><div><header><h2 id="example-title">A small, complete example</h2><p>This dialog uses the browser’s native modality and Basecoat styling.</p></header><footer><button class="btn" id="close-dialog" type="button">Close example</button></footer></div></dialog>
+</body>
+</html>

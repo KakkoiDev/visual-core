@@ -1,8 +1,9 @@
 # Repository review and decisions
 
-Inspected 2026-10-17. These are design references, not dependencies. No source code
-or third-party artwork was copied into visual-core. The renderer, shapes and presets
-here are original. Repository names and current state matter:
+Inspected 2026-10-17. These are design references, not dependencies. The original 0.1 renderer and presets were written here. Version 0.2 adds unchanged,
+licensed upstream tools and references under vendor/: Basecoat, Pixel Sprite
+Generator and Lucide, with Tailwind notices for the prebuilt CSS. Exact pins,
+selection rationale and upgrade rules are in [the toolbox](toolbox.md). Repository names and current state matter:
 
 | Source and reviewed commit | Observed | Adopted here |
 |---|---|---|
@@ -26,7 +27,7 @@ a large model. A constrained spec is easier to validate and revise than arbitrar
 model-generated SVG/JavaScript. Fine illustrations, game UI and motion use recipes
 and the host's tools; the capability index explicitly marks them as recipes.
 
-Do not add Aseprite/Pillow/resvg or a generative service until a real consumer needs
+Do not add further Aseprite/Pillow/resvg dependencies or a generative service until a real consumer needs
 an output the current path cannot produce. The shared standard is included as a
 reusable skeleton, without changing any existing core or handbook repository.
 

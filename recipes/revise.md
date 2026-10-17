@@ -29,3 +29,8 @@ Outputs are 0002/, etc. Never edit a numbered source file in place to fake a rev
 UI follow-ups use the host's file-edit/git workflow, not this pixel patch format.
 Preserve component IDs, content, actions and theme while making the requested edit.
 Inspect a before/after preview and verify the specific change plus preserved behavior.
+
+Compatibility: revising a 0.1 icon keeps its original geometry for color/size/stroke
+changes. An explicit shape change opts into the new Lucide shape set. Procedural
+sprites retain generator.json as initial provenance while spec.json is the current
+authority; ordinary revisions never rerun the generator.

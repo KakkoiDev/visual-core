@@ -1,9 +1,13 @@
 # SVG icon set
 
+The catalog uses 50 bundled Lucide SVGs, pinned at 1.59.0. The CLI preserves the
+legacy arrow/close/robot/coin names as aliases. Choose an existing catalog shape;
+do not draw a replacement. Keep LICENSE-lucide.txt alongside exported assets.
+
 **Outcome:** consistent small icons, not mixed clip-art styles.
 **Defaults:** 24 px viewBox, 2 px stroke, rounded caps, one ink color. Existing sets
-keep their own convention. The executable catalog offers check, close, arrow,
-heart, star, coin and robot; other shapes need direct SVG work and visual review.
+keep their own convention. Run `python3 tools/visual.py catalog` for every available shape. For an existing
+app, retain its current icon system instead of mixing sets.
 
 ```sh
 python3 tools/visual.py template icon > confirm.json

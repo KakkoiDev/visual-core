@@ -8,12 +8,14 @@ import tomllib
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'src'))
 from visual_core import validate, load
+from vendor import check as check_vendor
 
 
 def check():
     errors = []
+    check_vendor()
     for path in ROOT.rglob('*.md'):
-        if any(part.startswith('.') for part in path.relative_to(ROOT).parts):
+        if any(part.startswith('.') for part in path.relative_to(ROOT).parts) or 'vendor' in path.relative_to(ROOT).parts:
             continue
         for target in re.findall(r'\[[^\]]+\]\(([^)]+)\)', path.read_text()):
             if '://' not in target and not target.startswith('#'):

@@ -3,7 +3,8 @@
 Tell the agent the repository URL and the result you want. It reads the host's
 instructions, chooses a recipe, creates an initial result and shows it for review.
 No plugin, model service or MCP server is required. A locally running coding agent
-can use the same files and commands as a hosted one.
+can use the same files and commands as a hosted one. Read [the local toolbox](toolbox.md)
+for exact bundled versions, prerequisites and upgrade rules.
 
 ## New interface
 
@@ -18,7 +19,9 @@ realistic content and replace the example board behavior with the app's needs.
 An existing app should use its current components and build system; read the web
 recipe rather than scaffolding over it.
 
-The copied CSS records its version and hash in vendor/visual-core/provenance.json.
+The init command also copies Basecoat prebuilt CSS/JS and Basecoat/Tailwind licenses
+into vendor/basecoat/. It records tool versions, CSS and runtime file hashes in
+vendor/visual-core/provenance.json.
 Record the Git commit used in the consumer's dependency notes. Upgrades are explicit:
 review the CSS diff and rerun the consumer checks; do not overwrite local changes.
 A vendored style copy is not a live dependency that updates itself.
@@ -26,6 +29,9 @@ A vendored style copy is not a live dependency that updates itself.
 ## Assets and chat revisions
 
 ```sh
+# Default for procedural sprites: no handwritten pixel rows needed.
+python3 /path/to/visual-core/tools/visual.py generate ship --seed 42 --out assets/visual/ship
+# For exact frame authoring/editing:
 python3 /path/to/visual-core/tools/visual.py template robot > robot.json
 python3 /path/to/visual-core/tools/visual.py create robot.json --out assets/visual/robot
 python3 /path/to/visual-core/tools/visual.py read assets/visual/robot
@@ -33,7 +39,9 @@ python3 /path/to/visual-core/tools/visual.py read assets/visual/robot
 
 The asset contains current.json and 0001/, 0002/, etc. A revision contains spec.json,
 sheet.png/sheet.svg/atlas.json (pixels), or asset.svg (icons), plus preview.html and
-manifest.json. Ask, for example: “Make the robot eyes amber; keep the body, size
+manifest.json. Procedural sprites also keep generator.json and the upstream notice;
+icons keep LICENSE-lucide.txt. Retain the corresponding license when copying an
+approved output into the application. Ask, for example: “Make the robot eyes amber; keep the body, size
 and animation.” The agent reads first and patches the affected palette/frame IDs.
 For each reply show the image or live browser preview and link the current source.
 A CLI result alone does not attach an image to arbitrary chat software; the host

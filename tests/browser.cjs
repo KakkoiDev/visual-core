@@ -15,13 +15,20 @@ async function main(){
  let server, browser;
  try{
   run('init','web-app','--out',path.join(temporary,'app'));
+  run('init','component-kit','--out',path.join(temporary,'app/kit'));
   run('create',path.join(root,'presets/robot.json'),'--out',path.join(temporary,'app/assets/robot'));
+  run('generate','ship','--seed','42','--out',path.join(temporary,'app/assets/ship'));
   const code='import http.server, functools\ns=http.server.ThreadingHTTPServer(("127.0.0.1",0), functools.partial(http.server.SimpleHTTPRequestHandler,directory='+JSON.stringify(path.join(temporary,'app'))+'))\nprint(s.server_port,flush=True)\ns.serve_forever()';
   server=spawn(python,['-u','-c',code],{stdio:['ignore','pipe','pipe']});
   let stderr='';server.stderr.on('data',d=>stderr+=d);
   const port=await new Promise((resolve,reject)=>{let text='';const timer=setTimeout(()=>reject(new Error('Server start timeout: '+stderr)),10000);server.stdout.on('data',d=>{text+=d;if(text.includes('\n')){clearTimeout(timer);resolve(Number(text.trim()));}});server.on('error',reject);server.on('exit',c=>{if(c)reject(new Error(stderr));});});
   browser=await chromium.launch({headless:true,...(process.env.CHROME?{executablePath:process.env.CHROME}:{})});
   const context=await browser.newContext({viewport:{width:1280,height:900}}), page=await context.newPage();
+  const externalRequests=[];
+  await context.route('**/*',route=>{
+    if(new URL(route.request().url()).hostname==='127.0.0.1')return route.continue();
+    externalRequests.push(route.request().url());return route.abort();
+  });
   const errors=[];page.on('pageerror',error=>errors.push(error.message));
   const base=`http://127.0.0.1:${port}`;
   await page.goto(base);await page.waitForSelector('#empty:visible');
@@ -34,6 +41,7 @@ async function main(){
   assert.equal(await page.locator('#dialog').evaluate(el=>el.open),true);
   await page.locator('#title').fill('Pocket garden');await page.locator('#description').fill('Sketch the first three little plants.');await page.locator('button[type=submit]').click();
   await page.locator('#projects article').waitFor();
+  assert.match(await page.locator('#new').evaluate(el=>getComputedStyle(el).display),/^(inline-)?flex$/);
   await page.locator('#new').click();await page.locator('#title').fill('Robot companion');await page.locator('#description').fill('Draw a friendly idle animation.');await page.locator('button[type=submit]').click();
   assert.equal(await page.locator('#projects article').count(),2);
   await page.getByRole('button',{name:'Complete Pocket garden',exact:true}).click();
@@ -58,8 +66,29 @@ async function main(){
   await page.locator('img').first().evaluate(async img=>{await img.decode();});
   assert.equal(await page.locator('img').first().evaluate(img=>img.naturalWidth),32);
   await page.screenshot({path:path.join(output,'robot.png'),fullPage:true});
+  await page.goto(`${base}/assets/ship/0001/preview.html`);
+  await page.locator('img').first().evaluate(async img=>{await img.decode();});
+  assert.equal(await page.locator('img').first().evaluate(img=>img.naturalWidth),12);
+  await page.screenshot({path:path.join(output,'ship.png'),fullPage:true});
+  await page.setViewportSize({width:1280,height:1000});
+  await page.goto(`${base}/kit/`);
+  await page.waitForFunction(()=>document.querySelector('#kit-tabs').dataset.tabsInitialized);
+  await page.locator('#overview-tab').focus();await page.keyboard.press('ArrowRight');
+  assert.equal(await page.locator('#details-tab').getAttribute('aria-selected'),'true');
+  assert.equal(await page.locator('#details-panel').isVisible(),true);
+  await page.keyboard.press('Home');assert.equal(await page.locator('#overview-tab').getAttribute('aria-selected'),'true');
+  await page.locator('#note').fill('Use the local component recipe');await page.getByRole('button',{name:'Keep this note',exact:true}).click();
+  assert.equal(await page.locator('#note-status').textContent(),'For this session: Use the local component recipe');
+  await page.locator('#open-dialog').click();await page.keyboard.press('Escape');
+  assert.equal(await page.locator('#example-dialog').evaluate(el=>el.open),false);
+  assert.equal(await page.locator('#open-dialog').evaluate(el=>el===document.activeElement),true);
+  await page.screenshot({path:path.join(output,'components.png'),fullPage:true});
+  await page.setViewportSize({width:360,height:800});
+  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
+  await page.screenshot({path:path.join(output,'components-mobile.png'),fullPage:true});
+  assert.deepEqual(externalRequests,[],'Starters must not request CDNs, remote fonts or services');
   assert.deepEqual(errors,[]);
-  console.log('Browser behavior passed. Review desktop.png, mobile.png and robot.png separately for appearance.');
+  console.log('Offline Basecoat/starter/asset behavior passed. Review screenshots separately for appearance.');
  }finally{
   if(browser)await browser.close();if(server)server.kill();fs.rmSync(temporary,{recursive:true,force:true});
  }

@@ -16,3 +16,5 @@ Choose by the user's outcome. The agent chooses the recipe, not the user.
 
 Commands above are subcommands of `python3 tools/visual.py`. Their complete syntax
 is available through `--help`. No unlisted export/render/model command exists.
+
+Toolbox first: [Basecoat UI](recipes/basecoat.md), [seeded procedural sprites](recipes/procedural-pixels.md), [locked local tools](docs/toolbox.md).

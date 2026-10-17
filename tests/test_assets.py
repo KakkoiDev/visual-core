@@ -15,6 +15,7 @@ sys.path.insert(0, str(ROOT / 'src'))
 sys.path.insert(0, str(ROOT / 'tools'))
 import visual_core as vc
 from new_core import generate
+from vendor import check as check_vendor
 
 
 class Assets(unittest.TestCase):
@@ -178,6 +179,73 @@ class Assets(unittest.TestCase):
             generate('physics-core', out)
         with self.assertRaises(ValueError):
             generate('../escape-core', self.root/'escaped')
+
+    def test_upstream_generator_determinism_and_revision(self):
+        config = vc.load(ROOT/'presets/generators/ship.json')
+        source = vc.generate_spec(config)
+        self.assertEqual(source, vc.generate_spec(config))
+        changed = vc.generate_spec({**config, 'seed':43})
+        self.assertNotEqual(source['frames'], changed['frames'])
+        self.assertEqual(source['palette'], changed['palette'])
+        for row in source['frames'][0]['rows']:
+            self.assertEqual(row, row[::-1])
+        result = self.cli('generate','ship','--seed',42,'--out',self.asset)
+        original = vc.read_asset(self.asset)
+        self.assertEqual(original['spec'], source)
+        self.assertEqual(original['generator']['config']['seed'],42)
+        self.assertTrue((Path(result['directory'])/'LICENSE-pixel-sprite-generator.txt').is_file())
+        vc.publish(self.asset, base=1, patch={'frames':[{'id':'idle','ms':400}]})
+        revised = vc.read_asset(self.asset)
+        self.assertEqual(original['generator'], revised['generator'])
+        self.assertEqual(source['frames'][0]['rows'], revised['spec']['frames'][0]['rows'])
+
+    def test_generator_rejects_invalid_parameters(self):
+        config = vc.load(ROOT/'presets/generators/ship.json')
+        for update in ({'seed':-1}, {'seed':True}, {'seed':4294967296}, {'mask':'../../evil'}, {'execute':'code'}, {'palette':{'0':'red'}}):
+            with self.subTest(update=update), self.assertRaises(ValueError):
+                vc.generate_spec({**config, **update})
+
+    def test_vendor_hashes_detect_tampering(self):
+        self.assertEqual(check_vendor()['basecoat'],'1.0.2')
+        vendor = self.root/'vendor'
+        (vendor/'example').mkdir(parents=True)
+        (vendor/'example/file.js').write_text('original')
+        vc.write_json(vendor/'LOCK.json', {'schema_version':1,'sources':[{'id':'example','version':'1','sha256':{'file.js':hashlib.sha256(b'original').hexdigest()}}]})
+        self.assertEqual(check_vendor(vendor), {'example':'1'})
+        (vendor/'example/file.js').write_text('changed')
+        with self.assertRaisesRegex(ValueError,'hash mismatch'):
+            check_vendor(vendor)
+
+    def test_lucide_icons_have_geometry_and_license(self):
+        from xml.etree import ElementTree
+        self.assertGreaterEqual(len(vc.ICON_PATHS),50)
+        for index, shape in enumerate(vc.ICON_PATHS):
+            spec = {**vc.load(ROOT/'presets/icon.json'), 'shape':shape}
+            folder = self.root/f'icon-{index}'
+            folder.mkdir()
+            vc.render(spec,folder)
+            svg = ElementTree.parse(folder/'asset.svg').getroot()
+            self.assertGreater(len(list(svg.iter())),3)
+            self.assertTrue((folder/'LICENSE-lucide.txt').is_file())
+
+    def test_legacy_icon_style_edits_keep_approved_geometry(self):
+        spec = vc.load(ROOT/'presets/icon.json')
+        old = self.asset/'0001'
+        old.mkdir(parents=True)
+        vc.render(spec, old, legacy_icon=True)
+        manifest = vc.load(old/'manifest.json')
+        manifest['version'] = '0.1.0'
+        manifest.pop('icon_library')
+        vc.write_json(old/'manifest.json',manifest)
+        vc.write_json(self.asset/'current.json',{'revision':1})
+        for base, color in [(1,'#ffffff'),(2,'#000000')]:
+            vc.publish(self.asset, base=base, patch={'set':{'color':color}})
+            current = vc.read_asset(self.asset)
+            svg = (Path(current['directory'])/'asset.svg').read_text()
+            self.assertIn(vc.LEGACY_ICON_PATHS['check'],svg)
+            self.assertEqual(current['manifest']['icon_library'],'visual-core-legacy')
+        vc.publish(self.asset, base=3, patch={'set':{'shape':'leaf'}})
+        self.assertEqual(vc.read_asset(self.asset)['manifest']['icon_library'],'lucide-1.59.0')
 
 
 if __name__ == '__main__':

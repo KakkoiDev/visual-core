@@ -1,0 +1,17 @@
+{
+  "id": "pixel-sprite-generator",
+  "version": "0.0.2",
+  "revision": "8c2cee790b0ae5885319181e56745ae45a0f8138",
+  "adapter_version": 1,
+  "config": {
+    "name": "ship",
+    "mask": "spaceship",
+    "seed": 42,
+    "palette": {
+      "0": "#172F36",
+      "1": "#60B6A1",
+      "2": "#D9F0D2"
+    }
+  },
+  "note": "Initial generation provenance. Later frame/palette patches may differ; revise instead of regenerating."
+}

@@ -4,3 +4,6 @@ Recipes: RECIPES.md
 Implemented versus recipe-only: CAPABILITIES.json
 Use in projects: docs/project-integration.md
 Core repository standard: docs/core-repo-standard.md
+Locked local tools: docs/toolbox.md
+Basecoat components: recipes/basecoat.md
+Procedural sprites: recipes/procedural-pixels.md

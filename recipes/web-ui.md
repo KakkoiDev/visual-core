@@ -4,6 +4,9 @@
 **Inputs:** existing app, audience, task, real content, required states. Default:
 warm-paper/teal, native controls, system font, 360 px and desktop layouts.
 
+Start with [the pinned Basecoat recipe](basecoat.md) and its local component kit.
+Reuse its markup and runtime instead of inventing components.
+
 1. Read the host's instructions and inspect its current UI. List the primary user
    action and what must be preserved. For an existing UI, capture its current view.
 2. Read [design defaults](../docs/design-system.md) and choose a [composition pattern](../docs/composition-patterns.md). Choose its existing design

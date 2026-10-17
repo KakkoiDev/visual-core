@@ -3,13 +3,39 @@
   "capabilities": [
     {
       "id": "web-ui",
-      "recipe": "recipes/web-ui.md",
+      "recipe": "recipes/basecoat.md",
       "status": "implemented",
       "command": "init web-app --out PATH",
       "outputs": [
         "index.html",
         "app.js",
-        "vendor/visual-core/visual-core.css"
+        "vendor/visual-core/visual-core.css",
+        "vendor/basecoat/basecoat.min.css"
+      ]
+    },
+    {
+      "id": "component-kit",
+      "recipe": "recipes/basecoat.md",
+      "status": "implemented",
+      "command": "init component-kit --out PATH",
+      "outputs": [
+        "index.html",
+        "kit.js",
+        "vendor/basecoat/"
+      ]
+    },
+    {
+      "id": "procedural-pixels",
+      "recipe": "recipes/procedural-pixels.md",
+      "status": "implemented",
+      "command": "generate ship --seed 42 --out PATH",
+      "outputs": [
+        "spec.json",
+        "generator.json",
+        "sheet.png",
+        "sheet.svg",
+        "atlas.json",
+        "manifest.json"
       ]
     },
     {
