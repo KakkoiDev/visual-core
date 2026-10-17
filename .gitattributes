@@ -1,0 +1,4 @@
+# Locks/manifests describe exact bytes, including upstream line endings.
+vendor/** -text
+examples/** -text
+*.png binary
