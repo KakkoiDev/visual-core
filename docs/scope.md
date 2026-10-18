@@ -27,6 +27,12 @@ content/pixel, in the four kit palettes, at 16/32/64 px (frames and buttons up t
 256 px). Animation rows are fixed per action (idle, walk, attack, hurt, die).
 There is no free-form image input, rotation, anti-aliasing or interpolation.
 
+Vector recipes (`visual.py vector`) write SVG from the pieces and icons in
+content/vector, basic shapes and validated path data (M L H V C S Q T A Z), with
+text as paths in a bundled capitals-only line font (no Japanese yet). The PNG
+preview comes from visual-core's own rasteriser: good for review, not a
+reference-grade SVG renderer. No filters, gradients, masks, images or CSS.
+
 Assets keep immutable numbered revisions. Revisions can patch existing pixel
 frames/timing/palette or icon shape/size/stroke/color, not frame topology or asset
 kind. Create a separate named asset when changing dimensions or frame count.

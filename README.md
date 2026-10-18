@@ -24,6 +24,7 @@ Tell your agent:
 | Copyable component patterns | Working form, tabs, dialog, feedback and disclosure | [Component kit](recipes/basecoat.md) |
 | Seeded retro sprites | **Pixel Sprite Generator 0.0.2**, pinned commit; ship/robot/creature presets | [Procedural pixels](recipes/procedural-pixels.md) |
 | Consistent SVG icons | **Lucide static 1.59.0**, 50 curated shapes | [Icons](recipes/icons.md) |
+| Vector icons, logos, diagrams | Deterministic SVG recipes: 12 game icons, designer pieces, layout helpers, bundled line font, PNG previews | [SVG recipes](recipes/svg-recipes.md) |
 | Game sprites from named parts | Deterministic pixel recipes: four palettes, characters, monsters, items, icons, tiles, 9-slice frames, animation rows | [Pixel recipes](recipes/pixel-recipes.md) |
 | Exact pixels, frames and terrain | Bounded JSON source, curated robot/terrain presets and PNG/SVG atlas exports | [Pixel edits](recipes/pixel-art.md), [tiles](recipes/tiles.md) |
 | Follow-up requests | Stable frame IDs, palette patches and numbered history | [Revisions](recipes/revise.md) |
@@ -66,6 +67,10 @@ keyboard tabs, dialogs and feedback.
 The reference hero from a pixel recipe: idle, walk, attack and hurt rows, base and blue variant, on paper and on the dark panel:
 
 ![Pixel recipe hero sheet](docs/images/pixel-hero.png)
+
+SVG recipes: the designer's vector reference pieces, a logo and a diagram (PNG previews from the built-in rasteriser):
+
+![Vector recipe previews](docs/images/vector-recipes.png)
 
 The seeded upstream generator's ship, at native and enlarged scale:
 

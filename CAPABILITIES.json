@@ -139,6 +139,20 @@
         "preview.html",
         "numbered revisions"
       ]
+    },
+    {
+      "id": "svg-recipes",
+      "recipe": "recipes/svg-recipes.md",
+      "status": "implemented",
+      "command": "vector catalog; vector template title-logo; vector check RECIPE; vector create RECIPE --out PATH; vector read PATH; vector revise PATH --base N --patch PATCH",
+      "outputs": [
+        "asset.svg",
+        "preview.png",
+        "manifest.json",
+        "spec.json",
+        "preview.html",
+        "numbered revisions"
+      ]
     }
   ]
 }

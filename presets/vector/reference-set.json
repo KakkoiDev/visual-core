@@ -1,0 +1,4 @@
+{"schema": "visual-core.vector/1", "kind": "illustration", "id": "reference-set", "width": 232, "height": 64, "background": "w",
+ "items": [{"piece": "hero"}, {"piece": "monster"}, {"piece": "potion"}, {"piece": "grass"}],
+ "layout": {"type": "row", "gap": 8, "align": "center", "padding": 8},
+ "note": "Designer reference vector column: hero, monster, item, tile."}
