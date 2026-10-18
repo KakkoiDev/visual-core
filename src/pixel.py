@@ -16,7 +16,7 @@ import visual_core as vc
 SCHEMA = 'visual-core.pixel/1'
 CONTENT = vc.ROOT/'content'
 SIZES = (16, 32, 64)
-KINDS = ('character', 'monster', 'item', 'icon', 'tile', 'frame', 'button', 'sprite')
+KINDS = ('character', 'monster', 'item', 'icon', 'tile', 'frame', 'button', 'building', 'sprite')
 # Designer card ArtSprites: frame counts and timings are fixed per action.
 ACTIONS = {'idle': [500, 500], 'walk': [120, 120, 120, 120], 'attack': [80, 60, 140],
            'hurt': [80, 160], 'die': [100, 100, 100, 100]}
@@ -33,7 +33,7 @@ PALETTES = _json('palettes.json')
 KEYS = PALETTES['keys']
 SHADE, LIGHT = PALETTES['shade'], PALETTES['light']
 PACKS = {name: _json(f'pixel/{name}.json') for name in
-         ('characters', 'monsters', 'items', 'icons', 'tiles', 'frames', 'font')}
+         ('characters', 'monsters', 'items', 'icons', 'tiles', 'frames', 'buildings', 'font')}
 
 
 class RecipeError(ValueError):
@@ -535,7 +535,10 @@ def defaults(spec):
     elif kind == 'tile':
         base.update(size=16, detail='low', variants_count=1)
     elif kind == 'frame':
-        base.update(style='pixel', width=48, height=32, fill='p', slice=4, corner='cut', outline_key='k')
+        base.update(style='pixel', source='frame9', width=48, height=32, slice=4, corner='cut', outline_key='k')
+    elif kind == 'building':
+        base.update(size=32, outline='selective', parts={'wall': 'wood', 'roof': {'style': 'gable', 'keys': ['r', 'R']},
+                                                         'door': 'wood', 'windows': 2, 'chimney': False})
     elif kind == 'button':
         base.update(style='pixel', width=48, height=16, fill=['y', 'o'], states=['normal'], label='')
     elif kind == 'sprite':
@@ -552,6 +555,8 @@ def defaults(spec):
             result['parts'] = merged
         else:
             result[name] = copy.deepcopy(value)
+    if kind == 'building' and isinstance(result.get('parts'), dict) and isinstance(result['parts'].get('roof'), dict) and 'colour' in result['parts']['roof']:
+        result['parts']['roof']['keys'] = colour_keys(result['parts']['roof'].pop('colour'))
     if kind in ('character', 'monster') and isinstance(result.get('parts'), dict):
         parts = result['parts']
         if kind == 'character' and isinstance(parts.get('outfit'), dict) and 'colour' in parts['outfit']:
@@ -570,7 +575,8 @@ FIELDS = {
     'item': COMMON + ['size', 'outline', 'name', 'keys'],
     'icon': COMMON + ['style', 'size', 'name'],
     'tile': COMMON + ['size', 'name', 'detail', 'variants_count'],
-    'frame': COMMON + ['style', 'width', 'height', 'fill', 'bevel', 'edge', 'slice', 'corner', 'outline_key'],
+    'frame': COMMON + ['style', 'source', 'width', 'height', 'fill', 'bevel', 'edge', 'slice', 'corner', 'outline_key'],
+    'building': COMMON + ['size', 'outline', 'parts'],
     'button': COMMON + ['style', 'width', 'height', 'fill', 'states', 'label'],
     'sprite': COMMON + ['width', 'height', 'ops', 'frames'],
 }
@@ -720,13 +726,37 @@ def check_tile(check, spec, palette):
             check.fail('detail', f'{spec["name"]} has fixed detail; use "low"')
 
 
+def check_building(check, spec, palette):
+    pack, parts = PACKS['buildings'], spec['parts']
+    check.choice(spec.get('size'), 'size', [32, 64])
+    check.choice(spec.get('outline'), 'outline', ['full', 'selective'])
+    if not check.fields(parts, 'parts', ['wall', 'roof', 'door', 'windows', 'chimney']):
+        return
+    check.choice(parts.get('wall'), 'parts.wall', list(pack['walls']))
+    check.choice(parts.get('door'), 'parts.door', list(pack['doors']))
+    check.choice(parts.get('windows'), 'parts.windows', list(range(len(pack['windows']))))
+    if type(parts.get('chimney')) is not bool:
+        check.fail('parts.chimney', 'must be true or false')
+    roof = parts.get('roof')
+    if check.fields(roof, 'parts.roof', ['style', 'keys', 'colour']):
+        check.choice(roof.get('style'), 'parts.roof.style', list(pack['roofs']))
+        keys = roof.get('keys')
+        if not isinstance(keys, list) or len(keys) != 2:
+            check.fail('parts.roof.keys', 'must be two keys [base, shade] like ["r", "R"], or use "colour"', list(PALETTES['colours']))
+        else:
+            for j, key in enumerate(keys):
+                check.key(key, f'parts.roof.keys[{j}]', palette)
+
+
 def check_frame(check, spec, palette):
     check.choice(spec.get('style'), 'style', ['pixel'])
+    check.choice(spec.get('source'), 'source', [n for n, v in PACKS['frames'].items() if isinstance(v, dict) and 'grid' in v and n != 'button9'])
     check.integer(spec.get('width'), 'width', 8, LIMIT)
     check.integer(spec.get('height'), 'height', 8, LIMIT)
     check.choice(spec.get('slice'), 'slice', [4])
     check.choice(spec.get('corner'), 'corner', ['cut'])
-    check.key(spec.get('fill'), 'fill', palette)
+    if 'fill' in spec:
+        check.key(spec['fill'], 'fill', palette)
     check.key(spec.get('outline_key'), 'outline_key', palette)
     if 'bevel' in spec:
         check.key(spec['bevel'], 'bevel', palette)
@@ -1076,14 +1106,20 @@ def nine_slice(source, width, height, corner=4):
 
 
 def render_frame(spec, size):
-    pack = PACKS['frames']
-    roles = pack['frame9']['roles']
-    fill = spec['fill']
-    bevel = spec.get('bevel', 'd' if fill == 'w' else ('q' if fill == 'p' else SHADE.get(fill, fill)))
-    edge = {'light': 'w', 'shade': 'd', **spec.get('edge', {})}
-    mapping = {roles['fill']: fill, roles['bevel']: bevel, roles['light']: edge['light'],
-               roles['shade']: edge['shade'], roles['outline']: spec['outline_key']}
-    canvas = nine_slice([''.join(mapping.get(c, c) if c != '.' else '.' for c in row) for row in pack['frame9']['grid']],
+    source = PACKS['frames'][spec['source']]
+    roles = source['roles']
+    mapping = {roles['outline']: spec['outline_key']}
+    if 'fill' in spec:
+        mapping[roles['fill']] = spec['fill']
+        if 'bevel' in roles:
+            fill = spec['fill']
+            mapping[roles['bevel']] = 'd' if fill == 'w' else ('q' if fill == 'p' else SHADE.get(fill, fill))
+    if 'bevel' in spec and 'bevel' in roles:
+        mapping[roles['bevel']] = spec['bevel']
+    for name, key in spec.get('edge', {}).items():
+        if name in roles:
+            mapping[roles[name]] = key
+    canvas = nine_slice([''.join(mapping.get(c, c) if c != '.' else '.' for c in row) for row in source['grid']],
                         spec['width'], spec['height'])
     return [('frame', 0, canvas)]
 
@@ -1119,6 +1155,24 @@ def render_button(spec, size):
             canvas = shift(canvas, 0, 1)
         cells.append(('button', STATES.index(state), canvas, state))
     return cells
+
+
+def render_building(spec, size):
+    pack, parts = PACKS['buildings'], spec['parts']
+    scale = size // 32
+
+    def layer(ops, mapping=None):
+        canvas = draw(blank(size, size), ops, scale, seed=spec.get('seed'), label='building')
+        return swap_layer(canvas, mapping)
+    canvas = blank(size, size)
+    if parts['chimney']:
+        composite(canvas, layer(pack['chimney']))
+    composite(canvas, layer(pack['walls'][parts['wall']]))
+    composite(canvas, layer(pack['roofs'][parts['roof']['style']], role_swap(pack['roles']['roof'], parts['roof']['keys'])))
+    composite(canvas, layer(pack['doors'][parts['door']]))
+    composite(canvas, layer(pack['windows'][parts['windows']]))
+    outline(canvas, spec['outline'])
+    return [('building', 0, canvas)]
 
 
 def render_sprite(spec, size):
@@ -1190,7 +1244,7 @@ def layout(spec, cells):
                 record.update(action=group, index=cell[1])
             if ms:
                 record['ms'] = ms
-            if kind in ('character', 'monster', 'item', 'sprite'):
+            if kind in ('character', 'monster', 'item', 'building', 'sprite'):
                 record['pivot'] = {'x': cw // 2, 'y': ch}
             records.append((record, cell[2]))
     return records, columns * cw, len(rows) * ch
@@ -1245,7 +1299,7 @@ def quality(spec, canvases, palette):
                 if key is not None:
                     used.add(resolve_key(palette, key))
     checks = {'palette_only': used <= allowed, 'colours_used': len(used)}
-    if spec['kind'] in ('character', 'monster', 'item', 'icon'):
+    if spec['kind'] in ('character', 'monster', 'item', 'icon', 'building'):
         base = canvases[0]
         w, h = size_of(base)
         checks['fits_canvas'] = all(base[y][x] is None for y in range(h) for x in range(w) if x in (0, w - 1) and y in (0, h - 1)) or spec['kind'] == 'icon'
@@ -1333,7 +1387,7 @@ def patch(spec, change):
         check.fail('patch.set', 'must be an object of fields to change, e.g. {"set": {"size": 32}}')
     check.done()
     candidate = merge(spec, updates)
-    if 'size' in updates and 'outline' not in updates and spec['kind'] in ('character', 'monster', 'item'):
+    if 'size' in updates and 'outline' not in updates and spec['kind'] in ('character', 'monster', 'item'):  # buildings stay as set
         if spec.get('outline') == ('full' if spec.get('size') == 16 else 'selective'):
             candidate['outline'] = 'full' if updates['size'] == 16 else 'selective'
     return validate(candidate)
@@ -1351,8 +1405,12 @@ def catalog():
         'monster': {'body': list(mons['bodies']), 'eyes': list(mons['eyes']), 'extra': list(mons['extras'])},
         'items': {n: {'slots': i['slots'], 'sizes': i.get('sizes', list(SIZES))} for n, i in PACKS['items']['items'].items()},
         'icons': list(PACKS['icons']['icons']), 'tiles': {n: {'variants': bool(t.get('scatter'))} for n, t in PACKS['tiles']['tiles'].items()},
+        'buildings': {'wall': list(PACKS['buildings']['walls']), 'roof.style': list(PACKS['buildings']['roofs']),
+                      'door': list(PACKS['buildings']['doors']), 'windows': list(range(len(PACKS['buildings']['windows']))), 'chimney': [False, True], 'sizes': [32, 64]},
+        'frame_sources': [n for n, v in PACKS['frames'].items() if isinstance(v, dict) and 'grid' in v and n != 'button9'],
         'button_states': list(STATES), 'ops': {k: sorted(v) for k, v in OPS.items()},
         'templates': sorted(p.stem for p in (vc.ROOT/'presets/pixel').glob('*.json')),
+        'library_templates': library_templates(),
         'outputs': ['sheet.png', 'sheet-<variant>.png', 'preview.png', 'manifest.json', 'spec.json', 'preview.html'],
     }
 
@@ -1386,11 +1444,39 @@ def load(path):
     return terrain.load(path)
 
 
+def library_templates():
+    """Every content-library entry is also a ready recipe: item.gem, icon.gear, tile.water, frame.parchment…"""
+    frames = [n for n, v in PACKS['frames'].items() if isinstance(v, dict) and 'grid' in v and n != 'button9']
+    return ([f'item.{n}' for n in PACKS['items']['items']] + [f'icon.{n}' for n in PACKS['icons']['icons']]
+            + [f'tile.{n}' for n in PACKS['tiles']['tiles']] + [f'frame.{n}' for n in frames]
+            + [f'building.{w}-{r}' for w in PACKS['buildings']['walls'] for r in PACKS['buildings']['roofs']])
+
+
+def library_recipe(name):
+    group, _, item = name.partition('.')
+    base = {'schema': SCHEMA, 'id': item.replace('_', '-')}
+    if group == 'item':
+        return {**base, 'kind': 'item', 'name': item, 'size': 16, 'keys': {s: (k if len(k) > 1 else k[0]) for s, k in PACKS['items']['items'][item]['slots'].items()}}
+    if group == 'icon':
+        return {**base, 'kind': 'icon', 'style': 'pixel', 'size': 16, 'name': item}
+    if group == 'tile':
+        scatter = PACKS['tiles']['tiles'][item].get('scatter')
+        return {**base, 'kind': 'tile', 'name': item, 'detail': 'low', 'variants_count': 4 if scatter else 1, **({'seed': 1} if scatter else {})}
+    if group == 'frame':
+        return {**base, 'id': f'{item}-frame', 'kind': 'frame', 'style': 'pixel', 'source': item, 'width': 48, 'height': 32}
+    wall, _, roof = item.partition('-')
+    return {**base, 'kind': 'building', 'size': 32, 'parts': {'wall': wall, 'roof': {'style': roof, 'keys': ['r', 'R']}, 'door': 'wood',
+                                                              'windows': 2, 'chimney': roof in ('gable', 'hip')}}
+
+
 def template(name):
     check = Check()
-    check.choice(name, 'template', sorted(p.stem for p in (vc.ROOT/'presets/pixel').glob('*.json')))
+    names = sorted(p.stem for p in (vc.ROOT/'presets/pixel').glob('*.json'))
+    check.choice(name, 'template', names + library_templates())
     check.done()
-    return load(vc.ROOT/'presets/pixel'/f'{name}.json')
+    if name in names:
+        return load(vc.ROOT/'presets/pixel'/f'{name}.json')
+    return library_recipe(name)
 
 
 def main(argv):

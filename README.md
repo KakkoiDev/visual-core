@@ -100,6 +100,7 @@ local-only requests, Basecoat behavior and the UI at desktop/mobile sizes. A val
 file is not an aesthetic review; manifests say `visual_review: not-performed`.
 [Weak-model trials](evals/README.md) remain separate from these automated checks.
 
+- [Content library](docs/content-library.md): palettes, part sets, items, icons, tiles, buildings, UI frames and vector pieces, each a recipe.
 - [Recipe router](RECIPES.md), [capability catalog](CAPABILITIES.json), [composition patterns](docs/composition-patterns.md).
 - [Common core-repository standard](docs/core-repo-standard.md) and [reusable scaffold](templates/core/README.md).
 - [Research](docs/research.md): jp-core, jpanki, p2p-core, pi-local-harness and ai-handbook.

@@ -19,6 +19,11 @@ badges and dividers, and free drawings on a grid. Text uses a bundled original l
 font drawn as paths. Output is allowlisted SVG (no scripts, styles or external
 references) and a PNG preview from a small built-in rasteriser.
 
+Add the content library: eight more items, the full 12 pixel HUD icons, eight more
+tiles (five with seeded variants), buildings from walls/roofs/doors/windows at
+32/64 px, parchment and inset frames, eight vector pieces and a meadow scene. Every
+library entry is a ready recipe (`pixel template item.gem`). All original (MIT).
+
 ## 0.3.0
 
 Add pinned headless terrain dependencies, meadow/coast/dungeon Blob 47 generation,

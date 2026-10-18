@@ -1,25 +1,202 @@
 {
-  "schema": "visual-core.pixel-pack/1",
-  "pack": "tiles",
-  "license": "Original to visual-core (MIT). Grass reproduces the kit designer's ArtReferenceSet tile.",
-  "note": "Static 16 px tiles, no outline. scatter: the drawn details (connected groups) can be moved by seed with wrap-around, so every variant still repeats without a seam. Whole terrains with joins come from the terrain command.",
-  "tiles": {
-    "grass": {"base": "g", "scatter": true, "grid": [
-      "gggggggggggggggg",
-      "gglggggggggGgggg",
-      "gglGgggggggGlggg",
-      "ggggggggggggggGg",
-      "ggggGggggggggggg",
-      "gggGlgggglgggggg",
-      "gggggggggGlggggg",
-      "gggggggggggggggg",
-      "gGgggggggggggglg",
-      "glggggggggggggGg",
-      "gggggggGgggggggg",
-      "ggggggglgggggggg",
-      "gggggggggggGgggg",
-      "gggglgggggglGggg",
-      "ggggGggggggggggg",
-      "gggggggggggggggg"]}
+ "schema": "visual-core.pixel-pack/1",
+ "pack": "tiles",
+ "license": "Original to visual-core (MIT). Grass reproduces the kit designer's ArtReferenceSet tile.",
+ "note": "Static 16 px tiles, no outline. scatter: the drawn details (connected groups) can be moved by seed with wrap-around, so every variant still repeats without a seam. Whole terrains with joins come from the terrain command.",
+ "tiles": {
+  "grass": {
+   "base": "g",
+   "scatter": true,
+   "grid": [
+    "gggggggggggggggg",
+    "gglggggggggGgggg",
+    "gglGgggggggGlggg",
+    "ggggggggggggggGg",
+    "ggggGggggggggggg",
+    "gggGlgggglgggggg",
+    "gggggggggGlggggg",
+    "gggggggggggggggg",
+    "gGgggggggggggglg",
+    "glggggggggggggGg",
+    "gggggggGgggggggg",
+    "ggggggglgggggggg",
+    "gggggggggggGgggg",
+    "gggglgggggglGggg",
+    "ggggGggggggggggg",
+    "gggggggggggggggg"
+   ]
+  },
+  "dirt": {
+   "base": "n",
+   "scatter": true,
+   "grid": [
+    "nnnnnnnnnnnnnnnn",
+    "nnonnnnnnnnnnnnn",
+    "nnnnnnnnnnqnnnnn",
+    "nnnnnnnnnnnnnnnn",
+    "nnnnnnonnnnnnnnn",
+    "nnnnnnnnnnnnnoon",
+    "nqnnnnnnnnnnnnnn",
+    "nnnnnnnnnnnnnnnn",
+    "nnnnnnnnnonnnnnn",
+    "nnnnnnnnnnnnnnnn",
+    "nnnoonnnnnnnnnqn",
+    "nnnnnnnnnnnnnnnn",
+    "nnnnnnnnnnnnnnnn",
+    "nnnnnnnqnnnnnnnn",
+    "nnnnnnnnnnnnonnn",
+    "nnnnnnnnnnnnnnnn"
+   ]
+  },
+  "water": {
+   "base": "b",
+   "scatter": true,
+   "grid": [
+    "bbbbbbbbbbbbbbbb",
+    "bbbbbbbbbbbbbbbb",
+    "bbbwwbbbbbbbbbbb",
+    "bbBbbBbbbbbbbbbb",
+    "bbbbbbbbbbbwwbbb",
+    "bbbbbbbbbbBbbBbb",
+    "bbbbbbbbbbbbbbbb",
+    "bbbbbbbbbbbbbbbb",
+    "bbbbbbwwbbbbbbbb",
+    "bbbbbBbbBbbbbbbb",
+    "bbbbbbbbbbbbbbbb",
+    "bwwbbbbbbbbbbbbb",
+    "BbbBbbbbbbbbwwbb",
+    "bbbbbbbbbbbBbbBb",
+    "bbbbbbbbbbbbbbbb",
+    "bbbbbbbbbbbbbbbb"
+   ]
+  },
+  "sand": {
+   "base": "s",
+   "scatter": true,
+   "grid": [
+    "ssssssssssssssss",
+    "ssssssosssssssss",
+    "ssssssssssssssss",
+    "ssssssssssssosss",
+    "sossssssssssssss",
+    "ssssssssssssssss",
+    "sssssssswsssssss",
+    "ssssssssssssssss",
+    "sssosssssssssoss",
+    "ssssssssssssssss",
+    "ssssssssssssssss",
+    "ssssssssosssssss",
+    "ssssssssssssssss",
+    "ssssswssssssssss",
+    "sssssssssssssoss",
+    "ssssssssssssssss"
+   ]
+  },
+  "flowers": {
+   "base": "g",
+   "scatter": true,
+   "grid": [
+    "gggggggggggggggg",
+    "ggggggggggyggggg",
+    "gggwggggggyGgggg",
+    "ggwywggggggggggg",
+    "gggwgGgggggggggg",
+    "gggGgggggggggggg",
+    "gggggggggggggrgg",
+    "ggggggggggggrwrg",
+    "gggggggggggggrgg",
+    "gglgggggggggGggg",
+    "ggggggggyggggggg",
+    "gggggggywygggggg",
+    "ggggggggyggglggg",
+    "gggggggggggggggg",
+    "gggggrggGggggggg",
+    "ggggrwrggggggggg"
+   ]
+  },
+  "stone": {
+   "base": "q",
+   "grid": [
+    "qqqqqqqpqqqqqqqp",
+    "qdqqqqqpqdqqqqqp",
+    "qqqqqqqpqqqqqqqp",
+    "qqqqqqqpqqqqqqqp",
+    "qqqqqqqpqqqqqqqp",
+    "qqqqqqqpqqqqqqqp",
+    "qqqqqqqpqqqqqqqp",
+    "pppppppppppppppp",
+    "qqqpqqqqqqqpqqqq",
+    "qqqpqdqqqqqpqdqq",
+    "qqqpqqqqqqqpqqqq",
+    "qqqpqqqqqqqpqqqq",
+    "qqqpqqqqqqqpqqqq",
+    "qqqpqqqqqqqpqqqq",
+    "qqqpqqqqqqqpqqqq",
+    "pppppppppppppppp"
+   ]
+  },
+  "wood": {
+   "base": "o",
+   "grid": [
+    "oooooooooooooooo",
+    "oooooooonooooooo",
+    "oooooooonooooooo",
+    "nnnnnnnnnnnnnnnn",
+    "oooonooooooooooo",
+    "oooonoooooooyooo",
+    "oooonooooooooooo",
+    "nnnnnnnnnnnnnnnn",
+    "oooooooooooonooo",
+    "ooyoooooooooonoo",
+    "oooooooooooonooo",
+    "nnnnnnnnnnnnnnnn",
+    "oooooooonooooooo",
+    "oooooooonooooooo",
+    "oooooooonooooooo",
+    "nnnnnnnnnnnnnnnn"
+   ]
+  },
+  "brick": {
+   "base": "R",
+   "grid": [
+    "RRRRRRRdRRRRRRRd",
+    "RrRRRRRdRrRRRRRd",
+    "RRRRRRRdRRRRRRRd",
+    "dddddddddddddddd",
+    "RRRdRRRRRRRdRRRR",
+    "RRRdRrRRRRRdRrRR",
+    "RRRdRRRRRRRdRRRR",
+    "dddddddddddddddd",
+    "RRRRRRRdRRRRRRRd",
+    "RrRRRRRdRrRRRRRd",
+    "RRRRRRRdRRRRRRRd",
+    "dddddddddddddddd",
+    "RRRdRRRRRRRdRRRR",
+    "RRRdRrRRRRRdRrRR",
+    "RRRdRRRRRRRdRRRR",
+    "dddddddddddddddd"
+   ]
+  },
+  "path": {
+   "base": "d",
+   "grid": [
+    "ddddqddddddqdddd",
+    "dwddqdwdddqddwdd",
+    "ddddqdddddqddddd",
+    "qqqqqqqqqqqqqqqq",
+    "ddqddddwddddqddd",
+    "dddqdddddddddqdw",
+    "ddddqqqqqqqqqqqq",
+    "qqqqqddddqdddddd",
+    "ddddqdwddqddwddd",
+    "ddddqddddqdddddd",
+    "qqqqqqqqqqqqqqqq",
+    "ddwdddqdddddwddq",
+    "dddddddqddddddqd",
+    "ddddddddqqqqqqqd",
+    "qqqqqqqqqddddddq",
+    "ddddqddddddqdddd"
+   ]
   }
+ }
 }

@@ -14,7 +14,7 @@ python3 tools/visual.py vector revise assets/visual/logo --base 1 --patch patch.
 ```
 
 Templates: heart-icon, potion-icon, reference-set, title-logo, flow-diagram,
-start-button, card-frame, flag-drawing.
+start-button, card-frame, flag-drawing, meadow-scene.
 
 | Kind | Fields you choose |
 |---|---|
@@ -27,8 +27,9 @@ start-button, card-frame, flag-drawing.
 
 Colours are palette keys (`pixel catalog` names them), never hex. Text is drawn
 with the bundled line font (capitals, digits, `. , ! ? - : ' + / &`), as paths,
-so the SVG needs no font file. Pieces and icons from the designer's reference set:
-hero, monster, potion, grass, and every icon as `icon.<name>`.
+so the SVG needs no font file. Pieces: the designer's hero, monster, potion and grass, plus tree, cloud, sun,
+house, rock, flower, mountain, chest, and every icon as `icon.<name>`. Swap a
+piece's colours per item with `"swap": {"g": "r"}`. See the [content library](../docs/content-library.md).
 
 Output per revision: asset.svg, preview.png (rendered by visual-core's own
 rasteriser, for chat), spec.json, manifest.json (groups, hashes, safety checks),

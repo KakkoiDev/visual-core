@@ -906,7 +906,7 @@ def render(spec, folder, previous=None):
     text = svg(spec, width, height, nodes, display)
     safety = svg_safety(text)
     (folder/'asset.svg').write_text(text, encoding='utf8')
-    scale = max(1, min(16, 256 // max(width, height))) if max(width, height) <= 256 else 256 / max(width, height)
+    scale = max(1, min(10, 512 // max(width, height))) if max(width, height) <= 512 else 512 / max(width, height)
     W, H, data = rasterise(spec, width, height, nodes, scale)
     (folder/'preview.png').write_bytes(vc.png(W, H, data))
     vc.write_json(folder/'spec.json', spec)

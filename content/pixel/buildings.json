@@ -1,0 +1,36 @@
+{
+  "schema": "visual-core.pixel-pack/1",
+  "pack": "buildings",
+  "license": "Original to visual-core (MIT).",
+  "note": "Buildings are 32 or 64 px (2 x 2 or 4 x 4 world tiles). Steps are in a 32-unit grid; 64 doubles them. Draw order: chimney, wall, roof, door, windows, then outline. Roof steps use role keys r/R, replaced by parts.roof.keys.",
+  "roles": {"roof": ["r", "R"]},
+  "walls": {
+    "wood": [{"op": "rect", "x": 5, "y": 14, "w": 22, "h": 16, "key": "o"},
+             {"op": "line", "x1": 5, "y1": 18, "x2": 26, "y2": 18, "key": "n"}, {"op": "line", "x1": 5, "y1": 22, "x2": 26, "y2": 22, "key": "n"}, {"op": "line", "x1": 5, "y1": 26, "x2": 26, "y2": 26, "key": "n"},
+             {"op": "shade", "keys": ["o"]}],
+    "stone": [{"op": "rect", "x": 5, "y": 14, "w": 22, "h": 16, "key": "d"},
+              {"op": "rect", "x": 7, "y": 16, "w": 4, "h": 2, "key": "q"}, {"op": "rect", "x": 15, "y": 19, "w": 5, "h": 2, "key": "q"}, {"op": "rect", "x": 21, "y": 25, "w": 4, "h": 2, "key": "q"}, {"op": "rect", "x": 7, "y": 26, "w": 3, "h": 2, "key": "q"},
+              {"op": "shade", "keys": ["d"]}],
+    "brick": [{"op": "rect", "x": 5, "y": 14, "w": 22, "h": 16, "key": "R"},
+              {"op": "line", "x1": 5, "y1": 17, "x2": 26, "y2": 17, "key": "d"}, {"op": "line", "x1": 5, "y1": 21, "x2": 26, "y2": 21, "key": "d"}, {"op": "line", "x1": 5, "y1": 25, "x2": 26, "y2": 25, "key": "d"},
+              {"op": "pixels", "key": "d", "at": [[10, 15], [10, 16], [18, 15], [18, 16], [14, 18], [14, 19], [14, 20], [22, 18], [22, 19], [22, 20], [10, 22], [10, 23], [10, 24], [18, 22], [18, 23], [18, 24], [14, 26], [14, 27], [14, 28], [22, 26], [22, 27], [22, 28]]}]
+  },
+  "roofs": {
+    "gable": [{"op": "poly", "points": [[2, 15], [16, 3], [30, 15]], "key": "r"}, {"op": "shade", "keys": ["r"], "depth": 2}],
+    "hip": [{"op": "poly", "points": [[2, 15], [9, 6], [23, 6], [30, 15]], "key": "r"}, {"op": "shade", "keys": ["r"], "depth": 2}],
+    "flat": [{"op": "rect", "x": 3, "y": 10, "w": 26, "h": 5, "key": "r"}, {"op": "rect", "x": 3, "y": 10, "w": 26, "h": 1, "key": "R"}, {"op": "shade", "keys": ["r"]}],
+    "tower": [{"op": "poly", "points": [[6, 15], [16, 0], [26, 15]], "key": "r"}, {"op": "shade", "keys": ["r"], "depth": 2}]
+  },
+  "doors": {
+    "none": [],
+    "wood": [{"op": "rect", "x": 13, "y": 21, "w": 6, "h": 9, "key": "n"}, {"op": "pixels", "key": "y", "at": [[17, 25]]}],
+    "arch": [{"op": "rect", "x": 13, "y": 23, "w": 6, "h": 7, "key": "n"}, {"op": "ellipse", "x": 13, "y": 20, "w": 6, "h": 6, "key": "n"}, {"op": "pixels", "key": "y", "at": [[17, 26]]}]
+  },
+  "windows": [
+    [],
+    [{"op": "rect", "x": 21, "y": 18, "w": 4, "h": 4, "key": "b"}, {"op": "pixels", "key": "w", "at": [[21, 18]]}],
+    [{"op": "rect", "x": 7, "y": 18, "w": 4, "h": 4, "key": "b"}, {"op": "pixels", "key": "w", "at": [[7, 18]]},
+     {"op": "rect", "x": 21, "y": 18, "w": 4, "h": 4, "key": "b"}, {"op": "pixels", "key": "w", "at": [[21, 18]]}]
+  ],
+  "chimney": [{"op": "rect", "x": 21, "y": 3, "w": 4, "h": 9, "key": "q"}, {"op": "rect", "x": 20, "y": 2, "w": 6, "h": 2, "key": "d"}, {"op": "shade", "keys": ["q"]}]
+}
