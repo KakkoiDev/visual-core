@@ -4,6 +4,9 @@ The catalog uses 50 bundled Lucide SVGs, pinned at 1.59.0. The CLI preserves the
 legacy arrow/close/robot/coin names as aliases. Choose an existing catalog shape;
 do not draw a replacement. Keep LICENSE-lucide.txt alongside exported assets.
 
+For game HUD icons in the kit's vector style (ink outline plus one fill), use
+[SVG recipes](svg-recipes.md); pixel HUD icons are in [pixel recipes](pixel-recipes.md).
+
 **Outcome:** consistent small icons, not mixed clip-art styles.
 **Defaults:** 24 px viewBox, 2 px stroke, rounded caps, one ink color. Existing sets
 keep their own convention. Run `python3 tools/visual.py catalog` for every available shape. For an existing

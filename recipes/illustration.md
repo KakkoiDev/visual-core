@@ -1,7 +1,8 @@
 # SVG illustration and backgrounds
 
 **Outcome:** one coherent illustration supporting the page or game, not a random
-ornament. This is a direct-editing recipe; no illustration generator is implemented.
+ornament. For game-style pieces, logos, diagrams and decorations, use
+[SVG recipes](svg-recipes.md) first; this recipe covers direct editing.
 
 1. State the focal object, purpose, composition and available space. Prefer a
    small original geometric illustration over a collection of unrelated assets.

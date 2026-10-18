@@ -1,0 +1,4 @@
+{"schema": "visual-core.vector/1", "kind": "drawing", "id": "flag", "width": 12, "height": 12, "grid": 4,
+ "shapes": [{"shape": "line", "x1": 3, "y1": 1, "x2": 3, "y2": 11},
+            {"shape": "polygon", "points": [[3, 1.5], [10, 3.5], [3, 6]], "fill": "r"}],
+ "note": "Free drawing on a 4-unit grid: coordinates are grid cells."}

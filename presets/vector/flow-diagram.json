@@ -1,0 +1,3 @@
+{"schema": "visual-core.vector/1", "kind": "diagram", "id": "flow", "layout": "row", "fill": "w",
+ "nodes": [{"id": "pick", "label": "PICK"}, {"id": "check", "label": "CHECK", "fill": "y"}, {"id": "render", "label": "RENDER"}],
+ "edges": [{"from": "pick", "to": "check"}, {"from": "check", "to": "render"}]}

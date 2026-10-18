@@ -6,12 +6,13 @@ Choose by the user's outcome. The agent chooses the recipe, not the user.
 |---|---|---|
 | Responsive app interface | [Web UI](recipes/web-ui.md) | `init web-app` |
 | Consistent SVG icon | [Icons](recipes/icons.md) | `template icon`, `create` |
+| Game icon, logo, diagram, vector illustration | [SVG recipes](recipes/svg-recipes.md) | `vector template title-logo`, `vector create` |
 | Game sprite, item, icon, tile, pixel UI frame | [Pixel recipes](recipes/pixel-recipes.md) | `pixel template hero`, `pixel create` |
 | Pixel sprite or prop | [Pixel art](recipes/pixel-art.md) | `template robot`, `create` |
 | Tile kit | [Tiles](recipes/tiles.md) | `terrain template meadow`, `terrain create` |
 | Animation preview | [Animation](recipes/animation.md) | atlas + host browser/engine; recipe only |
 | HUD and game menus | [Game UI](recipes/game-ui.md) | existing engine/DOM; recipe only |
-| SVG illustration | [Illustration](recipes/illustration.md) | direct SVG editing; recipe only |
+| SVG illustration | [Illustration](recipes/illustration.md), [SVG recipes](recipes/svg-recipes.md) | `vector` for kit pieces; direct editing otherwise |
 | Targeted changes | [Revise](recipes/revise.md) | `read`, `revise --base --patch` |
 | Prove the result | [Verification](recipes/verify.md) | tests + browser + actual visual inspection |
 

@@ -1,0 +1,2 @@
+{"schema": "visual-core.vector/1", "kind": "logo", "id": "title-logo", "text": "SLIME QUEST", "emblem": "sword", "layout": "row", "badge": "pill", "size": 20,
+ "colours": {"text": "k", "badge": "w", "emblem": "w"}}

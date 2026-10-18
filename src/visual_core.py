@@ -77,6 +77,9 @@ def structured(spec):
     if str(spec.get('schema', '')).startswith('visual-core.pixel/'):
         import pixel
         return pixel
+    if str(spec.get('schema', '')).startswith('visual-core.vector/'):
+        import vector
+        return vector
     return None
 
 
@@ -354,6 +357,9 @@ def main(argv=None):
     if arguments and arguments[0] == 'pixel':
         import pixel
         return pixel.main(arguments[1:])
+    if arguments and arguments[0] == 'vector':
+        import vector
+        return vector.main(arguments[1:])
     parser = argparse.ArgumentParser(description=__doc__)
     commands = parser.add_subparsers(dest='command', required=True)
     commands.add_parser('catalog')

@@ -12,6 +12,13 @@ rectangles, names and timings; numbered revisions; no-op patches publish nothing
 errors name the field and its allowed values. The designer's reference hero, slime,
 potion, coin, heart, grass, frame and button are reproduced pixel for pixel.
 
+Add deterministic SVG recipes (`visual.py vector`): 12 game icons, the designer's
+vector hero, monster, potion and grass, illustrations with row/column/grid layout,
+logos with an emblem and badge, diagrams with arrows, cards, panels, buttons,
+badges and dividers, and free drawings on a grid. Text uses a bundled original line
+font drawn as paths. Output is allowlisted SVG (no scripts, styles or external
+references) and a PNG preview from a small built-in rasteriser.
+
 ## 0.3.0
 
 Add pinned headless terrain dependencies, meadow/coast/dungeon Blob 47 generation,
