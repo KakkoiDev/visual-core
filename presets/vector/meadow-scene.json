@@ -1,0 +1,5 @@
+{"schema": "visual-core.vector/1", "kind": "illustration", "id": "meadow-scene", "width": 320, "height": 120, "background": "b",
+ "items": [{"piece": "mountain", "scale": 1.5}, {"piece": "tree"}, {"piece": "house", "scale": 1.5}, {"piece": "hero"}, {"piece": "monster", "swap": {"g": "r", "G": "R", "l": "y"}}],
+ "layout": {"type": "row", "gap": 6, "align": "bottom", "padding": 4},
+ "shapes": [{"shape": "rect", "x": 0, "y": 112, "w": 320, "h": 8, "fill": "g", "stroke": "none"}],
+ "note": "Recombined library pieces; the red monster is a palette swap of the designer's."}

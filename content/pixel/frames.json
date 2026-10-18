@@ -1,38 +1,95 @@
 {
-  "schema": "visual-core.pixel-pack/1",
-  "pack": "frames",
-  "license": "Original to visual-core (MIT). frame9 and button9 reproduce the kit designer's ArtFrames 9-slice sources.",
-  "note": "12 x 12 sources, corners 4 x 4 copied, edges repeated, centre filled. Roles are replaced by the recipe's keys.",
-  "frame9": {
-    "roles": {"outline": "k", "light": "w", "shade": "d", "bevel": "q", "fill": "p"},
-    "grid": [
-      ".kkkkkkkkkk.",
-      "kwwwwwwwwwwk",
-      "kwqqqqqqqqdk",
-      "kwqppppppqdk",
-      "kwqppppppqdk",
-      "kwqppppppqdk",
-      "kwqppppppqdk",
-      "kwqppppppqdk",
-      "kwqppppppqdk",
-      "kwqqqqqqqqdk",
-      "kddddddddddk",
-      ".kkkkkkkkkk."]
+ "schema": "visual-core.pixel-pack/1",
+ "pack": "frames",
+ "license": "Original to visual-core (MIT). frame9 and button9 reproduce the kit designer's ArtFrames 9-slice sources; parchment and inset are original.",
+ "note": "12 x 12 sources, corners 4 x 4 copied, edges repeated, centre filled. Roles are replaced by the recipe's keys. A frame recipe picks a source: frame9 (designer dark/light panel), parchment (paper with an amber edge), inset (sunken well for slots and meters).",
+ "frame9": {
+  "roles": {
+   "outline": "k",
+   "light": "w",
+   "shade": "d",
+   "bevel": "q",
+   "fill": "p"
   },
-  "button9": {
-    "roles": {"outline": "k", "light": "w", "face": "y", "shade": "o"},
-    "grid": [
-      "..kkkkkkkk..",
-      ".kwwwwwwwwk.",
-      "kwyyyyyyyyok",
-      "kwyyyyyyyyok",
-      "kwyyyyyyyyok",
-      "kwyyyyyyyyok",
-      "kwyyyyyyyyok",
-      "kwyyyyyyyyok",
-      "kwyyyyyyyyok",
-      "kooooooooook",
-      ".kooooooook.",
-      "..kkkkkkkk.."]
-  }
+  "grid": [
+   ".kkkkkkkkkk.",
+   "kwwwwwwwwwwk",
+   "kwqqqqqqqqdk",
+   "kwqppppppqdk",
+   "kwqppppppqdk",
+   "kwqppppppqdk",
+   "kwqppppppqdk",
+   "kwqppppppqdk",
+   "kwqppppppqdk",
+   "kwqqqqqqqqdk",
+   "kddddddddddk",
+   ".kkkkkkkkkk."
+  ]
+ },
+ "button9": {
+  "roles": {
+   "outline": "k",
+   "light": "w",
+   "face": "y",
+   "shade": "o"
+  },
+  "grid": [
+   "..kkkkkkkk..",
+   ".kwwwwwwwwk.",
+   "kwyyyyyyyyok",
+   "kwyyyyyyyyok",
+   "kwyyyyyyyyok",
+   "kwyyyyyyyyok",
+   "kwyyyyyyyyok",
+   "kwyyyyyyyyok",
+   "kwyyyyyyyyok",
+   "kooooooooook",
+   ".kooooooook.",
+   "..kkkkkkkk.."
+  ]
+ },
+ "parchment": {
+  "roles": {
+   "outline": "k",
+   "light": "d",
+   "shade": "o",
+   "fill": "w"
+  },
+  "grid": [
+   ".kkkkkkkkkk.",
+   "kddddddddddk",
+   "kdwwwwwwwwok",
+   "kdwwwwwwwwok",
+   "kdwwwwwwwwok",
+   "kdwwwwwwwwok",
+   "kdwwwwwwwwok",
+   "kdwwwwwwwwok",
+   "kdwwwwwwwwok",
+   "kdwwwwwwwwok",
+   "kooooooooook",
+   ".kkkkkkkkkk."
+  ]
+ },
+ "inset": {
+  "roles": {
+   "outline": "k",
+   "shade": "q",
+   "light": "w",
+   "fill": "p"
+  },
+  "grid": [
+   ".kkkkkkkkkk.",
+   "kqqqqqqqqqqk",
+   "kqppppppppwk",
+   "kqppppppppwk",
+   "kqppppppppwk",
+   "kqppppppppwk",
+   "kqppppppppwk",
+   "kqppppppppwk",
+   "kqppppppppwk",
+   "kqppppppppwk",
+   "kwwwwwwwwwwk",
+   ".kkkkkkkkkk."
+  ]
+ }
 }

@@ -1,61 +1,734 @@
 {
-  "schema": "visual-core.vector-pack/1",
-  "license": "Original to visual-core (MIT). hero, monster, potion, grass and the heart icon reproduce the kit designer's ArtReferenceSet vector column.",
-  "note": "Vector style (designer card ArtFrames): 2 px ink stroke, round caps and joins, palette fills, no gradients. Icons: 24 grid drawn inside 20 x 20, one fill colour (fill_key) plus ink.",
-  "icon_defaults": {"stroke": "k", "width": 2, "cap": "round", "join": "round", "fill": "none"},
-  "icons": {
-    "heart": {"fill_key": "r", "shapes": [{"shape": "path", "d": "M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z", "fill": "r"}]},
-    "coin": {"fill_key": "y", "shapes": [{"shape": "circle", "cx": 12, "cy": 12, "r": 9, "fill": "y"}, {"shape": "path", "d": "M12 7.5v9M9.5 9.5h4a1.5 1.5 0 0 1 0 3h-3a1.5 1.5 0 0 0 0 3h4"}]},
-    "potion": {"fill_key": "r", "shapes": [
-      {"shape": "rect", "x": 9.5, "y": 2.5, "w": 5, "h": 3, "r": 0.5, "fill": "n"},
-      {"shape": "path", "d": "M10 5.5v4L5.5 16.5a3.5 3.5 0 0 0 3 5.5h7a3.5 3.5 0 0 0 3-5.5L14 9.5v-4z", "fill": "w"},
-      {"shape": "path", "d": "M6.8 15h10.4l1.2 2a2.6 2.6 0 0 1-2.2 3.8H7.8a2.6 2.6 0 0 1-2.2-3.8z", "fill": "r"}]},
-    "key": {"fill_key": "y", "shapes": [{"shape": "circle", "cx": 8, "cy": 9, "r": 4.5, "fill": "y"}, {"shape": "path", "d": "M11.2 12.2L20 21M16 17l2-2M18.5 19.5l2-2"}]},
-    "star": {"fill_key": "y", "shapes": [{"shape": "path", "d": "M12 2.5l2.8 6 6.5.7-4.9 4.4 1.4 6.4L12 16.7 6.2 20l1.4-6.4-4.9-4.4 6.5-.7z", "fill": "y"}]},
-    "gear": {"fill_key": "d", "shapes": [
-      {"shape": "path", "d": "M10.5 2.5h3l.6 2.6 2.1 1.2 2.6-.8 1.5 2.6-2 1.8v2.4l2 1.8-1.5 2.6-2.6-.8-2.1 1.2-.6 2.6h-3l-.6-2.6-2.1-1.2-2.6.8-1.5-2.6 2-1.8v-2.4l-2-1.8 1.5-2.6 2.6.8 2.1-1.2z", "fill": "d"},
-      {"shape": "circle", "cx": 12, "cy": 12, "r": 3, "fill": "w"}]},
-    "map": {"fill_key": "w", "shapes": [{"shape": "path", "d": "M3 6l6-2.5 6 2.5 6-2.5v14.5L15 20.5 9 18l-6 2.5z", "fill": "w"}, {"shape": "path", "d": "M9 3.5V18M15 6v14.5"}, {"shape": "path", "d": "M11 9.5l2 2M13 9.5l-2 2", "stroke": "r"}]},
-    "bag": {"fill_key": "n", "shapes": [{"shape": "path", "d": "M6.5 9h11l2 11.5h-15z", "fill": "n"}, {"shape": "path", "d": "M9 9V7a3 3 0 0 1 6 0v2"}]},
-    "sword": {"fill_key": "w", "shapes": [
-      {"shape": "path", "d": "M20.5 3.5v3L11 16l-3-3 9.5-9.5z", "fill": "w"},
-      {"shape": "path", "d": "M5 12l7 7", "stroke": "y", "width": 3},
-      {"shape": "path", "d": "M5 12l7 7"},
-      {"shape": "path", "d": "M7.5 16.5l-4 4"}]},
-    "shield": {"fill_key": "b", "shapes": [{"shape": "path", "d": "M12 2.5l8 3v5.5c0 5-3.5 8.6-8 10.5-4.5-1.9-8-5.5-8-10.5V5.5z", "fill": "b"}, {"shape": "path", "d": "M12 7.5v9M8.5 11h7"}]},
-    "clock": {"fill_key": "w", "shapes": [{"shape": "circle", "cx": 12, "cy": 12, "r": 9, "fill": "w"}, {"shape": "path", "d": "M12 7v5l3.5 2"}]},
-    "lock": {"fill_key": "y", "shapes": [{"shape": "path", "d": "M8 11V8a4 4 0 0 1 8 0v3"}, {"shape": "rect", "x": 5, "y": 11, "w": 14, "h": 10, "r": 2, "fill": "y"}, {"shape": "circle", "cx": 12, "cy": 15.5, "r": 1.2, "fill": "k", "stroke": "none"}, {"shape": "path", "d": "M12 16.5v1.5"}]}
+ "schema": "visual-core.vector-pack/1",
+ "license": "Original to visual-core (MIT). hero, monster, potion, grass and the heart icon reproduce the kit designer's ArtReferenceSet vector column; everything else is original.",
+ "note": "Vector style (designer card ArtFrames): 2 px ink stroke, round caps and joins, palette fills, no gradients. Icons: 24 grid drawn inside 20 x 20, one fill colour (fill_key) plus ink.",
+ "icon_defaults": {
+  "stroke": "k",
+  "width": 2,
+  "cap": "round",
+  "join": "round",
+  "fill": "none"
+ },
+ "icons": {
+  "heart": {
+   "fill_key": "r",
+   "shapes": [
+    {
+     "shape": "path",
+     "d": "M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z",
+     "fill": "r"
+    }
+   ]
   },
-  "pieces": {
-    "hero": {"width": 48, "height": 48, "defaults": {"stroke": "k", "width": 2, "cap": "round", "join": "round", "fill": "none"}, "shapes": [
-      {"shape": "rect", "x": 15, "y": 25, "w": 18, "h": 13, "r": 4, "fill": "r"},
-      {"shape": "path", "d": "M28 27v11", "stroke": "R"},
-      {"shape": "rect", "x": 17, "y": 37, "w": 6, "h": 7, "r": 2, "fill": "B"},
-      {"shape": "rect", "x": 25, "y": 37, "w": 6, "h": 7, "r": 2, "fill": "B"},
-      {"shape": "circle", "cx": 24, "cy": 15, "r": 9, "fill": "s"},
-      {"shape": "path", "d": "M15 15a9 9 0 0 1 18 0c-3-2-6-3-9-3s-6 1-9 3z", "fill": "n"},
-      {"shape": "circle", "cx": 21, "cy": 17, "r": 1, "fill": "k", "stroke": "none"},
-      {"shape": "circle", "cx": 27, "cy": 17, "r": 1, "fill": "k", "stroke": "none"},
-      {"shape": "path", "d": "M19 31h10", "stroke": "y", "width": 3}]},
-    "monster": {"width": 48, "height": 48, "defaults": {"stroke": "k", "width": 2, "join": "round", "cap": "butt", "fill": "none"}, "shapes": [
-      {"shape": "path", "d": "M6 40c0-14 8-26 18-26s18 12 18 26z", "fill": "g"},
-      {"shape": "path", "d": "M30 18c5 3 9 10 10 20", "stroke": "G", "width": 3},
-      {"shape": "path", "d": "M13 27c1-4 3-7 6-9", "stroke": "l", "width": 3, "cap": "round"},
-      {"shape": "circle", "cx": 19, "cy": 29, "r": 2.5, "fill": "k", "stroke": "none"},
-      {"shape": "circle", "cx": 29, "cy": 29, "r": 2.5, "fill": "k", "stroke": "none"},
-      {"shape": "circle", "cx": 19.8, "cy": 28.2, "r": 0.8, "fill": "w", "stroke": "none"},
-      {"shape": "circle", "cx": 29.8, "cy": 28.2, "r": 0.8, "fill": "w", "stroke": "none"}]},
-    "potion": {"width": 48, "height": 48, "defaults": {"stroke": "k", "width": 2, "join": "round", "cap": "butt", "fill": "none"}, "shapes": [
-      {"shape": "rect", "x": 19, "y": 4, "w": 10, "h": 6, "r": 1, "fill": "n"},
-      {"shape": "path", "d": "M20 10v8L11 32a8 8 0 0 0 7 12h12a8 8 0 0 0 7-12l-9-14v-8z", "fill": "w"},
-      {"shape": "path", "d": "M13.5 29h21L37 33a7 7 0 0 1-6 10H17a7 7 0 0 1-6-10z", "fill": "r"},
-      {"shape": "path", "d": "M16 34c1-2 2-3 4-3.5", "stroke": "w", "cap": "round"}]},
-    "grass": {"width": 48, "height": 48, "defaults": {"stroke": "none", "fill": "none", "cap": "round", "join": "miter"}, "shapes": [
-      {"shape": "rect", "x": 0, "y": 0, "w": 48, "h": 48, "fill": "g"},
-      {"shape": "path", "d": "M10 14l1-4M12 14l2-3", "stroke": "G", "width": 2},
-      {"shape": "path", "d": "M33 31l1-4M35 31l2-3", "stroke": "G", "width": 2},
-      {"shape": "path", "d": "M20 42l1-3", "stroke": "G", "width": 2},
-      {"shape": "path", "d": "M38 9l1-3", "stroke": "l", "width": 2},
-      {"shape": "path", "d": "M6 33l1-3", "stroke": "l", "width": 2}]}
+  "coin": {
+   "fill_key": "y",
+   "shapes": [
+    {
+     "shape": "circle",
+     "cx": 12,
+     "cy": 12,
+     "r": 9,
+     "fill": "y"
+    },
+    {
+     "shape": "path",
+     "d": "M12 7.5v9M9.5 9.5h4a1.5 1.5 0 0 1 0 3h-3a1.5 1.5 0 0 0 0 3h4"
+    }
+   ]
+  },
+  "potion": {
+   "fill_key": "r",
+   "shapes": [
+    {
+     "shape": "rect",
+     "x": 9.5,
+     "y": 2.5,
+     "w": 5,
+     "h": 3,
+     "r": 0.5,
+     "fill": "n"
+    },
+    {
+     "shape": "path",
+     "d": "M10 5.5v4L5.5 16.5a3.5 3.5 0 0 0 3 5.5h7a3.5 3.5 0 0 0 3-5.5L14 9.5v-4z",
+     "fill": "w"
+    },
+    {
+     "shape": "path",
+     "d": "M6.8 15h10.4l1.2 2a2.6 2.6 0 0 1-2.2 3.8H7.8a2.6 2.6 0 0 1-2.2-3.8z",
+     "fill": "r"
+    }
+   ]
+  },
+  "key": {
+   "fill_key": "y",
+   "shapes": [
+    {
+     "shape": "circle",
+     "cx": 8,
+     "cy": 9,
+     "r": 4.5,
+     "fill": "y"
+    },
+    {
+     "shape": "path",
+     "d": "M11.2 12.2L20 21M16 17l2-2M18.5 19.5l2-2"
+    }
+   ]
+  },
+  "star": {
+   "fill_key": "y",
+   "shapes": [
+    {
+     "shape": "path",
+     "d": "M12 2.5l2.8 6 6.5.7-4.9 4.4 1.4 6.4L12 16.7 6.2 20l1.4-6.4-4.9-4.4 6.5-.7z",
+     "fill": "y"
+    }
+   ]
+  },
+  "gear": {
+   "fill_key": "d",
+   "shapes": [
+    {
+     "shape": "path",
+     "d": "M10.5 2.5h3l.6 2.6 2.1 1.2 2.6-.8 1.5 2.6-2 1.8v2.4l2 1.8-1.5 2.6-2.6-.8-2.1 1.2-.6 2.6h-3l-.6-2.6-2.1-1.2-2.6.8-1.5-2.6 2-1.8v-2.4l-2-1.8 1.5-2.6 2.6.8 2.1-1.2z",
+     "fill": "d"
+    },
+    {
+     "shape": "circle",
+     "cx": 12,
+     "cy": 12,
+     "r": 3,
+     "fill": "w"
+    }
+   ]
+  },
+  "map": {
+   "fill_key": "w",
+   "shapes": [
+    {
+     "shape": "path",
+     "d": "M3 6l6-2.5 6 2.5 6-2.5v14.5L15 20.5 9 18l-6 2.5z",
+     "fill": "w"
+    },
+    {
+     "shape": "path",
+     "d": "M9 3.5V18M15 6v14.5"
+    },
+    {
+     "shape": "path",
+     "d": "M11 9.5l2 2M13 9.5l-2 2",
+     "stroke": "r"
+    }
+   ]
+  },
+  "bag": {
+   "fill_key": "n",
+   "shapes": [
+    {
+     "shape": "path",
+     "d": "M6.5 9h11l2 11.5h-15z",
+     "fill": "n"
+    },
+    {
+     "shape": "path",
+     "d": "M9 9V7a3 3 0 0 1 6 0v2"
+    }
+   ]
+  },
+  "sword": {
+   "fill_key": "w",
+   "shapes": [
+    {
+     "shape": "path",
+     "d": "M20.5 3.5v3L11 16l-3-3 9.5-9.5z",
+     "fill": "w"
+    },
+    {
+     "shape": "path",
+     "d": "M5 12l7 7",
+     "stroke": "y",
+     "width": 3
+    },
+    {
+     "shape": "path",
+     "d": "M5 12l7 7"
+    },
+    {
+     "shape": "path",
+     "d": "M7.5 16.5l-4 4"
+    }
+   ]
+  },
+  "shield": {
+   "fill_key": "b",
+   "shapes": [
+    {
+     "shape": "path",
+     "d": "M12 2.5l8 3v5.5c0 5-3.5 8.6-8 10.5-4.5-1.9-8-5.5-8-10.5V5.5z",
+     "fill": "b"
+    },
+    {
+     "shape": "path",
+     "d": "M12 7.5v9M8.5 11h7"
+    }
+   ]
+  },
+  "clock": {
+   "fill_key": "w",
+   "shapes": [
+    {
+     "shape": "circle",
+     "cx": 12,
+     "cy": 12,
+     "r": 9,
+     "fill": "w"
+    },
+    {
+     "shape": "path",
+     "d": "M12 7v5l3.5 2"
+    }
+   ]
+  },
+  "lock": {
+   "fill_key": "y",
+   "shapes": [
+    {
+     "shape": "path",
+     "d": "M8 11V8a4 4 0 0 1 8 0v3"
+    },
+    {
+     "shape": "rect",
+     "x": 5,
+     "y": 11,
+     "w": 14,
+     "h": 10,
+     "r": 2,
+     "fill": "y"
+    },
+    {
+     "shape": "circle",
+     "cx": 12,
+     "cy": 15.5,
+     "r": 1.2,
+     "fill": "k",
+     "stroke": "none"
+    },
+    {
+     "shape": "path",
+     "d": "M12 16.5v1.5"
+    }
+   ]
   }
+ },
+ "pieces": {
+  "hero": {
+   "width": 48,
+   "height": 48,
+   "defaults": {
+    "stroke": "k",
+    "width": 2,
+    "cap": "round",
+    "join": "round",
+    "fill": "none"
+   },
+   "shapes": [
+    {
+     "shape": "rect",
+     "x": 15,
+     "y": 25,
+     "w": 18,
+     "h": 13,
+     "r": 4,
+     "fill": "r"
+    },
+    {
+     "shape": "path",
+     "d": "M28 27v11",
+     "stroke": "R"
+    },
+    {
+     "shape": "rect",
+     "x": 17,
+     "y": 37,
+     "w": 6,
+     "h": 7,
+     "r": 2,
+     "fill": "B"
+    },
+    {
+     "shape": "rect",
+     "x": 25,
+     "y": 37,
+     "w": 6,
+     "h": 7,
+     "r": 2,
+     "fill": "B"
+    },
+    {
+     "shape": "circle",
+     "cx": 24,
+     "cy": 15,
+     "r": 9,
+     "fill": "s"
+    },
+    {
+     "shape": "path",
+     "d": "M15 15a9 9 0 0 1 18 0c-3-2-6-3-9-3s-6 1-9 3z",
+     "fill": "n"
+    },
+    {
+     "shape": "circle",
+     "cx": 21,
+     "cy": 17,
+     "r": 1,
+     "fill": "k",
+     "stroke": "none"
+    },
+    {
+     "shape": "circle",
+     "cx": 27,
+     "cy": 17,
+     "r": 1,
+     "fill": "k",
+     "stroke": "none"
+    },
+    {
+     "shape": "path",
+     "d": "M19 31h10",
+     "stroke": "y",
+     "width": 3
+    }
+   ]
+  },
+  "monster": {
+   "width": 48,
+   "height": 48,
+   "defaults": {
+    "stroke": "k",
+    "width": 2,
+    "join": "round",
+    "cap": "butt",
+    "fill": "none"
+   },
+   "shapes": [
+    {
+     "shape": "path",
+     "d": "M6 40c0-14 8-26 18-26s18 12 18 26z",
+     "fill": "g"
+    },
+    {
+     "shape": "path",
+     "d": "M30 18c5 3 9 10 10 20",
+     "stroke": "G",
+     "width": 3
+    },
+    {
+     "shape": "path",
+     "d": "M13 27c1-4 3-7 6-9",
+     "stroke": "l",
+     "width": 3,
+     "cap": "round"
+    },
+    {
+     "shape": "circle",
+     "cx": 19,
+     "cy": 29,
+     "r": 2.5,
+     "fill": "k",
+     "stroke": "none"
+    },
+    {
+     "shape": "circle",
+     "cx": 29,
+     "cy": 29,
+     "r": 2.5,
+     "fill": "k",
+     "stroke": "none"
+    },
+    {
+     "shape": "circle",
+     "cx": 19.8,
+     "cy": 28.2,
+     "r": 0.8,
+     "fill": "w",
+     "stroke": "none"
+    },
+    {
+     "shape": "circle",
+     "cx": 29.8,
+     "cy": 28.2,
+     "r": 0.8,
+     "fill": "w",
+     "stroke": "none"
+    }
+   ]
+  },
+  "potion": {
+   "width": 48,
+   "height": 48,
+   "defaults": {
+    "stroke": "k",
+    "width": 2,
+    "join": "round",
+    "cap": "butt",
+    "fill": "none"
+   },
+   "shapes": [
+    {
+     "shape": "rect",
+     "x": 19,
+     "y": 4,
+     "w": 10,
+     "h": 6,
+     "r": 1,
+     "fill": "n"
+    },
+    {
+     "shape": "path",
+     "d": "M20 10v8L11 32a8 8 0 0 0 7 12h12a8 8 0 0 0 7-12l-9-14v-8z",
+     "fill": "w"
+    },
+    {
+     "shape": "path",
+     "d": "M13.5 29h21L37 33a7 7 0 0 1-6 10H17a7 7 0 0 1-6-10z",
+     "fill": "r"
+    },
+    {
+     "shape": "path",
+     "d": "M16 34c1-2 2-3 4-3.5",
+     "stroke": "w",
+     "cap": "round"
+    }
+   ]
+  },
+  "grass": {
+   "width": 48,
+   "height": 48,
+   "defaults": {
+    "stroke": "none",
+    "fill": "none",
+    "cap": "round",
+    "join": "miter"
+   },
+   "shapes": [
+    {
+     "shape": "rect",
+     "x": 0,
+     "y": 0,
+     "w": 48,
+     "h": 48,
+     "fill": "g"
+    },
+    {
+     "shape": "path",
+     "d": "M10 14l1-4M12 14l2-3",
+     "stroke": "G",
+     "width": 2
+    },
+    {
+     "shape": "path",
+     "d": "M33 31l1-4M35 31l2-3",
+     "stroke": "G",
+     "width": 2
+    },
+    {
+     "shape": "path",
+     "d": "M20 42l1-3",
+     "stroke": "G",
+     "width": 2
+    },
+    {
+     "shape": "path",
+     "d": "M38 9l1-3",
+     "stroke": "l",
+     "width": 2
+    },
+    {
+     "shape": "path",
+     "d": "M6 33l1-3",
+     "stroke": "l",
+     "width": 2
+    }
+   ]
+  },
+  "tree": {
+   "width": 48,
+   "height": 48,
+   "defaults": {
+    "stroke": "k",
+    "width": 2,
+    "cap": "round",
+    "join": "round",
+    "fill": "none"
+   },
+   "shapes": [
+    {
+     "shape": "rect",
+     "x": 21,
+     "y": 30,
+     "w": 6,
+     "h": 14,
+     "r": 1,
+     "fill": "n"
+    },
+    {
+     "shape": "circle",
+     "cx": 24,
+     "cy": 20,
+     "r": 15,
+     "fill": "g"
+    },
+    {
+     "shape": "path",
+     "d": "M15 14c2-3 5-5 8-5",
+     "stroke": "l",
+     "width": 3
+    },
+    {
+     "shape": "path",
+     "d": "M33 26c2-2 3-4 4-7",
+     "stroke": "G",
+     "width": 3
+    }
+   ]
+  },
+  "cloud": {
+   "width": 48,
+   "height": 40,
+   "defaults": {
+    "stroke": "k",
+    "width": 2,
+    "cap": "round",
+    "join": "round",
+    "fill": "none"
+   },
+   "shapes": [
+    {
+     "shape": "path",
+     "d": "M12 34a8 8 0 0 1 2-16 10 10 0 0 1 19-2 8 8 0 0 1 3 18z",
+     "fill": "w"
+    }
+   ]
+  },
+  "sun": {
+   "width": 48,
+   "height": 48,
+   "defaults": {
+    "stroke": "k",
+    "width": 2,
+    "cap": "round",
+    "join": "round",
+    "fill": "none"
+   },
+   "shapes": [
+    {
+     "shape": "circle",
+     "cx": 24,
+     "cy": 24,
+     "r": 10,
+     "fill": "y"
+    },
+    {
+     "shape": "path",
+     "d": "M24 4v6M24 38v6M4 24h6M38 24h6M10 10l4 4M34 34l4 4M38 10l-4 4M10 38l4-4"
+    }
+   ]
+  },
+  "house": {
+   "width": 48,
+   "height": 48,
+   "defaults": {
+    "stroke": "k",
+    "width": 2,
+    "cap": "round",
+    "join": "round",
+    "fill": "none"
+   },
+   "shapes": [
+    {
+     "shape": "rect",
+     "x": 10,
+     "y": 22,
+     "w": 28,
+     "h": 22,
+     "fill": "w"
+    },
+    {
+     "shape": "path",
+     "d": "M6 24L24 8l18 16z",
+     "fill": "r"
+    },
+    {
+     "shape": "rect",
+     "x": 20,
+     "y": 31,
+     "w": 8,
+     "h": 13,
+     "r": 1,
+     "fill": "n"
+    },
+    {
+     "shape": "rect",
+     "x": 13,
+     "y": 27,
+     "w": 5,
+     "h": 5,
+     "fill": "b"
+    },
+    {
+     "shape": "rect",
+     "x": 30,
+     "y": 27,
+     "w": 5,
+     "h": 5,
+     "fill": "b"
+    }
+   ]
+  },
+  "rock": {
+   "width": 48,
+   "height": 44,
+   "defaults": {
+    "stroke": "k",
+    "width": 2,
+    "cap": "round",
+    "join": "round",
+    "fill": "none"
+   },
+   "shapes": [
+    {
+     "shape": "path",
+     "d": "M6 40l5-14 9-7 12 2 8 9 3 10z",
+     "fill": "d"
+    },
+    {
+     "shape": "path",
+     "d": "M20 19l3 10 9-8M23 29l-12-3",
+     "stroke": "q"
+    }
+   ]
+  },
+  "flower": {
+   "width": 48,
+   "height": 48,
+   "defaults": {
+    "stroke": "k",
+    "width": 2,
+    "cap": "round",
+    "join": "round",
+    "fill": "none"
+   },
+   "shapes": [
+    {
+     "shape": "path",
+     "d": "M24 26v18",
+     "stroke": "G"
+    },
+    {
+     "shape": "path",
+     "d": "M24 36c-6 0-9-3-10-7 5 0 9 2 10 7z",
+     "fill": "g"
+    },
+    {
+     "shape": "circle",
+     "cx": 24,
+     "cy": 10,
+     "r": 5,
+     "fill": "r"
+    },
+    {
+     "shape": "circle",
+     "cx": 32,
+     "cy": 18,
+     "r": 5,
+     "fill": "r"
+    },
+    {
+     "shape": "circle",
+     "cx": 16,
+     "cy": 18,
+     "r": 5,
+     "fill": "r"
+    },
+    {
+     "shape": "circle",
+     "cx": 24,
+     "cy": 26,
+     "r": 5,
+     "fill": "r"
+    },
+    {
+     "shape": "circle",
+     "cx": 24,
+     "cy": 18,
+     "r": 4,
+     "fill": "y"
+    }
+   ]
+  },
+  "mountain": {
+   "width": 48,
+   "height": 48,
+   "defaults": {
+    "stroke": "k",
+    "width": 2,
+    "cap": "round",
+    "join": "round",
+    "fill": "none"
+   },
+   "shapes": [
+    {
+     "shape": "path",
+     "d": "M2 44L18 14l8 12 6-8 14 26z",
+     "fill": "q"
+    },
+    {
+     "shape": "path",
+     "d": "M18 14l-5 10 4-2 3 3 3-4z",
+     "fill": "w"
+    }
+   ]
+  },
+  "chest": {
+   "width": 48,
+   "height": 46,
+   "defaults": {
+    "stroke": "k",
+    "width": 2,
+    "cap": "round",
+    "join": "round",
+    "fill": "none"
+   },
+   "shapes": [
+    {
+     "shape": "rect",
+     "x": 6,
+     "y": 20,
+     "w": 36,
+     "h": 22,
+     "r": 2,
+     "fill": "o"
+    },
+    {
+     "shape": "path",
+     "d": "M6 20a6 8 0 0 1 6-8h24a6 8 0 0 1 6 8z",
+     "fill": "o"
+    },
+    {
+     "shape": "path",
+     "d": "M6 24h36"
+    },
+    {
+     "shape": "rect",
+     "x": 21,
+     "y": 21,
+     "w": 6,
+     "h": 8,
+     "r": 1,
+     "fill": "y"
+    }
+   ]
+  }
+ }
 }

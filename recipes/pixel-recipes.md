@@ -15,6 +15,8 @@ python3 tools/visual.py pixel revise assets/visual/hero --base 1 --patch patch.j
 
 Templates (`pixel catalog` lists them): hero, slime, boss-slime, potion, sword, grass,
 heart, button, dialogue-frame, gem-sprite. They reproduce the designer's reference set.
+Every [content library](../docs/content-library.md) entry is also a template:
+`pixel template item.gem`, `icon.gear`, `tile.water`, `frame.parchment`, `building.stone-tower`.
 
 ## Pick a recipe
 
@@ -24,10 +26,11 @@ Every recipe has `"schema": "visual-core.pixel/1"`, a `kind` and a short `id`.
 |---|---|
 | character | `size` 16/32/64, `parts`: body small/medium/large, skin s/o/n, hair {style short/long/tied/none/hood, key}, outfit {style tunic/robe/armour/overalls, colour or keys}, held none/sword/staff/bow/tool/book, face calm/happy/angry/hurt; `frames` |
 | monster | `size`, `parts`: body blob/beast/flyer/knight, eyes dots/one/slits, colour, light, extra none/crown/horns/wings; `frames` |
-| item | `name` (potion, coin, sword, shield, key…), `size`, `keys` per slot (`pixel catalog` lists slots) |
-| icon | `name` (heart, coin, potion, key, sword, shield, star), 16 px |
-| tile | `name` (grass), `detail` low/medium/high, `variants_count` 1–4, `seed` |
-| frame | `width`, `height`, `fill` p (dark) or w (light) |
+| item | `name` (potion, coin, sword, shield, key, gem, apple, mushroom, bomb, chest, scroll, bag, ring), `size`, `keys` per slot (`pixel catalog` lists slots) |
+| icon | `name` (heart, coin, potion, key, sword, shield, star, bag, gear, map, clock, lock), 16 px |
+| tile | `name` (grass, dirt, water, sand, flowers; fixed: stone, wood, brick, path), `detail` low/medium/high, `variants_count` 1–4, `seed` |
+| frame | `source` frame9/parchment/inset, `width`, `height`, `fill` p (dark) or w (light) |
+| building | `size` 32/64, `parts`: wall wood/stone/brick, roof {style gable/hip/flat/tower, colour}, door none/wood/arch, windows 0–2, chimney |
 | button | `width`, `height`, `fill` [face, shade], `states` normal/focus/pressed/disabled, `label` |
 | sprite | free drawing: `width`, `height`, `ops` (rect, ellipse, circle, line, poly, pixels, dither, outline, shade, mirror, swap, scatter, text, part), optional `frames` |
 
