@@ -21,6 +21,12 @@ SVG is accepted by the icon command. Procedural generation uses three bounded
 upstream masks (ship/robot/creature), not a universal pixel-art generator.
 The illustration, game UI and animation recipes use the host's normal tools.
 
+Pixel recipes (`visual.py pixel`) draw characters, monsters, items, icons, static
+tiles, 9-slice frames and buttons only from the named parts and drawing steps in
+content/pixel, in the four kit palettes, at 16/32/64 px (frames and buttons up to
+256 px). Animation rows are fixed per action (idle, walk, attack, hurt, die).
+There is no free-form image input, rotation, anti-aliasing or interpolation.
+
 Assets keep immutable numbered revisions. Revisions can patch existing pixel
 frames/timing/palette or icon shape/size/stroke/color, not frame topology or asset
 kind. Create a separate named asset when changing dimensions or frame count.

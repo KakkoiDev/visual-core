@@ -1,0 +1,25 @@
+{
+  "schema": "visual-core.pixel-pack/1",
+  "pack": "tiles",
+  "license": "Original to visual-core (MIT). Grass reproduces the kit designer's ArtReferenceSet tile.",
+  "note": "Static 16 px tiles, no outline. scatter: the drawn details (connected groups) can be moved by seed with wrap-around, so every variant still repeats without a seam. Whole terrains with joins come from the terrain command.",
+  "tiles": {
+    "grass": {"base": "g", "scatter": true, "grid": [
+      "gggggggggggggggg",
+      "gglggggggggGgggg",
+      "gglGgggggggGlggg",
+      "ggggggggggggggGg",
+      "ggggGggggggggggg",
+      "gggGlgggglgggggg",
+      "gggggggggGlggggg",
+      "gggggggggggggggg",
+      "gGgggggggggggglg",
+      "glggggggggggggGg",
+      "gggggggGgggggggg",
+      "ggggggglgggggggg",
+      "gggggggggggGgggg",
+      "gggglgggggglGggg",
+      "ggggGggggggggggg",
+      "gggggggggggggggg"]}
+  }
+}

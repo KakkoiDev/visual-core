@@ -1,0 +1,394 @@
+{
+  "schema": "visual-core.pixel-pack/1",
+  "pack": "characters",
+  "license": "Original to visual-core (MIT). The 16 px medium body, short hair, tunic, calm face, legs and sword poses reproduce the kit designer's ArtReferenceSet/ArtSprites hero.",
+  "note": "16 px parts are exact fill grids (outline is added after compositing; k pixels are deliberate ink). 32 px parts are drawing steps in a 32-unit grid; 64 px doubles them. Parts are authored for the medium body; small and large reshape every layer the same way.",
+  "roles": {"skin": "s", "hair": "n", "outfit": ["r", "R"]},
+  "skins": ["s", "o", "n"],
+  "hip": {"16": 12, "32": 24},
+  "bodies": {
+    "small": {"16": {"delete_rows": [10, 13]}, "32": {"delete_rows": [20, 21, 26, 27]}, "64": {"delete_rows": [40, 41, 42, 43, 52, 53, 54, 55]}},
+    "medium": {},
+    "large": {"16": {"dup_rows": [10], "dup_cols": [8]}, "32": {"dup_rows": [20, 21], "dup_cols": [16, 17]}, "64": {"dup_rows": [40, 41, 42, 43], "dup_cols": [32, 33, 34, 35]}}
+  },
+  "body": {
+    "16": [{"op": "grid", "y": 8, "rows": [
+      "......sssss.....",
+      "....sssssssss...",
+      "....sssssssss...",
+      "...k.sssssss.k.."]}],
+    "32": [
+      {"op": "rect", "x": 10, "y": 16, "w": 12, "h": 8, "key": "s"},
+      {"op": "rect", "x": 7, "y": 17, "w": 3, "h": 6, "key": "s"},
+      {"op": "rect", "x": 22, "y": 17, "w": 3, "h": 6, "key": "s"},
+      {"op": "shade", "keys": ["s"]}]
+  },
+  "head": {
+    "16": [{"op": "grid", "y": 2, "rows": [
+      ".....ssssss.....",
+      "....ssssssss....",
+      "....ssssssss....",
+      "....ssssssss....",
+      ".....sssssss....",
+      "......sssss....."]}],
+    "32": [
+      {"op": "ellipse", "x": 8, "y": 3, "w": 16, "h": 14, "key": "s"},
+      {"op": "shade", "keys": ["s"], "light": true}]
+  },
+  "legs": {
+    "stand": {
+      "16": [{"op": "grid", "y": 12, "rows": [
+        ".....BBB.BBB....",
+        ".....BBB.BBB....",
+        ".....nnn.nnn....",
+        "....k.......k..."]}],
+      "32": [
+        {"op": "rect", "x": 11, "y": 24, "w": 4, "h": 4, "key": "B"},
+        {"op": "rect", "x": 17, "y": 24, "w": 4, "h": 4, "key": "B"},
+        {"op": "rect", "x": 10, "y": 28, "w": 5, "h": 3, "key": "n"},
+        {"op": "rect", "x": 17, "y": 28, "w": 5, "h": 3, "key": "n"},
+        {"op": "shade", "keys": ["B"]},
+        {"op": "shade", "keys": ["n"]}]
+    },
+    "walk1": {
+      "16": [{"op": "grid", "y": 12, "rows": [
+        ".....BBB.BBB....",
+        "....BBB...BB....",
+        "....nnn...nn....",
+        "...k.....k......"]}],
+      "32": [
+        {"op": "rect", "x": 11, "y": 24, "w": 4, "h": 2, "key": "B"},
+        {"op": "rect", "x": 9, "y": 26, "w": 4, "h": 2, "key": "B"},
+        {"op": "rect", "x": 17, "y": 24, "w": 4, "h": 2, "key": "B"},
+        {"op": "rect", "x": 18, "y": 26, "w": 3, "h": 2, "key": "B"},
+        {"op": "rect", "x": 8, "y": 28, "w": 5, "h": 3, "key": "n"},
+        {"op": "rect", "x": 18, "y": 28, "w": 4, "h": 3, "key": "n"},
+        {"op": "shade", "keys": ["B"]},
+        {"op": "shade", "keys": ["n"]}]
+    },
+    "walk3": {
+      "16": [{"op": "grid", "y": 12, "rows": [
+        ".....BBB.BBB....",
+        ".....BB...BBB...",
+        ".....nn...nnn...",
+        "....k....k......"]}],
+      "32": [
+        {"op": "rect", "x": 11, "y": 24, "w": 4, "h": 2, "key": "B"},
+        {"op": "rect", "x": 11, "y": 26, "w": 3, "h": 2, "key": "B"},
+        {"op": "rect", "x": 17, "y": 24, "w": 4, "h": 2, "key": "B"},
+        {"op": "rect", "x": 19, "y": 26, "w": 4, "h": 2, "key": "B"},
+        {"op": "rect", "x": 10, "y": 28, "w": 4, "h": 3, "key": "n"},
+        {"op": "rect", "x": 19, "y": 28, "w": 5, "h": 3, "key": "n"},
+        {"op": "shade", "keys": ["B"]},
+        {"op": "shade", "keys": ["n"]}]
+    }
+  },
+  "hair": {
+    "short": {
+      "16": [
+        {"op": "grid", "y": 2, "rows": [
+          ".....nnnnnn.....",
+          "....nnnnnnnn....",
+          "....nn.....n....",
+          "....n......n...."]},
+        {"op": "choose", "options": [[], [{"op": "pixels", "key": "n", "at": [[7, 1]]}], [{"op": "pixels", "key": "n", "at": [[9, 1]]}]]}],
+      "32": [
+        {"op": "ellipse", "x": 7, "y": 2, "w": 18, "h": 12, "key": "n", "clip": [0, 0, 32, 8]},
+        {"op": "rect", "x": 8, "y": 8, "w": 3, "h": 4, "key": "n"},
+        {"op": "rect", "x": 22, "y": 8, "w": 2, "h": 3, "key": "n"},
+        {"op": "rect", "x": 11, "y": 8, "w": 2, "h": 1, "key": "n"},
+        {"op": "choose", "options": [[], [{"op": "rect", "x": 14, "y": 1, "w": 2, "h": 1, "key": "n"}], [{"op": "rect", "x": 18, "y": 1, "w": 2, "h": 1, "key": "n"}]]},
+        {"op": "shade", "keys": ["n"], "light": true}]
+    },
+    "long": {
+      "16": [{"op": "grid", "y": 2, "rows": [
+        ".....nnnnnn.....",
+        "....nnnnnnnn....",
+        "....nn.....n....",
+        "....n......n....",
+        "....n......nn...",
+        "....nn.....nn...",
+        "....nn.....nn..."]}],
+      "32": [
+        {"op": "ellipse", "x": 7, "y": 2, "w": 18, "h": 12, "key": "n", "clip": [0, 0, 32, 8]},
+        {"op": "rect", "x": 7, "y": 8, "w": 4, "h": 11, "key": "n"},
+        {"op": "rect", "x": 22, "y": 8, "w": 4, "h": 11, "key": "n"},
+        {"op": "rect", "x": 11, "y": 8, "w": 2, "h": 1, "key": "n"},
+        {"op": "shade", "keys": ["n"], "light": true}]
+    },
+    "tied": {
+      "16": [{"op": "grid", "y": 2, "rows": [
+        ".....nnnnnn.....",
+        "....nnnnnnnnnn..",
+        "....nn.....nnn..",
+        "....n......n.n..",
+        ".............n.."]}],
+      "32": [
+        {"op": "ellipse", "x": 7, "y": 2, "w": 18, "h": 12, "key": "n", "clip": [0, 0, 32, 8]},
+        {"op": "rect", "x": 8, "y": 8, "w": 3, "h": 4, "key": "n"},
+        {"op": "rect", "x": 22, "y": 8, "w": 2, "h": 3, "key": "n"},
+        {"op": "ellipse", "x": 23, "y": 3, "w": 6, "h": 6, "key": "n"},
+        {"op": "rect", "x": 26, "y": 8, "w": 2, "h": 6, "key": "n"},
+        {"op": "shade", "keys": ["n"], "light": true}]
+    },
+    "none": {"16": [], "32": []},
+    "hood": {
+      "16": [{"op": "grid", "y": 1, "rows": [
+        ".....nnnnnn.....",
+        "....nnnnnnnn....",
+        "...nnnnnnnnnn...",
+        "...nn......nn...",
+        "...nn......nn...",
+        "...nnn.....nn...",
+        "...nnnn...nnn...",
+        "....nnnnnnnn...."]}],
+      "32": [
+        {"op": "ellipse", "x": 5, "y": 1, "w": 22, "h": 19, "key": "n"},
+        {"op": "rect", "x": 8, "y": 15, "w": 16, "h": 3, "key": "n"},
+        {"op": "ellipse", "x": 10, "y": 7, "w": 12, "h": 11, "key": ".", "clip": [0, 7, 32, 9]},
+        {"op": "shade", "keys": ["n"], "light": true}]
+    }
+  },
+  "face": {
+    "calm": {
+      "16": [{"op": "pixels", "key": "k", "at": [[6, 5], [9, 5]]}],
+      "32": [{"op": "rect", "x": 12, "y": 10, "w": 2, "h": 2, "key": "k"}, {"op": "rect", "x": 18, "y": 10, "w": 2, "h": 2, "key": "k"}]
+    },
+    "happy": {
+      "16": [{"op": "pixels", "key": "k", "at": [[6, 5], [9, 5]]}, {"op": "pixels", "key": "R", "at": [[7, 7], [8, 7]]}],
+      "32": [
+        {"op": "rect", "x": 12, "y": 10, "w": 2, "h": 2, "key": "k"}, {"op": "rect", "x": 18, "y": 10, "w": 2, "h": 2, "key": "k"},
+        {"op": "pixels", "key": "R", "at": [[14, 13], [15, 14], [16, 14], [17, 13]]}]
+    },
+    "angry": {
+      "16": [{"op": "pixels", "key": "k", "at": [[5, 4], [10, 4], [6, 5], [9, 5]]}, {"op": "pixels", "key": "R", "at": [[7, 7], [8, 7]]}],
+      "32": [
+        {"op": "rect", "x": 12, "y": 10, "w": 2, "h": 2, "key": "k"}, {"op": "rect", "x": 18, "y": 10, "w": 2, "h": 2, "key": "k"},
+        {"op": "line", "x1": 11, "y1": 7, "x2": 14, "y2": 9, "key": "k"}, {"op": "line", "x1": 21, "y1": 7, "x2": 18, "y2": 9, "key": "k"},
+        {"op": "line", "x1": 14, "y1": 14, "x2": 17, "y2": 14, "key": "R"}]
+    },
+    "hurt": {
+      "16": [{"op": "pixels", "key": "k", "at": [[5, 5], [6, 5], [9, 5], [10, 5]]}, {"op": "pixels", "key": "R", "at": [[7, 7]]}],
+      "32": [
+        {"op": "line", "x1": 11, "y1": 11, "x2": 14, "y2": 11, "key": "k"}, {"op": "line", "x1": 18, "y1": 11, "x2": 21, "y2": 11, "key": "k"},
+        {"op": "rect", "x": 15, "y": 14, "w": 2, "h": 1, "key": "R"}]
+    }
+  },
+  "outfit": {
+    "tunic": {
+      "upper": {
+        "16": [{"op": "grid", "y": 8, "rows": [
+          "......rrrrr.....",
+          ".....rrryrrR....",
+          ".....rRyyyRR....",
+          ".....rrrrrRR...."]}],
+        "32": [
+          {"op": "rect", "x": 10, "y": 16, "w": 12, "h": 8, "key": "r"},
+          {"op": "rect", "x": 7, "y": 17, "w": 3, "h": 3, "key": "r"},
+          {"op": "rect", "x": 22, "y": 17, "w": 3, "h": 3, "key": "r"},
+          {"op": "shade", "keys": ["r"]},
+          {"op": "line", "x1": 13, "y1": 16, "x2": 16, "y2": 19, "key": "y"},
+          {"op": "line", "x1": 19, "y1": 16, "x2": 16, "y2": 19, "key": "y"}]
+      }
+    },
+    "robe": {
+      "upper": {
+        "16": [{"op": "grid", "y": 8, "rows": [
+          "......rrrrr.....",
+          "....rrrryrrRR...",
+          "....rrrryrrRR...",
+          ".....rrrrrRR...."]}],
+        "32": [
+          {"op": "rect", "x": 10, "y": 16, "w": 12, "h": 8, "key": "r"},
+          {"op": "rect", "x": 7, "y": 17, "w": 3, "h": 6, "key": "r"},
+          {"op": "rect", "x": 22, "y": 17, "w": 3, "h": 6, "key": "r"},
+          {"op": "shade", "keys": ["r"]},
+          {"op": "line", "x1": 16, "y1": 16, "x2": 16, "y2": 23, "key": "y"}]
+      },
+      "lower": {
+        "stand": {
+          "16": [{"op": "grid", "y": 12, "rows": [
+            "....rrrrrrRRR...",
+            "....rrrrrrRRR..."]}],
+          "32": [
+            {"op": "poly", "points": [[10, 24], [21, 24], [23, 29], [8, 29]], "key": "r"},
+            {"op": "shade", "keys": ["r"]},
+            {"op": "line", "x1": 16, "y1": 24, "x2": 16, "y2": 29, "key": "y"}]
+        }
+      }
+    },
+    "armour": {
+      "upper": {
+        "16": [{"op": "grid", "y": 8, "rows": [
+          "....rrrrrrrRR...",
+          "....rrwrrrrRR...",
+          ".....rwrrrRR....",
+          ".....RRRRRRR...."]}],
+        "32": [
+          {"op": "rect", "x": 10, "y": 16, "w": 12, "h": 7, "key": "r"},
+          {"op": "rect", "x": 10, "y": 23, "w": 12, "h": 1, "key": "R"},
+          {"op": "ellipse", "x": 6, "y": 15, "w": 6, "h": 5, "key": "r"},
+          {"op": "ellipse", "x": 20, "y": 15, "w": 6, "h": 5, "key": "r"},
+          {"op": "shade", "keys": ["r"], "light": true},
+          {"op": "line", "x1": 13, "y1": 18, "x2": 13, "y2": 21, "key": "w"}]
+      }
+    },
+    "overalls": {
+      "upper": {
+        "16": [{"op": "grid", "y": 8, "rows": [
+          "......wwwww.....",
+          ".....wrwwwrw....",
+          ".....rrrrrrR....",
+          ".....rrrrrRR...."]}],
+        "32": [
+          {"op": "rect", "x": 10, "y": 16, "w": 12, "h": 4, "key": "w"},
+          {"op": "rect", "x": 7, "y": 17, "w": 3, "h": 3, "key": "w"},
+          {"op": "rect", "x": 22, "y": 17, "w": 3, "h": 3, "key": "w"},
+          {"op": "shade", "keys": ["w"]},
+          {"op": "rect", "x": 12, "y": 19, "w": 8, "h": 5, "key": "r"},
+          {"op": "rect", "x": 10, "y": 21, "w": 12, "h": 3, "key": "r"},
+          {"op": "line", "x1": 12, "y1": 16, "x2": 12, "y2": 19, "key": "r"},
+          {"op": "line", "x1": 19, "y1": 16, "x2": 19, "y2": 19, "key": "r"},
+          {"op": "shade", "keys": ["r"]},
+          {"op": "pixels", "key": "y", "at": [[12, 19], [19, 19]]}]
+      },
+      "lower": {
+        "stand": {
+          "16": [{"op": "grid", "y": 12, "rows": [
+            ".....rrr.rRR....",
+            ".....rrr.rRR...."]}],
+          "32": [
+            {"op": "rect", "x": 11, "y": 24, "w": 4, "h": 4, "key": "r"},
+            {"op": "rect", "x": 17, "y": 24, "w": 4, "h": 4, "key": "r"},
+            {"op": "shade", "keys": ["r"]}]
+        },
+        "walk1": {
+          "16": [{"op": "grid", "y": 12, "rows": [
+            ".....rrr.rRR....",
+            "....rrr...RR...."]}],
+          "32": [
+            {"op": "rect", "x": 11, "y": 24, "w": 4, "h": 2, "key": "r"},
+            {"op": "rect", "x": 9, "y": 26, "w": 4, "h": 2, "key": "r"},
+            {"op": "rect", "x": 17, "y": 24, "w": 4, "h": 2, "key": "r"},
+            {"op": "rect", "x": 18, "y": 26, "w": 3, "h": 2, "key": "r"},
+            {"op": "shade", "keys": ["r"]}]
+        },
+        "walk3": {
+          "16": [{"op": "grid", "y": 12, "rows": [
+            ".....rrr.rRR....",
+            ".....rr...rRR..."]}],
+          "32": [
+            {"op": "rect", "x": 11, "y": 24, "w": 4, "h": 2, "key": "r"},
+            {"op": "rect", "x": 11, "y": 26, "w": 3, "h": 2, "key": "r"},
+            {"op": "rect", "x": 17, "y": 24, "w": 4, "h": 2, "key": "r"},
+            {"op": "rect", "x": 19, "y": 26, "w": 4, "h": 2, "key": "r"},
+            {"op": "shade", "keys": ["r"]}]
+        }
+      }
+    }
+  },
+  "held": {
+    "none": {},
+    "sword": {
+      "rest": {
+        "16": [{"op": "pixels", "key": "w", "at": [[13, 5]]}, {"op": "pixels", "key": "d", "at": [[13, 6], [13, 7]]}, {"op": "pixels", "key": "y", "at": [[13, 8]]}],
+        "32": [
+          {"op": "rect", "x": 25, "y": 8, "w": 2, "h": 11, "key": "d"}, {"op": "line", "x1": 25, "y1": 8, "x2": 25, "y2": 18, "key": "w"},
+          {"op": "rect", "x": 23, "y": 19, "w": 6, "h": 1, "key": "y"}, {"op": "rect", "x": 25, "y": 20, "w": 2, "h": 2, "key": "n"},
+          {"op": "outline"}]
+      },
+      "windup": {
+        "16": [{"op": "pixels", "key": "d", "at": [[2, 6], [2, 7]]}, {"op": "pixels", "key": "k", "at": [[2, 8]]}],
+        "32": [
+          {"op": "rect", "x": 3, "y": 3, "w": 2, "h": 11, "key": "d"}, {"op": "line", "x1": 3, "y1": 3, "x2": 3, "y2": 13, "key": "w"},
+          {"op": "rect", "x": 1, "y": 14, "w": 6, "h": 1, "key": "y"}, {"op": "rect", "x": 3, "y": 15, "w": 2, "h": 2, "key": "n"},
+          {"op": "outline"}]
+      },
+      "strike": {
+        "16": [{"op": "pixels", "key": "k", "at": [[13, 9]]}, {"op": "pixels", "key": "d", "at": [[14, 9], [15, 9]]}, {"op": "pixels", "key": "w", "at": [[15, 8]]}],
+        "32": [
+          {"op": "rect", "x": 25, "y": 18, "w": 2, "h": 2, "key": "n"}, {"op": "rect", "x": 27, "y": 16, "w": 1, "h": 6, "key": "y"},
+          {"op": "rect", "x": 28, "y": 18, "w": 4, "h": 2, "key": "d"}, {"op": "line", "x1": 28, "y1": 18, "x2": 31, "y2": 18, "key": "w"},
+          {"op": "outline"}]
+      },
+      "recover": {
+        "16": [{"op": "pixels", "key": "d", "at": [[14, 10], [15, 11]]}],
+        "32": [
+          {"op": "line", "x1": 25, "y1": 22, "x2": 30, "y2": 27, "key": "d", "width": 2}, {"op": "line", "x1": 26, "y1": 22, "x2": 30, "y2": 26, "key": "w"},
+          {"op": "outline"}]
+      }
+    },
+    "staff": {
+      "rest": {
+        "16": [{"op": "pixels", "key": "y", "at": [[13, 3]]}, {"op": "pixels", "key": "n", "at": [[13, 4], [13, 5], [13, 6], [13, 7], [13, 8]]}],
+        "32": [{"op": "rect", "x": 25, "y": 5, "w": 2, "h": 17, "key": "n"}, {"op": "circle", "cx": 25, "cy": 4, "r": 2, "key": "b"}, {"op": "outline"}]
+      },
+      "windup": {
+        "16": [{"op": "pixels", "key": "y", "at": [[2, 3]]}, {"op": "pixels", "key": "n", "at": [[2, 4], [2, 5], [2, 6], [2, 7]]}],
+        "32": [{"op": "rect", "x": 4, "y": 4, "w": 2, "h": 14, "key": "n"}, {"op": "circle", "cx": 4, "cy": 3, "r": 2, "key": "b"}, {"op": "outline"}]
+      },
+      "strike": {
+        "16": [{"op": "pixels", "key": "n", "at": [[13, 9], [14, 9]]}, {"op": "pixels", "key": "y", "at": [[15, 9]]}, {"op": "pixels", "key": "w", "at": [[15, 8]]}],
+        "32": [{"op": "rect", "x": 24, "y": 18, "w": 6, "h": 2, "key": "n"}, {"op": "circle", "cx": 29, "cy": 18, "r": 2, "key": "b"}, {"op": "outline"}]
+      },
+      "recover": {
+        "16": [{"op": "pixels", "key": "n", "at": [[13, 10], [14, 11]]}, {"op": "pixels", "key": "y", "at": [[15, 12]]}],
+        "32": [{"op": "line", "x1": 24, "y1": 21, "x2": 28, "y2": 25, "key": "n", "width": 2}, {"op": "circle", "cx": 29, "cy": 26, "r": 2, "key": "b"}, {"op": "outline"}]
+      }
+    },
+    "bow": {
+      "rest": {
+        "16": [{"op": "pixels", "key": "n", "at": [[13, 6], [14, 7], [14, 8], [14, 9], [13, 10]]}, {"op": "pixels", "key": "w", "at": [[13, 7], [13, 8], [13, 9]]}],
+        "32": [{"op": "ellipse", "x": 24, "y": 11, "w": 6, "h": 14, "key": "n", "clip": [27, 0, 5, 32]}, {"op": "ellipse", "x": 26, "y": 13, "w": 4, "h": 10, "key": ".", "clip": [27, 0, 5, 32]}, {"op": "line", "x1": 27, "y1": 11, "x2": 27, "y2": 24, "key": "w"}, {"op": "outline"}]
+      },
+      "windup": {
+        "16": [{"op": "pixels", "key": "n", "at": [[13, 6], [14, 7], [14, 8], [14, 9], [13, 10]]}, {"op": "pixels", "key": "w", "at": [[12, 8], [11, 8]]}, {"op": "pixels", "key": "d", "at": [[15, 8]]}],
+        "32": [{"op": "ellipse", "x": 24, "y": 11, "w": 6, "h": 14, "key": "n", "clip": [27, 0, 5, 32]}, {"op": "ellipse", "x": 26, "y": 13, "w": 4, "h": 10, "key": ".", "clip": [27, 0, 5, 32]}, {"op": "line", "x1": 27, "y1": 11, "x2": 23, "y2": 18, "key": "w"}, {"op": "line", "x1": 23, "y1": 18, "x2": 27, "y2": 24, "key": "w"}, {"op": "line", "x1": 22, "y1": 18, "x2": 31, "y2": 18, "key": "d"}, {"op": "outline"}]
+      },
+      "strike": {
+        "16": [{"op": "pixels", "key": "n", "at": [[13, 6], [14, 7], [14, 8], [14, 9], [13, 10]]}, {"op": "pixels", "key": "w", "at": [[13, 7], [13, 8], [13, 9]]}, {"op": "pixels", "key": "d", "at": [[15, 4]]}],
+        "32": [{"op": "ellipse", "x": 24, "y": 11, "w": 6, "h": 14, "key": "n", "clip": [27, 0, 5, 32]}, {"op": "ellipse", "x": 26, "y": 13, "w": 4, "h": 10, "key": ".", "clip": [27, 0, 5, 32]}, {"op": "line", "x1": 27, "y1": 11, "x2": 27, "y2": 24, "key": "w"}, {"op": "line", "x1": 29, "y1": 6, "x2": 31, "y2": 6, "key": "d"}, {"op": "outline"}]
+      },
+      "recover": {
+        "16": [{"op": "pixels", "key": "n", "at": [[13, 7], [14, 8], [14, 9], [14, 10], [13, 11]]}, {"op": "pixels", "key": "w", "at": [[13, 8], [13, 9], [13, 10]]}],
+        "32": [{"op": "ellipse", "x": 24, "y": 13, "w": 6, "h": 14, "key": "n", "clip": [27, 0, 5, 32]}, {"op": "ellipse", "x": 26, "y": 15, "w": 4, "h": 10, "key": ".", "clip": [27, 0, 5, 32]}, {"op": "line", "x1": 27, "y1": 13, "x2": 27, "y2": 26, "key": "w"}, {"op": "outline"}]
+      }
+    },
+    "tool": {
+      "rest": {
+        "16": [{"op": "pixels", "key": "d", "at": [[12, 5], [13, 5], [14, 5]]}, {"op": "pixels", "key": "n", "at": [[13, 6], [13, 7], [13, 8]]}],
+        "32": [{"op": "rect", "x": 25, "y": 9, "w": 2, "h": 13, "key": "n"}, {"op": "rect", "x": 22, "y": 6, "w": 8, "h": 4, "key": "d"}, {"op": "shade", "keys": ["d"]}, {"op": "outline"}]
+      },
+      "windup": {
+        "16": [{"op": "pixels", "key": "d", "at": [[1, 4], [2, 4], [3, 4]]}, {"op": "pixels", "key": "n", "at": [[2, 5], [2, 6], [2, 7]]}],
+        "32": [{"op": "rect", "x": 4, "y": 6, "w": 2, "h": 12, "key": "n"}, {"op": "rect", "x": 1, "y": 3, "w": 8, "h": 4, "key": "d"}, {"op": "shade", "keys": ["d"]}, {"op": "outline"}]
+      },
+      "strike": {
+        "16": [{"op": "pixels", "key": "n", "at": [[13, 9], [14, 9]]}, {"op": "pixels", "key": "d", "at": [[15, 8], [15, 9], [15, 10]]}],
+        "32": [{"op": "rect", "x": 24, "y": 18, "w": 5, "h": 2, "key": "n"}, {"op": "rect", "x": 28, "y": 14, "w": 4, "h": 9, "key": "d"}, {"op": "shade", "keys": ["d"]}, {"op": "outline"}]
+      },
+      "recover": {
+        "16": [{"op": "pixels", "key": "n", "at": [[13, 10], [14, 11]]}, {"op": "pixels", "key": "d", "at": [[15, 11], [15, 12], [14, 12]]}],
+        "32": [{"op": "line", "x1": 24, "y1": 21, "x2": 27, "y2": 24, "key": "n", "width": 2}, {"op": "rect", "x": 27, "y": 24, "w": 5, "h": 4, "key": "d"}, {"op": "shade", "keys": ["d"]}, {"op": "outline"}]
+      }
+    },
+    "book": {
+      "rest": {
+        "16": [{"op": "pixels", "key": "b", "at": [[12, 9], [13, 9], [13, 10]]}, {"op": "pixels", "key": "w", "at": [[12, 10]]}],
+        "32": [{"op": "rect", "x": 22, "y": 18, "w": 6, "h": 7, "key": "b"}, {"op": "rect", "x": 22, "y": 19, "w": 1, "h": 5, "key": "w"}, {"op": "shade", "keys": ["b"]}, {"op": "outline"}]
+      },
+      "windup": {
+        "16": [{"op": "pixels", "key": "b", "at": [[12, 8], [13, 8], [13, 9]]}, {"op": "pixels", "key": "w", "at": [[12, 9]]}, {"op": "pixels", "key": "y", "at": [[14, 7]]}],
+        "32": [{"op": "rect", "x": 22, "y": 16, "w": 6, "h": 7, "key": "b"}, {"op": "rect", "x": 22, "y": 17, "w": 1, "h": 5, "key": "w"}, {"op": "shade", "keys": ["b"]}, {"op": "pixels", "key": "y", "at": [[29, 14], [30, 13]]}, {"op": "outline"}]
+      },
+      "strike": {
+        "16": [{"op": "pixels", "key": "b", "at": [[12, 9], [13, 9], [13, 10]]}, {"op": "pixels", "key": "w", "at": [[12, 10]]}, {"op": "pixels", "key": "y", "at": [[15, 9], [15, 7], [14, 8]]}],
+        "32": [{"op": "rect", "x": 22, "y": 18, "w": 6, "h": 7, "key": "b"}, {"op": "rect", "x": 22, "y": 19, "w": 1, "h": 5, "key": "w"}, {"op": "shade", "keys": ["b"]}, {"op": "circle", "cx": 30, "cy": 17, "r": 1, "key": "y"}, {"op": "outline"}]
+      },
+      "recover": {
+        "16": [{"op": "pixels", "key": "b", "at": [[12, 9], [13, 9], [13, 10]]}, {"op": "pixels", "key": "w", "at": [[12, 10]]}],
+        "32": [{"op": "rect", "x": 22, "y": 18, "w": 6, "h": 7, "key": "b"}, {"op": "rect", "x": 22, "y": 19, "w": 1, "h": 5, "key": "w"}, {"op": "shade", "keys": ["b"]}, {"op": "outline"}]
+      }
+    }
+  }
+}

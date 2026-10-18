@@ -14,7 +14,7 @@ import subprocess
 import tempfile
 import zlib
 
-VERSION = '0.3.0'
+VERSION = '0.4.0'
 ROOT = Path(__file__).resolve().parents[1]
 IDENT = re.compile(r'^[a-z][a-z0-9_-]{0,39}$')
 COLOR = re.compile(r'^#[0-9a-fA-F]{6}$')
@@ -67,12 +67,24 @@ def color(value):
         raise ValueError('Colors must be #RRGGBB')
 
 
+def structured(spec):
+    """The module that owns a schema-versioned recipe (terrain, pixel), or None for legacy specs."""
+    if not isinstance(spec, dict):
+        return None
+    if spec.get('kind') == 'terrain':
+        import terrain
+        return terrain
+    if str(spec.get('schema', '')).startswith('visual-core.pixel/'):
+        import pixel
+        return pixel
+    return None
+
+
 def validate(spec):
     if not isinstance(spec, dict):
         raise ValueError('Expected a spec object')
-    if spec.get('kind') == 'terrain':
-        import terrain
-        return terrain.validate(spec)
+    if structured(spec):
+        return structured(spec).validate(spec)
     ident(spec.get('name'))
     if spec.get('kind') == 'icon':
         fields(spec, ['name', 'kind', 'shape', 'size', 'stroke', 'color'])
@@ -130,9 +142,8 @@ def png(width, height, rgba):
 def render(spec, folder, generator=None, legacy_icon=False):
     validate(spec)
     folder = Path(folder)
-    if spec.get('kind') == 'terrain':
-        import terrain
-        return terrain.render(spec, folder, generator)
+    if structured(spec):
+        return structured(spec).render(spec, folder, generator)
     write_json(folder / 'spec.json', spec)
     if generator is not None:
         write_json(folder / 'generator.json', generator)
@@ -206,9 +217,8 @@ def read_asset(folder):
 
 
 def patch_spec(spec, patch):
-    if spec.get('kind') == 'terrain':
-        import terrain
-        return terrain.patch(spec, patch)
+    if structured(spec):
+        return structured(spec).patch(spec, patch)
     fields(patch, ['set', 'frames'])
     result = copy.deepcopy(spec)
     if 'set' in patch:
@@ -242,7 +252,7 @@ def publish(folder, spec=None, base=None, patch=None, generator=None):
             raise ValueError(f'Stale base; read revision {previous["revision"]} first')
         spec, rev, parent = patch_spec(previous['spec'], patch), base + 1, folder
         generator = previous['generator']
-        if spec['kind'] == 'icon' and 'shape' not in patch.get('set', {}):
+        if not structured(spec) and spec['kind'] == 'icon' and 'shape' not in patch.get('set', {}):
             manifest = previous['manifest']
             legacy_icon = manifest.get('icon_library') == 'visual-core-legacy' or manifest.get('version') == '0.1.0'
         integer(rev, 1, 9999, 'revision')
@@ -260,7 +270,7 @@ def publish(folder, spec=None, base=None, patch=None, generator=None):
                 raise ValueError('Another revision is running; retry after it finishes')
             if read_asset(folder)['revision'] != base:
                 raise ValueError('Revision changed; read before retrying')
-            if spec.get('kind') == 'terrain' and spec == previous['spec']:
+            if structured(spec) and spec == previous['spec']:
                 return {'revision':base, 'directory':previous['directory'], 'unchanged':True}
         destination = stage / f'{rev:04d}' if creating else stage
         destination.mkdir(exist_ok=True)
@@ -341,6 +351,9 @@ def main(argv=None):
     if arguments and arguments[0] == 'terrain':
         import terrain
         return terrain.main(arguments[1:])
+    if arguments and arguments[0] == 'pixel':
+        import pixel
+        return pixel.main(arguments[1:])
     parser = argparse.ArgumentParser(description=__doc__)
     commands = parser.add_subparsers(dest='command', required=True)
     commands.add_parser('catalog')

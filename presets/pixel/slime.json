@@ -1,0 +1,5 @@
+{"schema": "visual-core.pixel/1", "kind": "monster", "id": "slime", "size": 16, "palette": "meadow",
+ "parts": {"body": "blob", "eyes": "dots", "colour": ["g", "G"], "light": "l", "extra": "none"},
+ "frames": {"idle": 2, "hurt": 2, "die": 4},
+ "variants": [{"name": "red", "swap": {"g": "r", "G": "R", "l": "y"}}],
+ "note": "Designer reference monster; the red variant is the card's red slime."}

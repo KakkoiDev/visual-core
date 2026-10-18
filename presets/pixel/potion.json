@@ -1,0 +1,2 @@
+{"schema": "visual-core.pixel/1", "kind": "item", "id": "potion", "size": 16, "name": "potion", "keys": {"glass": "w", "liquid": ["r", "R"], "cork": "n"},
+ "note": "Designer reference item."}

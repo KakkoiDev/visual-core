@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.4.0
+
+Add deterministic pixel recipes (`visual.py pixel`): the kit designer's four named
+palettes with fallbacks and UI roles, integer-only primitives (rect, ellipse, line,
+polygon, dither, outline, light-direction shading, mirror, scatter, pixel text),
+characters and monsters from named parts at 16/32/64 px, idle/walk/attack/hurt/die
+rows from part transforms, items with recolourable slots, HUD icons, seeded tile
+variants, 9-slice frames and button states. Sheets, previews and a manifest of
+rectangles, names and timings; numbered revisions; no-op patches publish nothing;
+errors name the field and its allowed values. The designer's reference hero, slime,
+potion, coin, heart, grass, frame and button are reproduced pixel for pixel.
+
 ## 0.3.0
 
 Add pinned headless terrain dependencies, meadow/coast/dungeon Blob 47 generation,

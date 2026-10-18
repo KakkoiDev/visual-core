@@ -1,0 +1,65 @@
+{
+  "schema": "visual-core.palettes/1",
+  "source": "Designer card ArtPalettes (Pi Workbench design/app-blocks/components/ArtPalettes), original to the kit.",
+  "keys": ["k", "p", "q", "Q", "d", "w", "y", "o", "r", "R", "g", "G", "l", "b", "B", "s", "n"],
+  "names": {
+    "k": "ink", "p": "panel", "q": "slate", "Q": "light stone", "d": "mist", "w": "paper",
+    "y": "gold", "o": "amber", "r": "poppy", "R": "brick", "g": "leaf", "G": "moss",
+    "l": "sprout", "b": "sky", "B": "deep water", "s": "skin", "n": "bark"
+  },
+  "shade": {
+    "l": "g", "g": "G", "G": "G", "r": "R", "R": "R", "b": "B", "B": "B", "y": "o", "o": "n",
+    "n": "n", "s": "o", "w": "d", "d": "q", "Q": "q", "q": "p", "p": "p", "k": "k"
+  },
+  "light": {"g": "l", "G": "g", "q": "Q", "R": "r", "B": "b", "o": "y", "n": "o", "d": "w", "p": "q"},
+  "colours": {
+    "red": ["r", "R"], "blue": ["b", "B"], "green": ["g", "G"], "gold": ["y", "o"],
+    "grey": ["d", "q"], "brown": ["o", "n"], "white": ["w", "d"], "dark": ["q", "p"]
+  },
+  "palettes": {
+    "meadow": {
+      "label": "Meadow",
+      "use": "Daylight worlds: RPG towns and fields, cozy farms, platformers. Default.",
+      "colors": {
+        "k": "#1b1c2b", "p": "#2b2d42", "q": "#4a4e69", "d": "#9aa0b8", "w": "#f4efe1",
+        "y": "#f2b33d", "o": "#c27c2c", "r": "#e05a47", "R": "#9e3a3a", "g": "#5bb85d",
+        "G": "#3a7d44", "l": "#a7d86d", "b": "#4aa3df", "B": "#2f6a9e", "s": "#f0b48a", "n": "#7a5236"
+      },
+      "fallback": {"Q": "d"},
+      "ui": {"--g-ink": "k", "--g-paper": "w", "--g-panel": "p", "--g-text": "w", "--g-dim": "d",
+             "--g-accent": "y", "--g-good": "g", "--g-bad": "r", "--g-energy": "b"}
+    },
+    "dusk": {
+      "label": "Dusk",
+      "use": "Night, dungeons, space, roguelikes.",
+      "colors": {
+        "k": "#0f0e17", "p": "#241e3a", "q": "#3d3363", "Q": "#6c5f9e", "d": "#a99ad6", "w": "#f5ecff",
+        "y": "#ffb86b", "o": "#c9743e", "r": "#ff5c7a", "R": "#a3324f", "g": "#5ee6b0", "G": "#2f9e7d",
+        "b": "#59c3ff", "B": "#2f6fb8", "s": "#e8b4a0", "n": "#6b4a3a"
+      },
+      "fallback": {"l": "w"},
+      "ui": {"--g-ink": "k", "--g-paper": "w", "--g-panel": "p", "--g-text": "w", "--g-dim": "d",
+             "--g-accent": "y", "--g-good": "g", "--g-bad": "r", "--g-energy": "b"}
+    },
+    "arcade": {
+      "label": "Arcade",
+      "use": "Shooters, arcade classics, puzzles, racing.",
+      "colors": {
+        "k": "#0b0b12", "p": "#1f2a5c", "q": "#5a5560", "d": "#c5c7cf", "w": "#fbf5ea", "y": "#ffae1a",
+        "r": "#ff3b5c", "R": "#7a2a6b", "g": "#2ee66b", "G": "#0f8a5f", "b": "#3aa8ff", "n": "#a8552f"
+      },
+      "fallback": {"s": "n", "B": "p", "l": "g", "o": "n", "Q": "d"},
+      "ui": {"--g-ink": "k", "--g-paper": "w", "--g-panel": "p", "--g-text": "w", "--g-dim": "d",
+             "--g-accent": "y", "--g-good": "g", "--g-bad": "r", "--g-energy": "b"}
+    },
+    "ink": {
+      "label": "Ink",
+      "use": "Visual novels, card games, menu-first and print-like games. Four greys; state by icons and words.",
+      "colors": {"k": "#111111", "q": "#3d3d3d", "d": "#aaaaaa", "w": "#f2f2ec"},
+      "fallback": {"r": "d", "o": "d", "b": "d", "R": "q", "G": "q", "B": "q", "n": "q", "p": "q",
+                   "l": "w", "y": "w", "s": "w", "g": "d", "Q": "d"},
+      "ui": {"--g-ink": "k", "--g-paper": "w", "--g-panel": "q", "--g-text": "w", "--g-dim": "d",
+             "--g-accent": "w", "--g-good": "k", "--g-bad": "k", "--g-energy": "d"}
+    }
+  }
+}

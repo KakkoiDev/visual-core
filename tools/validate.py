@@ -47,7 +47,7 @@ def check():
             assert project['integration_paths']
             for key in ('core_revision', 'verified_revision'):
                 assert re.fullmatch('[0-9a-f]{40}', project[key]), key
-    for preset in (ROOT / 'presets').glob('*.json'):
+    for preset in [*(ROOT / 'presets').glob('*.json'), *(ROOT / 'presets/pixel').glob('*.json')]:
         validate(load(preset))
     assert len((ROOT / 'AGENTS.md').read_text()) < 8000, 'Keep the router small'
     if errors:

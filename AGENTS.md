@@ -12,7 +12,8 @@ recipes, design tokens and asset mechanics; the app owns content, state and UX.
 | New app UI or improve an existing page | [Basecoat](recipes/basecoat.md), then [Web UI](recipes/web-ui.md) |
 | Icon, small interface symbol | [Icons](recipes/icons.md) |
 | Procedural sprite, robot, ship, creature | [Procedural pixels](recipes/procedural-pixels.md) |
-| Exact pixel character, prop, frame animation | [Pixel art](recipes/pixel-art.md), [animation](recipes/animation.md) |
+| Game character, monster, item, HUD icon, tile, pixel frame/button | [Pixel recipes](recipes/pixel-recipes.md) |
+| Exact hand-edited pixel rows, frame animation | [Pixel art](recipes/pixel-art.md), [animation](recipes/animation.md) |
 | Terrain, tiles, environment kit | [Tiles](recipes/tiles.md) |
 | Game HUD or menu | [Game UI](recipes/game-ui.md) |
 | Illustration, background, empty-state artwork | [Illustration](recipes/illustration.md) |
