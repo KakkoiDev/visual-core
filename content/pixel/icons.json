@@ -1,0 +1,35 @@
+{
+  "schema": "visual-core.pixel-pack/1",
+  "pack": "icons",
+  "license": "Original to visual-core (MIT). The heart reproduces the kit designer's ArtReferenceSet icon.",
+  "note": "16 x 16 HUD icons: fill grids, full ink outline added by the renderer, light from the top-left. An entry with item uses that item's 16 px drawing.",
+  "icons": {
+    "heart": {"16": [{"op": "grid", "y": 3, "rows": [
+      "...rrr....rrr...",
+      "..rwwrr..rrrrR..",
+      "..rwrrrrrrrrrR..",
+      "..rrrrrrrrrrrR..",
+      "..rrrrrrrrrrRR..",
+      "...rrrrrrrrRR...",
+      "....rrrrrrRR....",
+      ".....rrrrRR.....",
+      "......rrRR......",
+      ".......rR......."]}]},
+    "coin": {"item": "coin"},
+    "potion": {"item": "potion"},
+    "key": {"item": "key"},
+    "sword": {"item": "sword"},
+    "shield": {"item": "shield"},
+    "star": {"16": [{"op": "grid", "y": 2, "rows": [
+      ".......y........",
+      "......yyy.......",
+      "......ywy.......",
+      "..yyyyywyyyyo...",
+      "...yyyyyyyyo....",
+      "....yyyyyyo.....",
+      ".....yyyyyo.....",
+      ".....yyoyyo.....",
+      "....yyo.ooyo....",
+      "....yo....oo...."]}]}
+  }
+}

@@ -1,0 +1,3 @@
+{"schema": "visual-core.pixel/1", "kind": "monster", "id": "boss-slime", "size": 64, "palette": "dusk", "outline": "selective",
+ "parts": {"body": "blob", "eyes": "one", "colour": "red", "light": "y", "extra": "crown"},
+ "frames": {"idle": 2, "attack": 3}, "note": "ArtSprites example: boss slime at 64 px."}

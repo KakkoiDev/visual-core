@@ -1,0 +1,231 @@
+{
+ "source": "Pi Workbench design/app-blocks/components/ArtReferenceSet/preview.html and ArtSprites/preview.html (the kit designer's reference set, original to the kit). Grids use the ArtPalettes keys; . is empty.",
+ "sprites": {
+  "hero": [
+   "................",
+   ".....kkkkkk.....",
+   "....knnnnnnk....",
+   "...knnnnnnnnk...",
+   "...knnsssssnk...",
+   "...knskssksnk...",
+   "....ksssssssk...",
+   ".....ksssssk....",
+   "....kkrrrrrkk...",
+   "...ksrrryrrRsk..",
+   "...ksrRyyyRRsk..",
+   "...kkrrrrrRRkk..",
+   "....kBBBkBBBk...",
+   "....kBBBkBBBk...",
+   "....knnnknnnk...",
+   "....kkkk.kkkk..."
+  ],
+  "slime": [
+   "................",
+   "................",
+   "................",
+   "................",
+   "......kkkk......",
+   "....kkggggkk....",
+   "...kgllggggGk...",
+   "..kglggggggGGk..",
+   "..kgggwkggwkGk..",
+   ".kggggkkggkkgGk.",
+   ".kgggggggggggGk.",
+   ".kggggggggggGGk.",
+   ".kGgggggggggGGk.",
+   "..kGGGGGGGGGGk..",
+   "...kkkkkkkkkk...",
+   "................"
+  ],
+  "potion": [
+   "................",
+   "......kkkk......",
+   "......knnk......",
+   "......kkkk......",
+   ".......kwk......",
+   ".......kwk......",
+   "......kwwwk.....",
+   ".....kwwwwwk....",
+   "....kwrrrrrwk...",
+   "....krwrrrrRk...",
+   "....krrrrrrRk...",
+   "....krrrrrRRk...",
+   ".....kRRRRRk....",
+   "......kkkkk.....",
+   "................",
+   "................"
+  ],
+  "grass": [
+   "gggggggggggggggg",
+   "gglggggggggGgggg",
+   "gglGgggggggGlggg",
+   "ggggggggggggggGg",
+   "ggggGggggggggggg",
+   "gggGlgggglgggggg",
+   "gggggggggGlggggg",
+   "gggggggggggggggg",
+   "gGgggggggggggglg",
+   "glggggggggggggGg",
+   "gggggggGgggggggg",
+   "ggggggglgggggggg",
+   "gggggggggggGgggg",
+   "gggglgggggglGggg",
+   "ggggGggggggggggg",
+   "gggggggggggggggg"
+  ],
+  "heart": [
+   "................",
+   "................",
+   "...kkk....kkk...",
+   "..krrrk..krrrk..",
+   ".krwwrrkkrrrrRk.",
+   ".krwrrrrrrrrrRk.",
+   ".krrrrrrrrrrrRk.",
+   ".krrrrrrrrrrRRk.",
+   "..krrrrrrrrRRk..",
+   "...krrrrrrRRk...",
+   "....krrrrRRk....",
+   ".....krrRRk.....",
+   "......krRk......",
+   ".......kk.......",
+   "................",
+   "................"
+  ],
+  "coin": [
+   "................",
+   "................",
+   ".....kkkkkk.....",
+   "....kyyyyyyk....",
+   "...kywwyyyyok...",
+   "...kywyyooyok...",
+   "...kyyyoyyyok...",
+   "...kyyyoyyyok...",
+   "...kyyyoyyyok...",
+   "...kyyyooyyok...",
+   "...kyyyyyyook...",
+   "....kooooook....",
+   ".....kkkkkk.....",
+   "................",
+   "................",
+   "................"
+  ],
+  "ship": [
+   ".......kk.......",
+   "......kwwk......",
+   "......kbbk......",
+   ".....kbwwbk.....",
+   ".....kbwwbk.....",
+   "....kbbbbbbk....",
+   "...kBbbbbbbBk...",
+   "..kBbbbyybbbBk..",
+   ".kBbbbbyybbbbBk.",
+   ".kBBkbbbbbbkBBk.",
+   ".kkk.kbbbbk.kkk.",
+   ".....kBBBBk.....",
+   "......kyyk......",
+   "......kryk......",
+   ".......kk.......",
+   "................"
+  ],
+  "button9": [
+   "..kkkkkkkk..",
+   ".kwwwwwwwwk.",
+   "kwyyyyyyyyok",
+   "kwyyyyyyyyok",
+   "kwyyyyyyyyok",
+   "kwyyyyyyyyok",
+   "kwyyyyyyyyok",
+   "kwyyyyyyyyok",
+   "kwyyyyyyyyok",
+   "kooooooooook",
+   ".kooooooook.",
+   "..kkkkkkkk.."
+  ],
+  "frame9": [
+   ".kkkkkkkkkk.",
+   "kwwwwwwwwwwk",
+   "kwqqqqqqqqdk",
+   "kwqppppppqdk",
+   "kwqppppppqdk",
+   "kwqppppppqdk",
+   "kwqppppppqdk",
+   "kwqppppppqdk",
+   "kwqppppppqdk",
+   "kwqqqqqqqqdk",
+   "kddddddddddk",
+   ".kkkkkkkkkk."
+  ]
+ },
+ "walk_legs": {
+  "W1": [
+   "....kBBBkBBBk...",
+   "...kBBBk.kBBk...",
+   "...knnnk.knnk...",
+   "...kkkk..kkk...."
+  ],
+  "W3": [
+   "....kBBBkBBBk...",
+   "....kBBk.kBBBk..",
+   "....knnk.knnnk..",
+   "....kkk..kkkk..."
+  ]
+ },
+ "crown_rows": {
+  "1": ".....y.y.y......",
+  "2": ".....yyyyy......",
+  "3": ".....kkkkk......"
+ },
+ "sword_pixels": {
+  "0": [
+   [
+    2,
+    6,
+    "d"
+   ],
+   [
+    2,
+    7,
+    "d"
+   ],
+   [
+    2,
+    8,
+    "k"
+   ]
+  ],
+  "1": [
+   [
+    14,
+    9,
+    "d"
+   ],
+   [
+    15,
+    9,
+    "d"
+   ],
+   [
+    13,
+    9,
+    "k"
+   ],
+   [
+    15,
+    8,
+    "w"
+   ]
+  ],
+  "2": [
+   [
+    14,
+    10,
+    "d"
+   ],
+   [
+    15,
+    11,
+    "d"
+   ]
+  ]
+ }
+}

@@ -124,6 +124,21 @@
         "quality.json",
         "numbered revisions"
       ]
+    },
+    {
+      "id": "pixel-recipes",
+      "recipe": "recipes/pixel-recipes.md",
+      "status": "implemented",
+      "command": "pixel catalog; pixel template hero; pixel check RECIPE; pixel create RECIPE --out PATH; pixel read PATH; pixel revise PATH --base N --patch PATCH",
+      "outputs": [
+        "sheet.png",
+        "sheet-<variant>.png",
+        "preview.png",
+        "manifest.json",
+        "spec.json",
+        "preview.html",
+        "numbered revisions"
+      ]
     }
   ]
 }

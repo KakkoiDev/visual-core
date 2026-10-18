@@ -1,0 +1,1 @@
+{"schema": "visual-core.pixel/1", "kind": "tile", "id": "grass", "name": "grass", "detail": "low", "variants_count": 1, "note": "Designer reference tile; set variants_count up to 4 and a seed for scattered variants."}

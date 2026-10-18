@@ -1,0 +1,2 @@
+{"schema": "visual-core.pixel/1", "kind": "button", "id": "start-button", "style": "pixel", "width": 48, "height": 16, "fill": ["y", "o"],
+ "states": ["normal", "focus", "pressed", "disabled"], "label": "START", "note": "Designer reference button9."}

@@ -1,0 +1,1 @@
+{"schema": "visual-core.pixel/1", "kind": "item", "id": "sword", "size": 16, "name": "sword", "keys": {"blade": ["w", "d"], "guard": "y", "grip": "n"}}

@@ -1,0 +1,71 @@
+{
+  "schema": "visual-core.pixel-pack/1",
+  "pack": "items",
+  "license": "Original to visual-core (MIT). The 16 px potion and coin reproduce the kit designer's ArtReferenceSet item and icon.",
+  "note": "Each layer may name a slot; the recipe's keys.<slot> recolours only that layer. 16 px layers are exact grids; 32 px layers are steps in a 32-unit grid (64 doubles them).",
+  "items": {
+    "potion": {
+      "slots": {"glass": ["w"], "liquid": ["r", "R"], "cork": ["n"]},
+      "layers": [
+        {"slot": "glass",
+         "16": [{"op": "grid", "y": 4, "rows": ["........w.......", "........w.......", ".......www......", "......wwwww.....", ".....wwwwwww...."]}],
+         "32": [{"op": "rect", "x": 14, "y": 6, "w": 4, "h": 6, "key": "w"}, {"op": "circle", "cx": 16, "cy": 20, "r": 9, "key": "w"}]},
+        {"slot": "liquid",
+         "16": [{"op": "grid", "y": 8, "rows": ["......rrrrr.....", ".....rrrrrrR....", ".....rrrrrrR....", ".....rrrrrRR....", "......RRRRR....."]}],
+         "32": [{"op": "circle", "cx": 16, "cy": 20, "r": 8, "key": "r", "clip": [0, 17, 32, 15]}, {"op": "shade", "keys": ["r"], "depth": 2}]},
+        {"slot": "cork",
+         "16": [{"op": "grid", "y": 1, "rows": ["......k..k......", ".......nn.......", "......k..k......"]}],
+         "32": [{"op": "rect", "x": 13, "y": 2, "w": 6, "h": 4, "key": "n"}, {"op": "shade", "keys": ["n"]}]},
+        {"16": [{"op": "pixels", "key": "w", "at": [[6, 9]]}],
+         "32": [{"op": "line", "x1": 11, "y1": 22, "x2": 11, "y2": 24, "key": "w"}, {"op": "line", "x1": 12, "y1": 14, "x2": 14, "y2": 13, "key": "d"}]}
+      ]
+    },
+    "coin": {
+      "slots": {"metal": ["y", "o"]},
+      "layers": [
+        {"slot": "metal",
+         "16": [{"op": "grid", "y": 3, "rows": [".....yyyyyy.....", "....ywwyyyyo....", "....ywyyooyo....", "....yyyoyyyo....", "....yyyoyyyo....", "....yyyoyyyo....", "....yyyooyyo....", "....yyyyyyoo....", ".....oooooo....."]}],
+         "32": [{"op": "ellipse", "x": 6, "y": 5, "w": 19, "h": 22, "key": "y"}, {"op": "shade", "keys": ["y"], "depth": 2},
+                {"op": "rect", "x": 14, "y": 10, "w": 3, "h": 12, "key": "o"}, {"op": "line", "x1": 10, "y1": 9, "x2": 10, "y2": 13, "key": "w"}]}
+      ]
+    },
+    "sword": {
+      "slots": {"blade": ["w", "d"], "guard": ["y"], "grip": ["n"]},
+      "layers": [
+        {"slot": "blade",
+         "16": [{"op": "grid", "y": 1, "rows": [".............w..", "............wd..", "...........wd...", "..........wd....", ".........wd.....", "........wd......", ".......wd.......", "......wd........"]}],
+         "32": [{"op": "poly", "points": [[27, 2], [29, 2], [29, 4], [13, 20], [11, 18]], "key": "d"}, {"op": "line", "x1": 12, "y1": 18, "x2": 27, "y2": 3, "key": "w"}]},
+        {"slot": "guard",
+         "16": [{"op": "pixels", "key": "y", "at": [[4, 8], [5, 9], [6, 10], [7, 11]]}],
+         "32": [{"op": "line", "x1": 7, "y1": 16, "x2": 15, "y2": 24, "key": "y", "width": 2}]},
+        {"slot": "grip",
+         "16": [{"op": "pixels", "key": "n", "at": [[4, 11], [3, 12]]}, {"op": "pixels", "key": "y", "at": [[2, 13]]}],
+         "32": [{"op": "line", "x1": 9, "y1": 22, "x2": 5, "y2": 26, "key": "n", "width": 2}, {"op": "rect", "x": 3, "y": 26, "w": 3, "h": 3, "key": "y"}]}
+      ]
+    },
+    "shield": {
+      "slots": {"face": ["b", "B"], "rim": ["d"], "emblem": ["y"]},
+      "layers": [
+        {"slot": "rim",
+         "16": [{"op": "grid", "y": 2, "rows": ["...dddddddddd...", "...d........d...", "...d........d...", "...d........d...", "...d........d...", "....d......d....", "....d......d....", ".....d....d.....", "......d..d......", ".......dd......."]}],
+         "32": [{"op": "poly", "points": [[5, 4], [26, 4], [26, 15], [16, 28], [5, 15]], "key": "d"}]},
+        {"slot": "face",
+         "16": [{"op": "grid", "y": 3, "rows": ["....bbbbbbbB....", "....bbbbbbbB....", "....bbbbbbbB....", "....bbbbbbBB....", ".....bbbbbB.....", ".....bbbbBB.....", "......bbBB......", ".......BB......."]}],
+         "32": [{"op": "poly", "points": [[7, 6], [24, 6], [24, 15], [16, 25], [7, 15]], "key": "b"}, {"op": "shade", "keys": ["b"], "depth": 2}]},
+        {"slot": "emblem",
+         "16": [{"op": "pixels", "key": "y", "at": [[7, 5], [8, 5], [7, 6], [8, 6], [6, 6], [9, 6], [7, 7], [8, 7]]}],
+         "32": [{"op": "rect", "x": 14, "y": 9, "w": 3, "h": 10, "key": "y"}, {"op": "rect", "x": 11, "y": 12, "w": 9, "h": 3, "key": "y"}]}
+      ]
+    },
+    "key": {
+      "slots": {"metal": ["y", "o"]},
+      "layers": [
+        {"slot": "metal",
+         "16": [{"op": "grid", "y": 3, "rows": ["...yyy..........", "..yo.yy.........", "..y...y.........", "..yy.oy.........", "...yyyooooooo...", "..........o.o...", "..........o.o..."]}],
+         "32": [{"op": "circle", "cx": 9, "cy": 11, "r": 5, "key": "y"}, {"op": "circle", "cx": 9, "cy": 11, "r": 2, "key": "."},
+                {"op": "rect", "x": 14, "y": 10, "w": 14, "h": 3, "key": "y"}, {"op": "rect", "x": 21, "y": 13, "w": 2, "h": 4, "key": "y"}, {"op": "rect", "x": 25, "y": 13, "w": 2, "h": 5, "key": "y"},
+                {"op": "shade", "keys": ["y"]}]}
+      ]
+    }
+  }
+}

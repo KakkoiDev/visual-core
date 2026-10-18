@@ -1,0 +1,2 @@
+{"schema": "visual-core.pixel/1", "kind": "frame", "id": "dialogue-frame", "style": "pixel", "width": 64, "height": 24, "fill": "p", "slice": 4, "corner": "cut",
+ "edge": {"light": "w", "shade": "d"}, "outline_key": "k", "note": "Designer frame9: dark dialogue box."}

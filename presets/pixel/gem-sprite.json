@@ -1,0 +1,7 @@
+{"schema": "visual-core.pixel/1", "kind": "sprite", "id": "gem", "width": 16, "height": 16, "palette": "meadow",
+ "ops": [{"op": "poly", "points": [[4, 6], [7, 3], [9, 3], [12, 6], [8, 12]], "key": "b"},
+         {"op": "shade", "keys": ["b"]},
+         {"op": "line", "x1": 5, "y1": 6, "x2": 7, "y2": 4, "key": "w"},
+         {"op": "outline"}],
+ "frames": [{"id": "still", "ms": 600}, {"id": "glint", "ms": 120, "swap": {"b": "w"}}],
+ "note": "Free-form sprite from primitives, with two frames."}
