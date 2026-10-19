@@ -13,6 +13,9 @@ Upstream files are vendored unchanged; exact pins and hashes are in vendor/LOCK.
   Source: https://github.com/lucide-icons/lucide.
 - Tailwind CSS 4.3.1 is compiled into Basecoat's prebuilt stylesheet. MIT terms:
   [LICENSE](vendor/tailwindcss/LICENSE). Source: https://github.com/tailwindlabs/tailwindcss.
+- test-core tools (scenarios.py, e2e_coverage.py, flaky_lint.py) at commit 9906fb6b1c5a2bce138d6293b70afb60fe91fb1f:
+  copyright KakkoiDev, MIT. Terms: [LICENSE](tools/test-core/LICENSE). Development checks only, not redistributed
+  in generated outputs. Source: https://github.com/KakkoiDev/test-core.
 
 visual-core's original adapter, recipes, templates and renderer use the root MIT
 license. Third-party notices remain applicable to redistributed source/assets;
