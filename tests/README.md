@@ -18,6 +18,26 @@ deterministic output, source-preserving revisions, stale bases, writer locks, CL
 failures, starter provenance, contrast calculations and generated core scaffolds.
 They do not assess artistic quality or run a language model.
 
+## Scenarios: one end-to-end test each
+
+[SCENARIOS.md](../SCENARIOS.md) lists every command and preview as Given/When/Then scenarios. Each has one test
+named after its title: `tests/test_scenarios.py` runs `tools/visual.py` in a scratch folder and compares the decoded
+pixels with `tests/fixtures/scenario_pixels.json` (record again only for an intended art change:
+`VISUAL_CORE_RECORD_PIXELS=1 python3 -m unittest tests.test_scenarios`); `tests/browser.cjs` opens the previews.
+The vendored [test-core tools](../tools/test-core/README.md) check that every scenario has its test (and that it
+ran and passed), that every starter control is used by a browser step, and that no test waits on time:
+
+```sh
+python3 tests/junit_run.py .test-output/unittest-junit.xml
+python3 tools/test-core/flaky_lint.py tests tests/browser.cjs tests/terrain-dependencies.cjs
+python3 tools/test-core/e2e_coverage.py --pages templates/web-app/index.html templates/component-kit/index.html --tests tests/browser.cjs
+python3 tools/test-core/scenarios.py check SCENARIOS.md --tests tests/test_scenarios.py tests/browser.cjs \
+  --junit .test-output/unittest-junit.xml .test-output/browser-junit.xml
+```
+
+Every Chromium launch passes `--use-mock-keychain --password-store=basic` (without them headless Chromium on macOS
+asks for a keychain). `SCENARIO='<title>' node tests/browser.cjs` runs one browser scenario.
+
 ## Optional browser checks
 
 No browser package is needed to generate or consume assets. For development checks,

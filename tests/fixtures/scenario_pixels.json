@@ -1,0 +1,37 @@
+{
+  "gem-32-green": {
+    "height": 32,
+    "sha256": "0a8f2808058688da7d7a79ebccf46b1cfe8cb329c7259bc94f879bea4cb29272",
+    "width": 32
+  },
+  "hero": {
+    "height": 64,
+    "sha256": "5ee90acb8f044aae7ee474957953358cea5abed53ebee3626f65182005059fb5",
+    "width": 64
+  },
+  "legacy-terrain": {
+    "height": 16,
+    "sha256": "a3d910844c0c884e03f7444f569b801924765cfec0a395e9cad1e36be56dab79",
+    "width": 48
+  },
+  "meadow": {
+    "height": 256,
+    "sha256": "799729c9cca4432e4236aea244f1d4ed4767df898ca8cc15c42010a59fe92d08",
+    "width": 384
+  },
+  "robot": {
+    "height": 16,
+    "sha256": "e84483cf243a3a7e15546bd0dda87dc91e799eb0af588b241611784a1ee10005",
+    "width": 32
+  },
+  "ship-seed-42": {
+    "height": 12,
+    "sha256": "0f661e0f043d83e190937428e94864bb3c276e98fbd0a8d15f687641c2a4f9a9",
+    "width": 12
+  },
+  "title-logo": {
+    "height": 50,
+    "sha256": "0f142ac4ded648dead24261e9ae01a9deb57c5ec8fe23cff972540ffe819bea0",
+    "width": 257
+  }
+}

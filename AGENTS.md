@@ -64,6 +64,9 @@ Only a verified dependency may be called a consumer; a copied starter is an exam
 unless its core provenance is retained and the integration is explicitly maintained.
 Registry status must match evidence. Never invent a deployed consumer.
 
-Contributors: run tools/validate.py and unittest. UI behavior changes also need the
+Contributors: every command and preview has Given/When/Then scenarios in [SCENARIOS.md](SCENARIOS.md), each
+with one end-to-end test named after its title (test-core's protocol, [tools/test-core](tools/test-core/README.md)).
+A new command or control gets its scenario and test in the same change; removing one removes both.
+Run tools/validate.py and unittest. UI behavior changes also need the
 browser checks in tests/README.md. Add regression tests for source validation,
 state preservation or behavior changes. Do not test artistic quality with strings.
