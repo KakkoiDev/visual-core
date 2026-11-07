@@ -244,6 +244,50 @@ class Scenarios(unittest.TestCase):
                 self.assertTrue(capability['command'])
                 self.assertTrue((ROOT / capability['recipe']).is_file())
 
+    def test_the_kakkoi_theme_stays_in_step_with_its_tokens(self):
+        theme = ROOT / 'themes/kakkoi'
+        tokens = json.loads((theme / 'kakkoi-tokens.json').read_text())
+        css = (theme / 'kakkoi.css').read_text()
+        inline = (theme / 'kakkoi-inline.css').read_text()
+
+        def colours(block):  # custom properties holding colours, with #fff spelled #ffffff
+            found = dict(re.findall(r'(--[\w-]+)\s*:\s*(#[0-9a-fA-F]{3,6})\b', block))
+            return {name: '#' + ''.join(c * 2 for c in value[1:]).lower() if len(value) == 4 else value.lower()
+                    for name, value in found.items()}
+
+        def wanted(mode):
+            return {k: v for k, v in tokens[mode].items() if v.startswith('#')}
+
+        light = css[css.index(':root, .k-light'):css.index('@media (prefers-color-scheme: dark)')]
+        system_dark = css[css.index('@media (prefers-color-scheme: dark)'):css.index('.k-dark')]
+        forced_dark = css[css.index('.k-dark'):css.index('/* Base */')]
+        self.assertEqual(colours(light), wanted('light'))
+        self.assertEqual(colours(system_dark), wanted('dark'))
+        self.assertEqual(colours(forced_dark), wanted('dark'))
+        self.assertIn('--radius:0px', css.replace(' ', ''))
+
+        # The subset generated apps receive uses short names for the same values.
+        short = {'--bg': '--background', '--fg': '--foreground', '--mut': '--muted-foreground', '--line': '--border',
+                 '--edge': '--input', '--err': '--destructive', '--ok': '--success'}
+        dark_start = inline.index('@media(prefers-color-scheme:dark)')
+        for mode, block in (('light', inline[:dark_start]), ('dark', inline[dark_start:inline.index('}}', dark_start)])):
+            with self.subTest(inline=mode):
+                self.assertEqual(colours(block), {k: tokens[mode][v] for k, v in short.items()})
+        self.assertLess(len(inline.encode()), 4096)
+
+        for mode, claims in tokens['contrast'].items():
+            for pair, claim in claims.items():
+                fg, bg = (name.split(' ')[0] for name in pair.split('/'))
+                with self.subTest(mode=mode, pair=pair):
+                    ratio = self.visual('contrast', tokens[mode]['--' + fg], tokens[mode]['--' + bg])['ratio']
+                    self.assertAlmostEqual(ratio, float(re.match(r'[\d.]+', claim)[0]), delta=0.06)
+
+        for path in [theme / 'kakkoi.css', theme / 'kakkoi-inline.css', *sorted((theme / 'svg').glob('*.svg'))]:
+            text = path.read_text()
+            with self.subTest(file=path.name):
+                self.assertNotRegex(text, r'(?i)<script|\son\w+\s*=|@import|url\(|javascript:')
+                self.assertNotRegex(re.sub(r'xmlns(:\w+)?="[^"]*"', '', text), r'https?://')
+
 
 if __name__ == '__main__':
     unittest.main()
