@@ -57,9 +57,10 @@ This folder is the designer's hand-back of 7 Nov 2026, kept unchanged apart from
 
 Known gaps:
 
-- `fonts/` holds Bebas Neue, Inter and Noto Sans JP (all SIL OFL 1.1; versions and hashes in
-  [THIRD_PARTY_NOTICES.md](../../THIRD_PARTY_NOTICES.md)). They are full variable fonts (Noto Sans JP is 9.6 MB): subset
-  them to woff2 before serving (Latin for Inter, unicode-range slices for Noto Sans JP).
+- `fonts/` holds the full Bebas Neue, Inter and Noto Sans JP files (all SIL OFL 1.1; versions and hashes in
+  [THIRD_PARTY_NOTICES.md](../../THIRD_PARTY_NOTICES.md)) and the two files to serve: `bebas-neue-latin.woff2` (14 KB)
+  and `inter-latin.woff2` (31 KB, optical size fixed at 14, weights 400–700), loaded by `kakkoi-fonts.css`. Noto Sans JP
+  is not sliced yet (9.6 MB in full), so Japanese uses the system's Japanese font for now.
 - `--chart-4` is 1.67:1 on white and 1.93:1 on black, below the 3:1 that chart marks need, and `--chart-3` is just
   above it on white (3.03:1). Charts with four series must also tell series 4 apart with a pattern or a direct label.
 - The Japanese copy has not been read by a native speaker (the owner's decision, 7 Nov 2026).
