@@ -11,6 +11,7 @@ recipes, design tokens and asset mechanics; the app owns content, state and UX.
 |---|---|
 | New app UI or improve an existing page | [Basecoat](recipes/basecoat.md), then [Web UI](recipes/web-ui.md) |
 | Kakkoi brand: theme, logo, app icon, fonts | [Kakkoi theme](themes/kakkoi/README.md) |
+| PNG app icons from an SVG mark; an OpenUI theme from tokens | [Theme tools](recipes/theme-tools.md) |
 | Icon, small interface symbol | [Icons](recipes/icons.md) |
 | Game icon, vector illustration, logo, diagram, card/button decoration | [SVG recipes](recipes/svg-recipes.md) |
 | Procedural sprite, robot, ship, creature | [Procedural pixels](recipes/procedural-pixels.md) |

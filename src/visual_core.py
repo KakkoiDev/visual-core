@@ -14,7 +14,7 @@ import subprocess
 import tempfile
 import zlib
 
-VERSION = '0.5.0'
+VERSION = '0.6.0'
 ROOT = Path(__file__).resolve().parents[1]
 IDENT = re.compile(r'^[a-z][a-z0-9_-]{0,39}$')
 COLOR = re.compile(r'^#[0-9a-fA-F]{6}$')
@@ -360,6 +360,9 @@ def main(argv=None):
     if arguments and arguments[0] == 'vector':
         import vector
         return vector.main(arguments[1:])
+    if arguments and arguments[0] in ('icons', 'theme-openui'):
+        import theme_tools
+        return theme_tools.main(arguments)
     parser = argparse.ArgumentParser(description=__doc__)
     commands = parser.add_subparsers(dest='command', required=True)
     commands.add_parser('catalog')

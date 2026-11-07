@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.6.0
+
+Add theme tools: `visual.py icons` draws a plain SVG mark into square PNGs at the favicon, Apple touch and web
+app manifest sizes (deterministic, standard library, text and images refused by name), and `visual.py theme-openui`
+maps a theme's tokens onto OpenUI's ThemeProvider overrides. The Kakkoi theme ships both outputs, and its scenario
+checks they match a fresh export.
+
 ## 0.5.0
 
 Add the Kakkoi theme (`themes/kakkoi/`), the designer's hand-back of 7 Nov 2026: Basecoat 1.0.2 token values for

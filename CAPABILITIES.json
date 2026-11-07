@@ -165,6 +165,24 @@
         "inline subset for generated apps",
         "marks and app icons (SVG)"
       ]
+    },
+    {
+      "id": "app-icons",
+      "recipe": "recipes/theme-tools.md",
+      "status": "implemented",
+      "command": "icons SVG --out DIR [--sizes 16,32,180,192,512]",
+      "outputs": [
+        "<svg name>-<size>.png"
+      ]
+    },
+    {
+      "id": "openui-theme",
+      "recipe": "recipes/theme-tools.md",
+      "status": "implemented",
+      "command": "theme-openui TOKENS --out FILE",
+      "outputs": [
+        "OpenUI lightTheme and darkTheme JSON"
+      ]
     }
   ]
 }
