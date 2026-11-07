@@ -354,6 +354,9 @@ class Scenarios(unittest.TestCase):
             with self.subTest(mode=mode):
                 made, source = theme[f'{mode}Theme'], tokens[mode]
                 self.assertEqual(made['background'], source['--background'])
+                # OpenUI draws cards and the composer with `foreground`: it must be a surface, never the text colour.
+                self.assertEqual(made['foreground'], source['--card'])
+                self.assertNotEqual(made['foreground'], made['textNeutralPrimary'])
                 self.assertEqual(made['textNeutralPrimary'], source['--foreground'])
                 self.assertEqual(made['textNeutralSecondary'], source['--muted-foreground'])
                 self.assertEqual(made['borderDefault'], source['--border'])
