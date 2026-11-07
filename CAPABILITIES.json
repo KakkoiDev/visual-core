@@ -153,6 +153,18 @@
         "preview.html",
         "numbered revisions"
       ]
+    },
+    {
+      "id": "kakkoi-theme",
+      "recipe": "themes/kakkoi/README.md",
+      "status": "recipe",
+      "command": null,
+      "outputs": [
+        "Basecoat token values (light/dark)",
+        "theme CSS and primitives",
+        "inline subset for generated apps",
+        "marks and app icons (SVG)"
+      ]
     }
   ]
 }

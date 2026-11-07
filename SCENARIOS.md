@@ -93,6 +93,13 @@ Given a visual-core checkout
 When I run catalog
 Then every implemented capability names its command and its recipe file exists
 
+## Themes
+
+### Scenario: The Kakkoi theme stays in step with its tokens
+Given the Kakkoi theme in themes/kakkoi
+When I compare its stylesheets, marks and contrast claims with kakkoi-tokens.json
+Then every colour in the CSS matches the tokens, every claimed ratio matches the contrast command, the inline subset stays under 4 KB and nothing loads from outside
+
 ## Previews in a browser
 
 ### Scenario: Add, complete, find and filter projects on the board

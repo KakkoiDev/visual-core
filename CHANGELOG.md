@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.5.0
+
+Add the Kakkoi theme (`themes/kakkoi/`), the designer's hand-back of 7 Nov 2026: Basecoat 1.0.2 token values for
+light and dark (monochrome, colour only for error, success and warning, radius 0), the theme CSS with type roles
+and primitives, a 2.7 KB inline subset for generated apps (system fonts only), the KAKKOI and KAKKOIDEV wordmarks,
+the cube mark, app icons (light, dark, maskable) and a generated-app icon template, Bebas Neue, Inter and
+Noto Sans JP (all SIL OFL 1.1), and the style described in rules an agent can apply. A scenario keeps the CSS, the inline subset
+and the contrast claims in step with `kakkoi-tokens.json`.
+
 ## 0.4.0
 
 Add deterministic pixel recipes (`visual.py pixel`): the kit designer's four named
