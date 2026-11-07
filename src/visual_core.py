@@ -14,7 +14,7 @@ import subprocess
 import tempfile
 import zlib
 
-VERSION = '0.7.1'
+VERSION = '0.7.2'
 ROOT = Path(__file__).resolve().parents[1]
 IDENT = re.compile(r'^[a-z][a-z0-9_-]{0,39}$')
 COLOR = re.compile(r'^#[0-9a-fA-F]{6}$')
