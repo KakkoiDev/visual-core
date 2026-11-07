@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.7.2
+
+- OpenUI theme follows OpenUI's own model. The sunk, elevated and highlight layers are the ink colour at OpenUI's
+  alphas (2-32%), not solid fills. Text on an accent fill uses the accent's foreground. Status tints are the status
+  colour at low alpha. Before this, Rich AI Chat's sidebar was grey and its send and mic buttons were invisible.
+
 ## 0.7.1
 
 - OpenUI theme: `foreground` is OpenUI's surface colour (cards, the composer), so it now comes from `--card`, not the text

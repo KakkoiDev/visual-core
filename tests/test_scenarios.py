@@ -361,7 +361,12 @@ class Scenarios(unittest.TestCase):
                 self.assertEqual(made['textNeutralSecondary'], source['--muted-foreground'])
                 self.assertEqual(made['borderDefault'], source['--border'])
                 self.assertEqual(made['interactiveAccentDefault'], source['--primary'])
-                self.assertEqual(made['chatUserResponseBg'], source['--primary'])
+                self.assertEqual(made['chatUserResponseBg'], source['--foreground'] + '14')
+                # Layers are the ink colour at OpenUI's alphas, and text on an accent fill is the accent's foreground.
+                self.assertEqual(made['sunk'], source['--foreground'] + '0a')
+                self.assertEqual(made['elevated'], source['--foreground'] + '14')
+                self.assertEqual(made['textAccentPrimary'], source['--primary-foreground'])
+                self.assertNotEqual(made['textAccentPrimary'], made['interactiveAccentDefault'])
                 self.assertEqual(made['textDangerPrimary'], source['--destructive'])
                 self.assertEqual(made['pieChartPalette'], [source[f'--chart-{i}'] for i in range(1, 5)])
                 self.assertEqual({v for k, v in made.items() if k.startswith('radius')}, {'0px'})
