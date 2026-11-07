@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.7.0
+
+- Kakkoi theme: Latin woff2 subsets of Bebas Neue (14 KB) and Inter (31 KB, optical size 14, weights 400–700), loaded
+  by `themes/kakkoi/kakkoi-fonts.css`. The notices record how they were made and their hashes, and the theme scenario
+  checks both. Japanese uses the system font until Noto Sans JP is sliced.
+
 ## 0.6.0
 
 Add theme tools: `visual.py icons` draws a plain SVG mark into square PNGs at the favicon, Apple touch and web

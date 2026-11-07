@@ -303,6 +303,18 @@ class Scenarios(unittest.TestCase):
                 self.assertNotRegex(text, r'(?i)<script|\son\w+\s*=|@import|url\(|javascript:')
                 self.assertNotRegex(re.sub(r'xmlns(:\w+)?="[^"]*"', '', text), r'https?://')
 
+        # The served fonts are the subsets recorded in the notices, and the font CSS names only local files.
+        notices = (ROOT / 'THIRD_PARTY_NOTICES.md').read_text()
+        fonts_css = (theme / 'kakkoi-fonts.css').read_text()
+        for name in ('bebas-neue-latin.woff2', 'inter-latin.woff2'):
+            with self.subTest(font=name):
+                data = (theme / 'fonts' / name).read_bytes()
+                self.assertEqual(data[:4], b'wOF2')
+                self.assertLess(len(data), 64 * 1024)
+                self.assertIn(f'{name}` (sha256 {hashlib.sha256(data).hexdigest()})', notices)
+                self.assertIn(f'url(fonts/{name})', fonts_css)
+        self.assertNotRegex(fonts_css, r'https?://|@import')
+
         # Generated files are kept in step with their sources: a fresh export gives the same bytes.
         self.visual('theme-openui', str(theme / 'kakkoi-tokens.json'), '--out', 'kakkoi.openui.json')
         self.assertEqual((self.scratch / 'kakkoi.openui.json').read_bytes(), (theme / 'kakkoi.openui.json').read_bytes())

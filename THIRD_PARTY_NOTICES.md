@@ -32,3 +32,12 @@ Upstream files are vendored unchanged; exact pins and hashes are in vendor/LOCK.
 visual-core's original adapter, recipes, templates and renderer use the root MIT
 license. Third-party notices remain applicable to redistributed source/assets;
 keep the accompanying license files when copying generated outputs into a project.
+
+Subsets made from the files above with fontTools 4.60.1 (`pyftsubset`, woff2) for the Latin range in
+`themes/kakkoi/kakkoi-fonts.css`. They are modified versions under the same SIL Open Font License 1.1 and keep the
+original font names, as the licence allows for files that are not renamed products:
+- `themes/kakkoi/fonts/bebas-neue-latin.woff2` (sha256 76f10b05c391e7e13e3cd6ba31b399309f105965b8308d83d8c75a0ded4fdbd4):
+  `pyftsubset BebasNeue-Regular.ttf --unicodes=<range> --flavor=woff2 --layout-features='*'`.
+- `themes/kakkoi/fonts/inter-latin.woff2` (sha256 f7ca93be17f807b048ed903645e4d2495d69517f4ae43a217782ea3d5887db4e): `fontTools.varLib.instancer Inter[opsz,wght].ttf
+  opsz=14 wght=400:700`, then `pyftsubset --unicodes=<range> --flavor=woff2
+  --layout-features=kern,liga,calt,cv11,tnum,ccmp,locl,mark,mkmk`.

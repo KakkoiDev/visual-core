@@ -98,7 +98,7 @@ Then every implemented capability names its command and its recipe file exists
 ### Scenario: The Kakkoi theme stays in step with its tokens
 Given the Kakkoi theme in themes/kakkoi
 When I compare its stylesheets, marks and contrast claims with kakkoi-tokens.json
-Then every colour in the CSS matches the tokens, every claimed ratio matches the contrast command, the inline subset stays under 4 KB, nothing loads from outside, and the OpenUI theme and PNG icons match a fresh export
+Then every colour in the CSS matches the tokens, every claimed ratio matches the contrast command, the inline subset stays under 4 KB, nothing loads from outside, the served woff2 fonts are the subsets whose hashes the notices record, and the OpenUI theme and PNG icons match a fresh export
 
 ### Scenario: Export a theme's app icon at the PWA sizes
 Given the Kakkoi maskable icon SVG
