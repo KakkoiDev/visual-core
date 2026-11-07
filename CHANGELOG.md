@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.7.1
+
+- OpenUI theme: `foreground` is OpenUI's surface colour (cards, the composer), so it now comes from `--card`, not the text
+  colour. With the text colour there, OpenUI drew its composer black on black in light mode.
+
 ## 0.7.0
 
 - Kakkoi theme: Latin woff2 subsets of Bebas Neue (14 KB) and Inter (31 KB, optical size 14, weights 400–700), loaded

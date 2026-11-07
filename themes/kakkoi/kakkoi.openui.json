@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "lightTheme": {
     "background": "#ffffff",
-    "foreground": "#000000",
+    "foreground": "#ffffff",
     "popoverBackground": "#ffffff",
     "sunkLight": "#f2f2f2",
     "sunk": "#f2f2f2",
@@ -152,7 +152,7 @@
   },
   "darkTheme": {
     "background": "#000000",
-    "foreground": "#ffffff",
+    "foreground": "#000000",
     "popoverBackground": "#0d0d0d",
     "sunkLight": "#1a1a1a",
     "sunk": "#1a1a1a",

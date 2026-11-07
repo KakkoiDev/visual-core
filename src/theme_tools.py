@@ -107,7 +107,8 @@ def openui_theme(tokens):
     def mode(t):
         v = lambda name: t[name]
         theme = {
-            'background': v('--background'), 'foreground': v('--foreground'), 'popoverBackground': v('--popover'),
+            # OpenUI's `foreground` is a surface (cards, the composer), not the text colour; text is textNeutralPrimary.
+            'background': v('--background'), 'foreground': v('--card'), 'popoverBackground': v('--popover'),
             'sunkLight': v('--muted'), 'sunk': v('--muted'), 'sunkDeep': v('--secondary'),
             'elevatedLight': v('--card'), 'elevated': v('--card'), 'elevatedStrong': v('--card'), 'elevatedIntense': v('--card'),
             'overlay': v('--foreground') + '66',
