@@ -48,6 +48,9 @@ This folder is the designer's hand-back of 7 Nov 2026, kept unchanged apart from
   components read the token values; `.k-light` and `.k-dark` override the system setting.
 - **Generated apps:** the host adds `kakkoi-inline.css` before the app's own CSS, so the app can override it. It uses
   system fonts only.
+- **Chat (OpenUI):** `kakkoi.openui.json` holds `lightTheme` and `darkTheme` for OpenUI's ThemeProvider, made by
+  `visual.py theme-openui` ([theme tools](../../recipes/theme-tools.md)).
+- **App icons:** `png/` holds the light, dark and maskable icons at 16, 32, 180, 192 and 512 px, made by `visual.py icons`.
 - **Checked by** the scenario "The Kakkoi theme stays in step with its tokens" in [SCENARIOS.md](../../SCENARIOS.md):
   every colour in both stylesheets matches the tokens in light and dark, every claimed contrast ratio matches
   `visual.py contrast`, the inline subset stays under 4 KB, and no file loads anything from outside.
@@ -57,7 +60,6 @@ Known gaps:
 - `fonts/` holds Bebas Neue, Inter and Noto Sans JP (all SIL OFL 1.1; versions and hashes in
   [THIRD_PARTY_NOTICES.md](../../THIRD_PARTY_NOTICES.md)). They are full variable fonts (Noto Sans JP is 9.6 MB): subset
   them to woff2 before serving (Latin for Inter, unicode-range slices for Noto Sans JP).
-- PNG icon sizes (16/32/180/192/512 and maskable) are not exported yet. visual-core has no SVG-to-PNG command.
 - `--chart-4` is 1.67:1 on white and 1.93:1 on black, below the 3:1 that chart marks need, and `--chart-3` is just
   above it on white (3.03:1). Charts with four series must also tell series 4 apart with a pattern or a direct label.
 - The Japanese copy has not been read by a native speaker (the owner's decision, 7 Nov 2026).

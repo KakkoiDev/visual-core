@@ -62,6 +62,21 @@ def pixels(path):
     return width, height, hashlib.sha256(b''.join(rows)).hexdigest()
 
 
+def rgba_at(path, x, y):
+    """One pixel of a PNG written by visual-core's encoder (8-bit RGBA, no row filters)."""
+    raw = Path(path).read_bytes()
+    width = struct.unpack('!I', raw[16:20])[0]
+    offset, data = 8, b''
+    while offset < len(raw):
+        length = struct.unpack('!I', raw[offset:offset + 4])[0]
+        if raw[offset + 4:offset + 8] == b'IDAT':
+            data += raw[offset + 8:offset + 8 + length]
+        offset += 12 + length
+    rows = zlib.decompress(data)
+    start = y * (width * 4 + 1) + 1 + x * 4
+    return tuple(rows[start:start + 4])
+
+
 class Scenarios(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -288,6 +303,54 @@ class Scenarios(unittest.TestCase):
                 self.assertNotRegex(text, r'(?i)<script|\son\w+\s*=|@import|url\(|javascript:')
                 self.assertNotRegex(re.sub(r'xmlns(:\w+)?="[^"]*"', '', text), r'https?://')
 
+        # Generated files are kept in step with their sources: a fresh export gives the same bytes.
+        self.visual('theme-openui', str(theme / 'kakkoi-tokens.json'), '--out', 'kakkoi.openui.json')
+        self.assertEqual((self.scratch / 'kakkoi.openui.json').read_bytes(), (theme / 'kakkoi.openui.json').read_bytes())
+        for icon in ('kakkoi-icon', 'kakkoi-icon-dark', 'kakkoi-icon-maskable'):
+            self.visual('icons', str(theme / 'svg' / f'{icon}.svg'), '--out', 'png')
+            for size in (16, 32, 180, 192, 512):
+                with self.subTest(icon=icon, size=size):
+                    self.assertEqual((self.scratch / f'png/{icon}-{size}.png').read_bytes(), (theme / f'png/{icon}-{size}.png').read_bytes())
+
+
+    def test_export_a_theme_s_app_icon_at_the_pwa_sizes(self):
+        svg = ROOT / 'themes/kakkoi/svg/kakkoi-icon-maskable.svg'
+        result = self.visual('icons', str(svg), '--out', 'icons', '--sizes', '16,32,180,192,512')
+        files = [self.scratch / icon['file'] for icon in result['icons']]
+        self.assertEqual([icon['size'] for icon in result['icons']], [16, 32, 180, 192, 512])
+        for size, file in zip([16, 32, 180, 192, 512], files):
+            with self.subTest(size=size):
+                self.assertEqual(pixels(file)[:2], (size, size))
+        big = self.scratch / 'icons/kakkoi-icon-maskable-512.png'
+        self.assertEqual(rgba_at(big, 256, 256), (255, 255, 255, 255))   # inside the cube: the white tile
+        self.assertEqual(rgba_at(big, 196, 256), (0, 0, 0, 255))         # on the back square's left edge
+        self.assertEqual(rgba_at(big, 10, 10), (255, 255, 255, 255))     # the tile reaches the corner (maskable)
+        first = big.read_bytes()
+        self.visual('icons', str(svg), '--out', 'icons', '--sizes', '512')
+        self.assertEqual(big.read_bytes(), first)
+
+    def test_an_icon_drawn_with_text_is_refused(self):
+        result = self.visual('icons', str(ROOT / 'themes/kakkoi/svg/app-icon-template.svg'), '--out', 'refused', ok=False)
+        self.assertIn('<text>', result['error'])
+        self.assertFalse((self.scratch / 'refused').exists() and any((self.scratch / 'refused').iterdir()))
+
+    def test_derive_the_openui_theme_from_the_kakkoi_tokens(self):
+        tokens = json.loads((ROOT / 'themes/kakkoi/kakkoi-tokens.json').read_text())
+        self.visual('theme-openui', str(ROOT / 'themes/kakkoi/kakkoi-tokens.json'), '--out', 'kakkoi.openui.json')
+        theme = json.loads((self.scratch / 'kakkoi.openui.json').read_text())
+        for mode in ('light', 'dark'):
+            with self.subTest(mode=mode):
+                made, source = theme[f'{mode}Theme'], tokens[mode]
+                self.assertEqual(made['background'], source['--background'])
+                self.assertEqual(made['textNeutralPrimary'], source['--foreground'])
+                self.assertEqual(made['textNeutralSecondary'], source['--muted-foreground'])
+                self.assertEqual(made['borderDefault'], source['--border'])
+                self.assertEqual(made['interactiveAccentDefault'], source['--primary'])
+                self.assertEqual(made['chatUserResponseBg'], source['--primary'])
+                self.assertEqual(made['textDangerPrimary'], source['--destructive'])
+                self.assertEqual(made['pieChartPalette'], [source[f'--chart-{i}'] for i in range(1, 5)])
+                self.assertEqual({v for k, v in made.items() if k.startswith('radius')}, {'0px'})
+                self.assertEqual(made['fontHeading'], tokens['font']['sans'])
 
 if __name__ == '__main__':
     unittest.main()
